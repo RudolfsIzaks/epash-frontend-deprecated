@@ -10,7 +10,7 @@ function CampaignDetail() {
       <div className="flex flex-col justify-evenly gap-5 p-5">
         <h2 className="font-custom font-black text-epash-green text-4xl">{campaignGroup[0].name}</h2>
         <p className="text-black font-custom font-semibold text-2xl">{campaignGroup[0].status}</p>
-        <div className="flex gap-10">
+        <div className="grid grid-cols-2 gap-10">
           {campaignGroup.map((campaign, index) => (
             <div key={index} className="ad-variation flex flex-col justify-center items-center w-96 bg-gray-900 p-5 shadow-md rounded-lg">
               <img
