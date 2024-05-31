@@ -337,7 +337,7 @@ function CreateCampaign() {
             </button>
           </div>
         </div>
-        <div className="grid gap-4">
+        <div className="grid gap-4 grid-cols-2">
           {campaignResults.map((campaign, index) => (
             <div
               key={index}
