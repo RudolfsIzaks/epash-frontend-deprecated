@@ -12,13 +12,13 @@ function CampaignDetail() {
         <p className="text-black font-custom font-semibold text-2xl">{campaignGroup[0].status}</p>
         <div className="grid grid-cols-2 gap-10">
           {campaignGroup.map((campaign, index) => (
-            <div key={index} className="ad-variation flex flex-col justify-center items-center w-96 bg-gray-900 p-5 shadow-md rounded-lg">
+            <div key={index} className="ad-variation flex flex-col justify-center items-center w-96 bg-white p-5 shadow-md rounded-lg">
               <img
                 className="rounded-md w-80 mb-5"
                 src={campaign.image_link}
                 alt={`Ad variation ${index + 1}`}
               />
-              <p className="text-white font-semibold font-custom p-5">{campaign.ad_text}</p>
+              <p className="font-semibold italic font-custom p-5">{campaign.ad_text}</p>
             </div>
           ))}
         </div>
