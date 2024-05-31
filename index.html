@@ -2,9 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Epash</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXiqiacBFj3x2-2OyKF0xfkvyHqKlL0jc&libraries=places" async defer></script>
+    <script>
+      const apiKey = '<%= process.env.REACT_APP_GOOGLE_MAPS_API_KEY %>';
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    </script>
   </head>
   <body>
     <div id="root"></div>
