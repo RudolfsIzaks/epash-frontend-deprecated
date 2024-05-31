@@ -10,7 +10,7 @@ function CampaignDetail() {
       case "incomplete":
         return { color: "red" };
       case "ready to deploy":
-        return { color: "yellow" };
+        return { color: "#ffcc00" };
       case "complete":
         return { color: "green" };
       default:
