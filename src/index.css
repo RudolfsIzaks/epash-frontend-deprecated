@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* Custom styles for SweetAlert2 buttons */
+.swal-button--confirm {
+    background-color: #32C58D; /* Green */
+}
+
+.swal-button--cancel {
+    background-color: #f44336; /* Red */
+}
+
+
+.pac-container {
+    box-shadow: rgba(94, 93, 93, 0.27);
+    position: relative;
+    top: 50px;
+    width: 60% !important;
+    padding: 20px;
+    background-color: #3b3b3b; 
+    border-radius: 8px; 
+    font-family: 'Inter', sans-serif; 
+    z-index: 1000;
+}
+
+.pac-item {
+    border: none;
+    transition: ease-in-out 100ms;
+    padding: 10px; 
+    cursor: pointer; 
+    color: white;
+}
+
+.pac-item-query {
+    font-weight: bold; 
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Style the hovered item */
+.pac-item:hover {
+    transition: ease-in-out 100ms;
+    background-color: #32C58D;
+    color: white;
+    border-radius: 12px;
+}
+
+.suggestion-item {
+    box-shadow: rgba(94, 93, 93, 0.50);
+    position: relative;
+    width: 60% !important;
+    padding-block: 10px;
+    padding-inline: 20px;
+    background-color: #ececec; 
+    font-family: 'Inter', sans-serif; 
+    z-index: 1000;
+    transition: ease-in-out 200ms;
+}
+
+.suggestion-item--active {
+    transition: ease-in-out 200ms;
+    background-color: #32C58D;
+    color: white;
+}
+
+.react-calendar {
+    color: white !important;
+    background-color: #3b3b3b !important;
+    border-radius: 12px;
+    border: 1px white !important;
+    outline: none !important;
+}
+
+.react-calendar__tile {
+    flex: none !important;
+    padding: 0 !important;
+    height: 50px;
+    width: 50px;
+    transition: 200ms ease-in-out;
+}
+
+.react-calendar__tile--now {
+    background-color: #32c58d9f !important;
+}
+
+.react-calendar__tile:hover {
+    transition: 200ms ease-in-out;
+    background-color: #32C58D !important;
+    color: white !important;
+}
+
+.campaign-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+  
