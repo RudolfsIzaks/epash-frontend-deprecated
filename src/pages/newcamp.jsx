@@ -178,9 +178,8 @@ function CreateCampaign() {
     if (window.google) {
       initializeAutocomplete();
     } else {
-      const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
       const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCXiqiacBFj3x2-2OyKF0xfkvyHqKlL0jc&libraries=places`;
       script.async = true;
       script.defer = true;
       document.body.appendChild(script);
