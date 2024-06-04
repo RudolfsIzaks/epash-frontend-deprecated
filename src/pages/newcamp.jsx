@@ -142,6 +142,11 @@ function CreateCampaign() {
 
   const handleAddressChange = (address) => {
     setAddressInput(address);
+    // Assuming you want to keep track of the latest address:
+    setFormData((prevData) => ({
+      ...prevData,
+      address,
+    }));
   };
 
   const handleSelectLocation = (address) => {
@@ -167,34 +172,41 @@ function CreateCampaign() {
     );
   };
 
+  let autocomplete;
+
   const loadGoogleMapsScript = () => {
     if (window.google) {
       initializeAutocomplete();
     } else {
       const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCXiqiacBFj3x2-2OyKF0xfkvyHqKlL0jc&libraries=places&callback=initializeAutocomplete`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCXiqiacBFj3x2-2OyKF0xfkvyHqKlL0jc&libraries=places`;
       script.async = true;
       script.defer = true;
-      window.initializeAutocomplete = initializeAutocomplete;
       document.body.appendChild(script);
+      script.onload = () => {
+        initializeAutocomplete();
+      };
     }
   };
 
   const initializeAutocomplete = () => {
-    if (!window.google) {
-      console.error("Google maps script not loaded");
-      return;
-    }
-    const autocomplete = new window.google.maps.places.Autocomplete(
-      autocompleteRef.current,
+    autocomplete = new window.google.maps.places.Autocomplete(
+      document.getElementById("autocomplete"),
       { types: ["geocode"] }
     );
-    autocomplete.addListener("place_changed", () => {
-      const place = autocomplete.getPlace();
-      if (place.geometry) {
-        setAddressInput(place.formatted_address);
-      }
-    });
+    autocomplete.addListener("place_changed", onPlaceChanged);
+  };
+
+  const onPlaceChanged = () => {
+    const place = autocomplete.getPlace();
+    if (place.geometry) {
+      console.log(place); // You can extract the needed details from the 'place' object
+      setAddress(place.formatted_address);
+    } else {
+      console.log(
+        "No details available for input: '" + autocomplete.getPlace().name + "'"
+      );
+    }
   };
 
   useEffect(() => {
@@ -219,6 +231,7 @@ function CreateCampaign() {
     </div>
   );
 
+  // Remove tag function
   const removeTag = (optionToRemove) => {
     setSelectedLanguages(
       selectedLanguages.filter(
@@ -246,18 +259,20 @@ function CreateCampaign() {
   const [files, setFiles] = useState([]);
 
   const handleFileChange = (event) => {
+    // Create an array from the existing file list and the newly selected files
     const newFiles = Array.from(event.target.files);
-    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+    setFiles((prevFiles) => [...prevFiles, ...newFiles]); // Append new files to existing files
   };
-
+  // Optional: Function to remove a file from the list
   const removeFile = (index) => {
     setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
   };
 
   const handleFileClick = () => {
-    document.getElementById("file_input").click();
+    document.getElementById("file_input").click(); // Simulate file input click
   };
 
+  // Handle changes in form inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
