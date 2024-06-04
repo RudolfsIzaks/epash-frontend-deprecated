@@ -182,20 +182,31 @@ function CreateCampaign() {
       script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCXiqiacBFj3x2-2OyKF0xfkvyHqKlL0jc&libraries=places`;
       script.async = true;
       script.defer = true;
+      script.onload = () => initializeAutocomplete();
       document.body.appendChild(script);
-      script.onload = () => {
-        initializeAutocomplete();
-      };
     }
   };
 
   const initializeAutocomplete = () => {
-    autocomplete = new window.google.maps.places.Autocomplete(
-      document.getElementById("autocomplete"),
+    if (!window.google) {
+      console.error("Google maps script not loaded");
+      return;
+    }
+    const autocomplete = new window.google.maps.places.Autocomplete(
+      autocompleteRef.current,
       { types: ["geocode"] }
     );
-    autocomplete.addListener("place_changed", onPlaceChanged);
+    autocomplete.addListener("place_changed", () => {
+      const place = autocomplete.getPlace();
+      if (place.geometry) {
+        setAddressInput(place.formatted_address);
+      }
+    });
   };
+
+  useEffect(() => {
+    loadGoogleMapsScript();
+  }, []);
 
   const onPlaceChanged = () => {
     const place = autocomplete.getPlace();
