@@ -142,11 +142,6 @@ function CreateCampaign() {
 
   const handleAddressChange = (address) => {
     setAddressInput(address);
-    // Assuming you want to keep track of the latest address:
-    setFormData((prevData) => ({
-      ...prevData,
-      address,
-    }));
   };
 
   const handleSelectLocation = (address) => {
@@ -172,17 +167,15 @@ function CreateCampaign() {
     );
   };
 
-  let autocomplete;
-
   const loadGoogleMapsScript = () => {
     if (window.google) {
       initializeAutocomplete();
     } else {
       const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCXiqiacBFj3x2-2OyKF0xfkvyHqKlL0jc&libraries=places`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCXiqiacBFj3x2-2OyKF0xfkvyHqKlL0jc&libraries=places&callback=initializeAutocomplete`;
       script.async = true;
       script.defer = true;
-      script.onload = () => initializeAutocomplete();
+      window.initializeAutocomplete = initializeAutocomplete;
       document.body.appendChild(script);
     }
   };
@@ -208,22 +201,6 @@ function CreateCampaign() {
     loadGoogleMapsScript();
   }, []);
 
-  const onPlaceChanged = () => {
-    const place = autocomplete.getPlace();
-    if (place.geometry) {
-      console.log(place); // You can extract the needed details from the 'place' object
-      setAddress(place.formatted_address);
-    } else {
-      console.log(
-        "No details available for input: '" + autocomplete.getPlace().name + "'"
-      );
-    }
-  };
-
-  useEffect(() => {
-    loadGoogleMapsScript();
-  }, []);
-
   const renderTags = (selectedOptions) => (
     <div className="flex flex-wrap gap-2">
       {selectedOptions.map((option) => (
@@ -242,7 +219,6 @@ function CreateCampaign() {
     </div>
   );
 
-  // Remove tag function
   const removeTag = (optionToRemove) => {
     setSelectedLanguages(
       selectedLanguages.filter(
@@ -270,20 +246,18 @@ function CreateCampaign() {
   const [files, setFiles] = useState([]);
 
   const handleFileChange = (event) => {
-    // Create an array from the existing file list and the newly selected files
     const newFiles = Array.from(event.target.files);
-    setFiles((prevFiles) => [...prevFiles, ...newFiles]); // Append new files to existing files
+    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
   };
-  // Optional: Function to remove a file from the list
+
   const removeFile = (index) => {
     setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
   };
 
   const handleFileClick = () => {
-    document.getElementById("file_input").click(); // Simulate file input click
+    document.getElementById("file_input").click();
   };
 
-  // Handle changes in form inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
