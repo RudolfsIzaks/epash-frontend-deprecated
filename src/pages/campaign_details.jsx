@@ -44,6 +44,11 @@ function CampaignDetail() {
               <p className="font-semibold italic font-custom p-5">
                 {campaign.ad_text}
               </p>
+              <div>
+                <p>{campaign.budget}</p>
+                <p>{campaign.locations}</p>
+                <p>{campaign.target_ages}</p>
+              </div>
             </div>
           ))}
         </div>
