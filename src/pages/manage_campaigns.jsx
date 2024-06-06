@@ -44,7 +44,7 @@ function ManageCampaigns() {
           end_date: campaign[14],
           image_link: campaign[16],
           ad_text: campaign[17],
-          status: campaign[18]
+          status: campaign[19]
         };
         if (!acc[campaignId]) {
           acc[campaignId] = [];
