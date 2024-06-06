@@ -3,14 +3,15 @@ import { useLocation } from "react-router-dom";
 
 function CampaignDetail() {
   const location = useLocation();
-  const { campaignGroup } = location.state;
-
+  const { campaignGroup } = location.state || {};
+  
   if (!campaignGroup || campaignGroup.length === 0) {
+    console.error('Invalid or empty campaignGroup:', campaignGroup);
     return <div>Error: Invalid campaign data</div>;
   }
 
   const getStatusStyle = (status) => {
-    if (typeof status !== 'string') {
+    if (!status || typeof status !== 'string') {
       console.error('Invalid status value:', status);
       return { color: "black" };
     }
@@ -30,13 +31,13 @@ function CampaignDetail() {
     <div className="flex justify-center py-20">
       <div className="flex flex-col justify-evenly gap-5 p-5">
         <h2 className="font-custom font-black text-epash-green text-4xl">
-          {campaignGroup[0].name}
+          {campaignGroup[0]?.name || 'No name available'}
         </h2>
         <p
-          style={getStatusStyle(campaignGroup[0].status)}
+          style={getStatusStyle(campaignGroup[0]?.status)}
           className="text-black font-custom font-semibold text-2xl"
         >
-          {campaignGroup[0].status}
+          {campaignGroup[0]?.status || 'Unknown status'}
         </p>
         <div className="grid grid-cols-2 gap-10">
           {campaignGroup.map((campaign, index) => (
@@ -46,16 +47,16 @@ function CampaignDetail() {
             >
               <img
                 className="rounded-md w-80 mb-5"
-                src={campaign.image_link}
+                src={campaign.image_link || ''}
                 alt={`Ad variation ${index + 1}`}
               />
               <p className="font-semibold italic font-custom p-5">
-                {campaign.ad_text}
+                {campaign.ad_text || 'No ad text available'}
               </p>
               <div>
-                <p>{campaign.budget}</p>
-                <p>{campaign.locations}</p>
-                <p>{campaign.target_ages}</p>
+                <p>{campaign.budget || 'No budget available'}</p>
+                <p>{campaign.locations || 'No locations specified'}</p>
+                <p>{campaign.target_ages || 'No target ages specified'}</p>
               </div>
             </div>
           ))}
