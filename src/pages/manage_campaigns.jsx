@@ -10,10 +10,11 @@ function ManageCampaigns() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+
   useEffect(() => {
     fetch('https://epash-ai-jaroslavsbolsak.replit.app/api/get_campaigns', {
       method: 'GET',
-      credentials: 'include', // to include cookies and session information
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       }
@@ -25,26 +26,27 @@ function ManageCampaigns() {
       return response.json();
     })
     .then(data => {
+      // Process and organize campaigns by ID
       const campaignsMap = data.reduce((acc, campaign) => {
         const campaignId = campaign[0];
         const campaignDetails = {
           id: campaign[0],
           user_id: campaign[2],
-          name: campaign[3],
-          description: campaign[4],
-          product_type: campaign[5],
-          features: campaign[6],
-          competitive_advantage: campaign[7],
-          languages: JSON.parse(campaign[8]),
-          locations: JSON.parse(campaign[9]),
-          target_ages: JSON.parse(campaign[10]),
-          budget: campaign[11],
-          daily_limit: campaign[12],
-          start_date: campaign[13],
-          end_date: campaign[14],
-          image_link: campaign[16],
-          ad_text: campaign[17],
-          status: campaign[19]
+          name: campaign[3] || 'No name provided',
+          description: campaign[4] || 'No description provided',
+          product_type: campaign[5] || 'Unknown',
+          features: campaign[6] || 'No features provided',
+          competitive_advantage: campaign[7] || 'No competitive advantage provided',
+          languages: campaign[8] ? JSON.parse(campaign[8]) : ['Not specified'],
+          locations: campaign[9] ? JSON.parse(campaign[9]) : ['Not specified'],
+          target_ages: campaign[10] ? JSON.parse(campaign[10]) : ['Not specified'],
+          budget: campaign[11] || 'No budget specified',
+          daily_limit: campaign[12] || 'No daily limit specified',
+          start_date: campaign[13] || 'No start date',
+          end_date: campaign[14] || 'No end date',
+          image_link: campaign[16] || 'placeholder.png',
+          ad_text: campaign[17] || 'No ad text provided',
+          status: campaign[18] || 'Unknown status'
         };
         if (!acc[campaignId]) {
           acc[campaignId] = [];
