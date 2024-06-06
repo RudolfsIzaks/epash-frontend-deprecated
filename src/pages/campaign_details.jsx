@@ -5,7 +5,6 @@ function CampaignDetail() {
   const location = useLocation();
   const { campaignGroup } = location.state || {};
 
-  // Validate campaignGroup data
   if (!campaignGroup || campaignGroup.length === 0 || !campaignGroup[0]) {
     console.error('Invalid campaign data:', campaignGroup);
     return <div>Error: Invalid campaign data</div>;
@@ -58,13 +57,13 @@ function CampaignDetail() {
               <div>
                 <p>{campaign.budget !== null ? campaign.budget : 'No budget available'}</p>
                 <p>
-                  {campaign.locations ? 
-                    (Array.isArray(campaign.locations) ? campaign.locations.join(', ') : campaign.locations) 
+                  {campaign.locations && campaign.locations.length > 0 ? 
+                    campaign.locations.join(', ') 
                     : 'No locations specified'}
                 </p>
                 <p>
-                  {campaign.target_ages ? 
-                    (Array.isArray(campaign.target_ages) ? campaign.target_ages.join(', ') : campaign.target_ages) 
+                  {campaign.target_ages && campaign.target_ages.length > 0 ? 
+                    campaign.target_ages.join(', ') 
                     : 'No target ages specified'}
                 </p>
               </div>
