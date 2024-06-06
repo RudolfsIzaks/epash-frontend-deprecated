@@ -27,6 +27,13 @@ function CampaignDetail() {
     }
   };
 
+  // Extract common parameters from the first element, assuming all are the same across the group
+  const commonBudget = campaignGroup[0]?.budget !== null ? campaignGroup[0].budget : 'No budget available';
+  const commonLocations = campaignGroup[0]?.locations && campaignGroup[0].locations.length > 0 ? 
+                          campaignGroup[0].locations.join(', ') : 'No locations specified';
+  const commonTargetAges = campaignGroup[0]?.target_ages && campaignGroup[0].target_ages.length > 0 ? 
+                           campaignGroup[0].target_ages.join(', ') : 'No target ages specified';
+
   return (
     <div className="flex justify-center py-20">
       <div className="flex flex-col justify-evenly gap-5 p-5">
@@ -39,6 +46,15 @@ function CampaignDetail() {
         >
           {campaignGroup[0]?.status || 'Unknown status'}
         </p>
+
+        {/* Display common parameters once */}
+        <div className="mb-5">
+          <p className="text-xl font-bold">Budget: {commonBudget}</p>
+          <p className="text-xl font-bold">Locations: {commonLocations}</p>
+          <p className="text-xl font-bold">Target Ages: {commonTargetAges}</p>
+        </div>
+
+        {/* Render each ad variation */}
         <div className="grid grid-cols-2 gap-10">
           {campaignGroup.map((campaign, index) => (
             <div
@@ -54,19 +70,6 @@ function CampaignDetail() {
               <p className="font-semibold italic font-custom p-5">
                 {campaign.ad_text || 'No ad text available'}
               </p>
-              <div>
-                <p>{campaign.budget !== null ? campaign.budget : 'No budget available'}</p>
-                <p>
-                  {campaign.locations && campaign.locations.length > 0 ? 
-                    campaign.locations.join(', ') 
-                    : 'No locations specified'}
-                </p>
-                <p>
-                  {campaign.target_ages && campaign.target_ages.length > 0 ? 
-                    campaign.target_ages.join(', ') 
-                    : 'No target ages specified'}
-                </p>
-              </div>
             </div>
           ))}
         </div>
