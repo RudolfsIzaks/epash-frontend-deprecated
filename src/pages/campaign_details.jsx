@@ -5,7 +5,15 @@ function CampaignDetail() {
   const location = useLocation();
   const { campaignGroup } = location.state;
 
+  if (!campaignGroup || campaignGroup.length === 0) {
+    return <div>Error: Invalid campaign data</div>;
+  }
+
   const getStatusStyle = (status) => {
+    if (typeof status !== 'string') {
+      console.error('Invalid status value:', status);
+      return { color: "black" };
+    }
     switch (status.toLowerCase()) {
       case "incomplete":
         return { color: "red" };
