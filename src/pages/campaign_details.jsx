@@ -4,9 +4,10 @@ import { useLocation } from "react-router-dom";
 function CampaignDetail() {
   const location = useLocation();
   const { campaignGroup } = location.state || {};
-  
-  if (!campaignGroup || campaignGroup.length === 0) {
-    console.error('Invalid or empty campaignGroup:', campaignGroup);
+
+  // Validate campaignGroup data
+  if (!campaignGroup || campaignGroup.length === 0 || !campaignGroup[0]) {
+    console.error('Invalid campaign data:', campaignGroup);
     return <div>Error: Invalid campaign data</div>;
   }
 
@@ -47,16 +48,25 @@ function CampaignDetail() {
             >
               <img
                 className="rounded-md w-80 mb-5"
-                src={campaign.image_link || ''}
+                src={campaign.image_link || 'placeholder.png'}
                 alt={`Ad variation ${index + 1}`}
+                onError={(e) => e.target.src = 'fallback.png'} // Provide a fallback image
               />
               <p className="font-semibold italic font-custom p-5">
                 {campaign.ad_text || 'No ad text available'}
               </p>
               <div>
-                <p>{campaign.budget || 'No budget available'}</p>
-                <p>{campaign.locations || 'No locations specified'}</p>
-                <p>{campaign.target_ages || 'No target ages specified'}</p>
+                <p>{campaign.budget !== null ? campaign.budget : 'No budget available'}</p>
+                <p>
+                  {campaign.locations ? 
+                    (Array.isArray(campaign.locations) ? campaign.locations.join(', ') : campaign.locations) 
+                    : 'No locations specified'}
+                </p>
+                <p>
+                  {campaign.target_ages ? 
+                    (Array.isArray(campaign.target_ages) ? campaign.target_ages.join(', ') : campaign.target_ages) 
+                    : 'No target ages specified'}
+                </p>
               </div>
             </div>
           ))}
