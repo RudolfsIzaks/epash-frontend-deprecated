@@ -75,7 +75,7 @@ function CampaignDetail() {
                 alt={`Ad variation ${index + 1}`}
               />
               <p
-                className={`font-semibold italic font-custom p-5 text-on-image ${
+                className={`font-black font-custom p-5 text-on-image ${
                   campaign.text_location === "up" ? "text-up" : "text-down"
                 }`}
               >
