@@ -97,4 +97,22 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
+
+.text-on-image {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .text-up {
+    top: 0;
+  }
+  
+  .text-down {
+    bottom: 0;
+  }
   

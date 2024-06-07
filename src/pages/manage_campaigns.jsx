@@ -52,7 +52,8 @@ function ManageCampaigns() {
             end_date: campaign[14] || "No end date",
             image_link: campaign[16] || "placeholder.png",
             ad_text: campaign[17] || "No ad text provided",
-            status: campaign[18] || "Unknown status",
+            text_location: campaign[18],
+            status: campaign[19] || "Unknown status",
           };
           if (!acc[campaignId]) {
             acc[campaignId] = [];
