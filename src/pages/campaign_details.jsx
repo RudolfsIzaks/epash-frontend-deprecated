@@ -65,7 +65,6 @@ function CampaignDetail() {
                 className="rounded-md w-80 mb-5"
                 src={campaign.image_link || 'placeholder.png'}
                 alt={`Ad variation ${index + 1}`}
-                onError={(e) => e.target.src = 'fallback.png'} // Provide a fallback image
               />
               <p className="font-semibold italic font-custom p-5">
                 {campaign.ad_text || 'No ad text available'}
