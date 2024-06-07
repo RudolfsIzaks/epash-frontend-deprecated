@@ -100,7 +100,7 @@
 
 .text-on-image {
     position: absolute;
-    width: 100%;
+    width: auto;
     text-align: center;
     color: white;
     background: rgba(0, 0, 0, 0.5);
@@ -109,10 +109,10 @@
   }
   
   .text-up {
-    top: 20px;
+    top: 15%;
   }
   
   .text-down {
-    bottom: 20px;
+    bottom: 15%;
   }
   
