@@ -24,7 +24,7 @@ function parseCampaignData(rawData) {
   return rawData.map((item) => {
     try {
       const [textPart, imageUrlPart] = item.split("; ");
-      const text = textPart.split(": ")[1];
+      const text = textPart.split(": ")[2];
       const image_url = imageUrlPart.split(": ")[1];
       return { text, image_url };
     } catch (e) {
