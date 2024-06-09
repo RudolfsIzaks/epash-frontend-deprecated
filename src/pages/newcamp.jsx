@@ -338,20 +338,27 @@ function CreateCampaign() {
           </div>
         </div>
         <div className="grid gap-4 grid-cols-2">
-          {campaignResults.map((campaign, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center p-5 border rounded-md shadow-md w-1/2"
-            >
-              <p>{campaign.text}</p>
-              <img
-                className="w-96 rounded-md"
-                src={campaign.image_url}
-                alt={`Campaign ${index + 1}`}
-              />
-            </div>
-          ))}
-        </div>
+            {campaignResults.map((campaign, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center p-5 border rounded-md shadow-md w-1/2"
+              >
+                <p>{campaign.text}</p>
+                <img
+                  className="w-96 rounded-md"
+                  src={campaign.image_url}
+                  alt={`Campaign ${index + 1}`}
+                />
+                {/* Displaying additional form data */}
+                <div className="mt-4">
+                  <p><strong>Campaign Name:</strong> {formData.camp_name}</p>
+                  <p><strong>Product Name:</strong> {formData.product_name}</p>
+                  <p><strong>Location:</strong> {formData.location.join(', ')}</p>
+                  <p><strong>Budget:</strong> {formData.budget}</p>
+                </div>
+              </div>
+            ))}
+          </div>
       </div>
     );
   }
