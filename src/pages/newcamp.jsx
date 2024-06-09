@@ -24,7 +24,7 @@ function parseCampaignData(rawData) {
   return rawData.map((item) => {
     try {
       const [textPart, imageUrlPart] = item.split("; ");
-      const text = textPart.split(": ")[2];
+      const text = textPart.split(": ")[1].replace(/^"(.*)"$/, '$1'); // Split and remove quotes
       const image_url = imageUrlPart.split(": ")[1];
       return { text, image_url };
     } catch (e) {
@@ -33,6 +33,7 @@ function parseCampaignData(rawData) {
     }
   });
 }
+
 
 function CreateCampaign() {
   const { user } = useAuth();
