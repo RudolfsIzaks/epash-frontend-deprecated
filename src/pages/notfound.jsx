@@ -1,11 +1,11 @@
 import React from "react";
 import '../index.css';
 import NavLogo from "../components/navLogo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Add this line
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
 function NotFound() {
     return(
-        <>
         <div className="w-full h-screen flex justify-center items-center">
             <div className="flex flex-col gap-5">
                 <NavLogo/>
@@ -15,13 +15,11 @@ function NotFound() {
                       icon={faArrowCircleLeft}
                       className="font-light text-3lg"
                     />
-                    
                 </button>
                 <p className="font-custom text-center">Go Back</p>
             </div>
         </div>
-        </>
-    )
+    );
 }
 
 export default NotFound;
