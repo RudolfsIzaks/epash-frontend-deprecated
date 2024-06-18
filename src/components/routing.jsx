@@ -11,6 +11,7 @@ import UserProfile from '../pages/settings';
 import ProfileInfo from '../pages/profile_info';
 import CampaignDetail from '../pages/campaign_details';
 import BillingInfo from '../pages/billing_info';
+import NotFound from '../pages/notfound';
 
 
 function RouteChangeTracker() {
@@ -43,6 +44,8 @@ function RouterSetup() {
                 <Route path='/account/settings' element={<PrivateRoute><UserProfile/></PrivateRoute>} />
                 <Route path='/account/settings/profile-info' element={<PrivateRoute><ProfileInfo/></PrivateRoute>} />
                 <Route path='/dashboard/manage-campaigns/campaign-details' element={<PrivateRoute><CampaignDetail/></PrivateRoute>} />
+                <Route path='/dashboard/previous-campaigns' element={<PrivateRoute><NotFound/></PrivateRoute>} />
+                <Route path='/dashboard/product-profiles' element={<PrivateRoute><NotFound/></PrivateRoute>}/>
                 {/* <Route path='/account/settings/billing' element={<PrivateRoute><BillingInfo/></PrivateRoute>} /> */}
             </Routes>
             </AuthProvider>
