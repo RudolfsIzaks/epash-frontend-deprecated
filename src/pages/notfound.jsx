@@ -13,7 +13,7 @@ function NotFound() {
                 <button>
                     <FontAwesomeIcon
                       icon={faArrowCircleLeft}
-                      className="font-light text-3lg"
+                      className="font-light text-3xl"
                     />
                 </button>
                 <p className="font-custom text-center">Go Back</p>
