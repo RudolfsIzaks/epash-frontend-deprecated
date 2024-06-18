@@ -93,7 +93,7 @@ function UserProfile() {
           <h1 className="font-bold text-4xl">Epash AI</h1>
         </div>
       </div>
-    ); // O r any other loading indicator
+    ); // Or any other loading indicator
   }
 
   return (
