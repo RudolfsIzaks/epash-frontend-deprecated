@@ -132,10 +132,7 @@ function UserProfile() {
             </Link>
           </div>
           <div>
-            <Link to="/account/settings/security"></Link>
-          </div>
-          <div>
-            <Link to="/account/settings/billing">
+            <Link to="/account/settings/google">
               <div className="my-5 mx-5 rounded-md flex items-center gap-3 px-2 py-2 hover:bg-gray-100 duration-200 ">
                 <FontAwesomeIcon
                   icon={faUser}

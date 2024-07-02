@@ -46,6 +46,7 @@ function RouterSetup() {
                 <Route path='/dashboard/manage-campaigns/campaign-details' element={<PrivateRoute><CampaignDetail/></PrivateRoute>} />
                 <Route path='/dashboard/previous-campaigns' element={<PrivateRoute><NotFound/></PrivateRoute>} />
                 <Route path='/dashboard/product-profiles' element={<PrivateRoute><NotFound/></PrivateRoute>}/>
+                <Route path='/account/settings/profile-info' element={<PrivateRoute><ProfileLinkage/></PrivateRoute>} />
                 {/* <Route path='/account/settings/billing' element={<PrivateRoute><BillingInfo/></PrivateRoute>} /> */}
             </Routes>
             </AuthProvider>
