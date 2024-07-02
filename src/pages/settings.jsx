@@ -5,6 +5,8 @@ import DashNav from "../components/dashNav";
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import google from '../assets/google.png';
+
 
 function UserProfile() {
   const navigate = useNavigate();
@@ -134,13 +136,10 @@ function UserProfile() {
           <div>
             <Link to="/account/settings/profilelinkage">
               <div className="my-5 mx-5 rounded-md flex items-center gap-3 px-2 py-2 hover:bg-gray-100 duration-200 ">
-                <FontAwesomeIcon
-                  icon={faUser}
-                  className="text-epash-green text-xl py-3 px-3 bg-green-50 border border-green-100 rounded-md"
-                />
+                <img src={google} />
                 <div>
                   <h2 className="font-black font-custom">
-                    App Connect
+                    Google Connect
                   </h2>
                   <p className="text-xs">
                     Connect google ads platform.
