@@ -12,7 +12,7 @@ function ProfileLinkage() {
         <>
          <div>
             <NavLogo/>
-            <Link to='/settings' className="p-5 bg-epash-green text-white">
+            <Link to='/account/settings' className="p-5 bg-epash-green text-white">
               <FontAwesomeIcon
                 icon={faArrowLeft}
                 className="text-white"
