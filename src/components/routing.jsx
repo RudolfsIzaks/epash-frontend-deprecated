@@ -12,6 +12,7 @@ import ProfileInfo from '../pages/profile_info';
 import CampaignDetail from '../pages/campaign_details';
 import BillingInfo from '../pages/billing_info';
 import NotFound from '../pages/notfound';
+import ProfileLinkage from '../pages/profilelinkage';
 
 
 function RouteChangeTracker() {
