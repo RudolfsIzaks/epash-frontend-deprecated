@@ -10,9 +10,9 @@ function ProfileLinkage() {
 
     return(
         <>
-         <div>
+         <div className="flex justify-between items-center py-2 px-20">
             <NavLogo/>
-            <Link to='/account/settings' className="p-5 bg-epash-green text-white">
+            <Link to='/account/settings' className="p-5 bg-epash-green text-white rounded-md">
               <FontAwesomeIcon
                 icon={faArrowLeft}
                 className="text-white"
