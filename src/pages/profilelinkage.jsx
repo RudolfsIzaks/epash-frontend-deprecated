@@ -10,7 +10,7 @@ function ProfileLinkage() {
 
     return(
         <>
-         <div className="flex justify-between items-center py-2 px-20">
+         <div className="flex justify-between items-center py-5 px-48">
             <NavLogo/>
             <Link to='/account/settings' className="flex justify-center items-center bg-epash-green text-white rounded-md px-8 h-12 font-bold hover:scale-110 duration-100">
               <FontAwesomeIcon

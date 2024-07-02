@@ -140,10 +140,10 @@ function UserProfile() {
                 />
                 <div>
                   <h2 className="font-black font-custom">
-                    Account Information
+                    App Connect
                   </h2>
                   <p className="text-xs">
-                    See and manage your account information.
+                    Connect google ads platform.
                   </p>
                 </div>
               </div>
