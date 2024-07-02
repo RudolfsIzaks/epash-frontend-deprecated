@@ -136,7 +136,7 @@ function UserProfile() {
           <div>
             <Link to="/account/settings/profilelinkage">
               <div className="my-5 mx-5 rounded-md flex items-center gap-3 px-2 py-2 hover:bg-gray-100 duration-200 ">
-                <img src={google} className="w-[20px]"/>
+                <img src={google} className="w-[28px]"/>
                 <div>
                   <h2 className="font-black font-custom">
                     Google Connect
