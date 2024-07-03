@@ -143,7 +143,7 @@ function UserProfile() {
           </div>
           <div>
             <button onClick={handleGoogle}>
-              <div className="my-5 mx-5 rounded-md flex items-center gap-3 px-2 py-2 hover:bg-gray-100 duration-200 ">
+              <div className="my-5 mx-5 rounded-md flex items-center text-left gap-3 px-2 py-2 hover:bg-gray-100 duration-200 ">
                 <img src={google} className="w-[28px]"/>
                 <div>
                   <h2 className="font-black font-custom">
