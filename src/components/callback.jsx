@@ -6,26 +6,18 @@ const Callback = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const code = new URLSearchParams(window.location.search).get('code');
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    const scope = urlParams.get('scope');
+
     if (code) {
       console.log('Authorization code:', code); // Log the authorization code
+      console.log('Scope:', scope); // Log the scope
 
-      // Send the code to the backend to exchange for tokens
-      fetch('/api/auth/callback', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ code }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log('Tokens received:', data); // Log the response from the backend
-          navigate('/'); // Redirect to another route after successful login
-        })
-        .catch((error) => {
-          console.error('Error during token exchange:', error); // Log any errors
-        });
+      // You can now send the code to your backend or store it for further use
+
+      // Redirect to another route after handling the code
+      navigate('/');
     } else {
       console.error('No authorization code found');
     }
