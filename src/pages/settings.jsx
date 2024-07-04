@@ -17,7 +17,7 @@ function UserProfile() {
     const clientId = '75828378290-1e4k7m3iolebr8bmsbk2i5pj71hmrctm.apps.googleusercontent.com';
     const redirectUri = 'https://epash-frontend.vercel.app/auth/google/callback'; 
     const scope = 'https://www.googleapis.com/auth/adwords';
-    // const authUrl = `https://accounts.google.com/o/oauth2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
+    const authUrl = `https://accounts.google.com/o/oauth2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
     window.location.href = authUrl;
   };
 
