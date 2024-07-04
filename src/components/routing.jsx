@@ -1,4 +1,3 @@
-// src/RouterSetup.js
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import App from '../App';
@@ -12,7 +11,7 @@ import UserProfile from '../pages/settings';
 import ProfileInfo from '../pages/profile_info';
 import CampaignDetail from '../pages/campaign_details';
 import NotFound from '../pages/notfound';
-import Callback from './callback';
+import Callback from './callback'; // Ensure correct import path
 import ProfileLinkage from '../pages/profilelinkage';
 
 function RouteChangeTracker() {
@@ -44,7 +43,7 @@ function RouterSetup() {
                     <Route path="/dashboard/manage-campaigns/campaign-details" element={<PrivateRoute><CampaignDetail/></PrivateRoute>} />
                     <Route path="/dashboard/previous-campaigns" element={<PrivateRoute><NotFound/></PrivateRoute>} />
                     <Route path="/dashboard/product-profiles" element={<PrivateRoute><NotFound/></PrivateRoute>} />
-                    <Route path="/auth/google/callback/*" element={<Callback />} /> {/* Use wildcard route */}
+                    <Route path="/auth/google/callback" element={<Callback />} /> {/* Use wildcard route */}
                     <Route path="/account/settings/profilelinkage" element={<PrivateRoute><ProfileLinkage/></PrivateRoute>} />
                 </Routes>
             </AuthProvider>
