@@ -17,7 +17,7 @@ const Callback = () => {
       // You can now send the code to your backend or store it for further use
 
       // Redirect to another route after handling the code
-      navigate('/');
+      navigate('/account/settings');
     } else {
       console.error('No authorization code found');
     }
