@@ -18,7 +18,7 @@ const Callback = () => {
       // Here you can do something with the code, like sending it to a backend
 
       // Redirect to another route after handling the code
-      navigate('/');
+      navigate('/success-google');
     } else {
       const errorDescription = urlParams.get('error_description');
       console.error('No authorization code found');

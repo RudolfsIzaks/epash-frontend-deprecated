@@ -13,6 +13,7 @@ import CampaignDetail from '../pages/campaign_details';
 import NotFound from '../pages/notfound';
 import Callback from './callback'; // Ensure correct import path
 import ProfileLinkage from '../pages/profilelinkage';
+import SuccessGoogle from '../pages/success_google';
 
 function RouteChangeTracker() {
     const location = useLocation();
@@ -44,6 +45,7 @@ function RouterSetup() {
                     <Route path="/dashboard/previous-campaigns" element={<PrivateRoute><NotFound/></PrivateRoute>} />
                     <Route path="/dashboard/product-profiles" element={<PrivateRoute><NotFound/></PrivateRoute>} />
                     <Route path="/auth/google/callback" element={<Callback />} /> {/* Use wildcard route */}
+                    <Route path="/success-google" element={<SuccessGoogle />} /> {/* Use wildcard route */}
                     <Route path="/account/settings/profilelinkage" element={<PrivateRoute><ProfileLinkage/></PrivateRoute>} />
                 </Routes>
             </AuthProvider>
