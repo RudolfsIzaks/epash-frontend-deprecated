@@ -1,37 +1,38 @@
-// src/components/Callback.js
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Callback = () => {
   const navigate = useNavigate();
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-    const scope = urlParams.get('scope');
+    const code = urlParams.get("code");
 
     if (code) {
-      console.log('Authorization code:', code); // Log the authorization code
-      console.log('Scope:', scope); // Log the scope
-
-      // Here you can do something with the code, like sending it to a backend
-
-      // Redirect to another route after handling the code
-      navigate('/success-google');
+      // Send the authorization code to the backend
+      fetch("https://epash-ai-jaroslavsbolsak.replit.app/auth/callback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ code }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            // Redirect to the dashboard or another page after successful login
+            navigate("/success-google");
+          } else {
+            console.error("Login failed:", data.error);
+          }
+        })
+        .catch((error) => {
+          console.error("Error during authentication:", error);
+        });
     } else {
-      const errorDescription = urlParams.get('error_description');
-      console.error('No authorization code found');
-      if (errorDescription) {
-        console.error('Error description:', errorDescription);
-        setError(errorDescription);
-      }
+      console.error("No authorization code found");
     }
   }, [navigate]);
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return <div>Loading...</div>;
 };
