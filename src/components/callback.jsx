@@ -21,7 +21,7 @@ const Callback = () => {
         .then((data) => {
           if (data.success) {
             // Redirect to the dashboard or another page after successful login
-            navigate("/success-google");
+            navigate("/dashboard");
           } else {
             console.error("Login failed:", data.error);
           }
