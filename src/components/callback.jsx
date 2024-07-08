@@ -3,6 +3,29 @@ import { useNavigate } from "react-router-dom";
 
 const Callback = () => {
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    fetch("https://epash-ai-jaroslavsbolsak.replit.app/api/user_info", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .then((data) => {
+        setUser(data);
+      })
+      .catch((error) => {
+        console.error("There was a problem with your fetch operation:", error);
+        setError("Failed to fetch data");
+      });
+  }, []);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
