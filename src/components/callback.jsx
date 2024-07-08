@@ -17,9 +17,14 @@ const Callback = () => {
         },
         body: JSON.stringify({ code }),
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Network response was not ok.');
+        })
         .then((data) => {
-          if (data.success) {
+          if (data.message) {
             // Redirect to the dashboard or another page after successful login
             navigate("/success-google");
           } else {
