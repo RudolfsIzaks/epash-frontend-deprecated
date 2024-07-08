@@ -10,7 +10,7 @@ const Callback = () => {
 
     if (code) {
       // Send the authorization code to the backend
-      fetch("https://epash-ai-jaroslavsbolsak.replit.app/auth/callback", {
+      fetch("https://epash-ai-jaroslavsbolsak.replit.app/auth/google/callback", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
