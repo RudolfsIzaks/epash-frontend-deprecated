@@ -17,7 +17,7 @@ function UserProfile() {
     const redirectUri = 'https://epash-frontend.vercel.app/auth/google/callback';
     const scope = 'https://www.googleapis.com/auth/adwords';
     const authUrl = `https://accounts.google.com/o/oauth2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
-    console.log(`Redirecting to: ${authUrl}`); // Log the URL
+    window.location.href = authUrl;
   };
 
   const handleLogout = async () => {
