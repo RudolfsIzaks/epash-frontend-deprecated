@@ -1,36 +1,90 @@
-import React from "react";
-import { Link } from "react-router-dom";
+// src/GuideComponent.jsx
+import React, { useState } from 'react';
 import '../index.css';
-import google from '../assets/google.png';
-import NavLogo from "../components/navLogo";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 function ProfileLinkage() {
-    const handleLogin = () => {
-        const clientId = '75828378290-1e4k7m3iolebr8bmsbk2i5pj71hmrctm.apps.googleusercontent.com';
-        const redirectUri = 'https://epash-frontend.vercel.app/auth/google/callback'; 
-        const scope = 'https://www.googleapis.com/auth/adwords';
-        const authUrl = `https://accounts.google.com/o/oauth2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
-        window.location.href = authUrl;
-      };
+  const [step, setStep] = useState(1);
+  const totalSteps = 6;
 
-    return(
-        <>
-         <div className="flex justify-between items-center py-5 px-48">
-            <NavLogo/>
-            <Link to='/account/settings' className="flex justify-center items-center bg-epash-green text-white rounded-md px-8 h-12 font-bold hover:scale-110 duration-100">
-              <FontAwesomeIcon
-                icon={faArrowLeft}
-                className="text-white"
-              />
-            </Link>
-         </div>
-          <button onClick={handleLogin}>
-            Connect Google
+  const nextStep = () => {
+    if (step < totalSteps) setStep(step + 1);
+  };
+
+  const prevStep = () => {
+    if (step > 1) setStep(step - 1);
+  };
+
+  return (
+    <div className="flex justify-center items-center h-screen bg-gray-100">
+      <div className="bg-white shadow-md rounded-lg p-6 w-1/2 relative">
+        <button className="absolute top-4 right-4 text-gray-500" onClick={() => alert('Close guide')}>
+          &times;
+        </button>
+        {step === 1 && (
+          <div>
+            <h2 className="text-xl font-bold mb-2">Confirm The Email</h2>
+            <p>We will send you an email to confirm your connection.</p>
+          </div>
+        )}
+        {step === 2 && (
+          <div>
+            <h2 className="text-xl font-bold mb-2">Copy The Account ID</h2>
+            <p>
+              Paste It Into The Input And Submit
+              <span className="block bg-gray-200 rounded p-2 mt-2">179-030-4919</span>
+            </p>
+          </div>
+        )}
+        {step === 3 && (
+          <div>
+            <h2 className="text-xl font-bold mb-2">Choose One Google Ad Account</h2>
+            <p>
+              Select a Google Ads account
+              <span className="block bg-gray-200 rounded p-2 mt-2">179-030-4919</span>
+            </p>
+          </div>
+        )}
+        {step === 4 && (
+          <div>
+            <h2 className="text-xl font-bold mb-2">Make A New Ad Account (If You Don’t Have One)</h2>
+            <p>
+              New Google Ads account
+            </p>
+          </div>
+        )}
+        {step === 5 && (
+          <div>
+            <h2 className="text-xl font-bold mb-2">Go To Google Ads Website And Press Sign Up</h2>
+            <p>
+              <span className="block bg-gray-200 rounded p-2 mt-2">sign up</span>
+            </p>
+          </div>
+        )}
+        {step === 6 && (
+          <div>
+            <h2 className="text-xl font-bold mb-2">To Run Ads Link Your Google Ad Account</h2>
+            <p>
+              Google Ads ID: 
+              <span className="block bg-gray-200 rounded p-2 mt-2">e.g. 123-456-7890</span>
+            </p>
+          </div>
+        )}
+        <div className="flex justify-between mt-6">
+          <button onClick={prevStep} className="bg-gray-300 rounded p-2" disabled={step === 1}>
+            &larr;
           </button>
-        </>
-    )
-}
+          <div className="flex space-x-2">
+            {[...Array(totalSteps)].map((_, i) => (
+              <div key={i} className={`h-2 w-2 rounded-full ${step === i + 1 ? 'bg-green-500' : 'bg-gray-300'}`} />
+            ))}
+          </div>
+          <button onClick={nextStep} className="bg-gray-300 rounded p-2" disabled={step === totalSteps}>
+            &rarr;
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default ProfileLinkage;

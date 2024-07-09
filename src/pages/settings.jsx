@@ -12,14 +12,6 @@ function UserProfile() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
 
-  const handleGoogle = () => {
-    const clientId = '75828378290-1e4k7m3iolebr8bmsbk2i5pj71hmrctm.apps.googleusercontent.com';
-    const redirectUri = 'https://epash-frontend.vercel.app/auth/google/callback';
-    const scope = 'https://www.googleapis.com/auth/adwords';
-    const authUrl = `https://accounts.google.com/o/oauth2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
-    window.location.href = authUrl;
-  };
-
   const handleLogout = async () => {
     Swal.fire({
       title: "Are you sure?",
@@ -141,7 +133,7 @@ function UserProfile() {
             </Link>
           </div>
           <div>
-            <button onClick={handleGoogle}>
+            <Link to="/account/settings/profilelinkage">
               <div className="my-5 mx-5 rounded-md flex items-center text-left gap-3 px-2 py-2 hover:bg-gray-100 duration-200 ">
                 <img src={google} className="w-[28px]"/>
                 <div>
@@ -153,7 +145,7 @@ function UserProfile() {
                   </p>
                 </div>
               </div>
-            </button>
+            </Link>
           </div>
         </div>
       </div>
