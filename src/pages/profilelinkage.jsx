@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import DashNav from "../components/dashNav";
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfo } from "@fortawesome/free-solid-svg-icons";
+import { faInfo, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 function ProfileLinkage() {  
   const navigate = useNavigate();
@@ -160,10 +160,10 @@ function ProfileLinkage() {
           <h2 className="font-custom font-bold">To run ads link your google ad account</h2>
           <div className="">
             <p className="text-epash-green font-custom">Google Ads ID:</p>
-            <div>
-            <input type="text"  />
+            <div className="flex justify-between bg-stone-200 border border-stone-300">
+            <input type="text" placeholder="e.g. 124-234-1235" className="outline-none border-none bg-none appearance-none"  />
             <FontAwesomeIcon
-              icon={faInfo}
+              icon={faInfoCircle}
               className="text-epash-green"
             />
             </div>
