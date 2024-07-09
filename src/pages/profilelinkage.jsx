@@ -70,7 +70,7 @@ function ProfileLinkage() {
           </div>
         )}
         <div className="flex justify-between mt-6">
-          <button onClick={prevStep} className="bg-gray-300 rounded p-2" disabled={step === 1}>
+          <button onClick={prevStep} className="text-white font-black bg-epash-green rounded px-2" disabled={step === 1}>
             &larr;
           </button>
           <div className="flex space-x-2">
@@ -78,7 +78,7 @@ function ProfileLinkage() {
               <div key={i} className={`h-2 w-2 rounded-full ${step === i + 1 ? 'bg-green-500' : 'bg-gray-300'}`} />
             ))}
           </div>
-          <button onClick={nextStep} className="bg-gray-300 rounded p-2" disabled={step === totalSteps}>
+          <button onClick={nextStep} className="text-white font-black bg-epash-green rounded px-2" disabled={step === totalSteps}>
             &rarr;
           </button>
         </div>
