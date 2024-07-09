@@ -10,7 +10,6 @@ import ad2 from '../assets/createADS.png';
 import ad3 from '../assets/CliendIDc.png';
 import ad4 from '../assets/ClientID.png';
 
-
 function ProfileLinkage() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
@@ -79,9 +78,33 @@ function ProfileLinkage() {
     setShowGuide(!showGuide);
   };
 
-  const handleSubmit = () => {
-    // Add your submit logic here
-    console.log("Google Ads ID submitted:", googleAdsId);
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch('https://epash-ai-jaroslavsbolsak.replit.app/api/link_to_google', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ client_id: googleAdsId }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Google Ads ID linked successfully!',
+        });
+      } else {
+        throw new Error(data.error || 'Something went wrong');
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: error.message,
+      });
+    }
   };
 
   return (
