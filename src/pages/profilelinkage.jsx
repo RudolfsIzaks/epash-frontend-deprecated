@@ -158,7 +158,7 @@ function ProfileLinkage() {
       <div className="h-[60dvh] flex justify-center items-center">
         <div className="h-1/2 w-3/5">
           <h2 className="font-custom font-bold">To run ads link your google ad account</h2>
-          <div className="">
+          <div className="w-1/2 rounded-lg shadow-lg p-20">
             <p className="text-epash-green font-custom">Google Ads ID:</p>
             <div className="flex justify-between bg-stone-100 border border-stone-300 py-2 px-4">
             <input type="text" placeholder="e.g. 124-234-1235" className="outline-none border-none bg-transparent appearance-none"  />
