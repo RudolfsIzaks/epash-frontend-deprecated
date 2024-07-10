@@ -39,7 +39,7 @@ function RouterSetup() {
                     <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>} />
                     <Route path="/dashboard/manage-campaigns" element={<PrivateRoute><ManageCampaigns/></PrivateRoute>} />
                     <Route path="/new/campaign" element={<PrivateRoute><CreateCampaign/></PrivateRoute>} />
-                    <Route path="/account/settings" element={<UserProfile/>} />
+                    <Route path="/account/settings" element={<PrivateRoute><UserProfile/></PrivateRoute>} />
                     <Route path="/account/settings/profile-info" element={<PrivateRoute><ProfileInfo/></PrivateRoute>} />
                     <Route path="/dashboard/manage-campaigns/campaign-details" element={<PrivateRoute><CampaignDetail/></PrivateRoute>} />
                     <Route path="/dashboard/previous-campaigns" element={<PrivateRoute><NotFound/></PrivateRoute>} />
