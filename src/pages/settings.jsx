@@ -84,7 +84,7 @@ function UserProfile() {
 
   const handleGoogleConnect = () => {
     const clientId = '1033664191407-ai61p9okci4t9acdf1vhhn2jik7t68u1.apps.googleusercontent.com'; // Replace with your client ID
-    const redirectUri = 'https://epash-frontend.vercel.app/auth/google/callbackk'; // Replace with your redirect URI
+    const redirectUri = 'https://epash-frontend.vercel.app/auth/google/callback'; // Replace with your redirect URI
     const scope = 'https://www.googleapis.com/auth/adwords';
     const responseType = 'code';
     const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?response_type=${responseType}&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&access_type=offline&prompt=consent`;
