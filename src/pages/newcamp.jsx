@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import NavLogo from "../components/navLogo";
 import DashNav from "../components/dashNav";
 import PlacesAutocomplete, {
@@ -14,6 +15,7 @@ import {
 import Select from "react-select";
 import "react-calendar/dist/Calendar.css";
 import { useAuth } from "../components/auth";
+import google from '../assets/google.png'
 
 function parseCampaignData(rawData) {
   if (!Array.isArray(rawData)) {
@@ -38,6 +40,11 @@ function parseCampaignData(rawData) {
 function CreateCampaign() {
   const { user } = useAuth();
   const [hovered, setHovered] = useState(false);
+  const navigate = useNavigate();
+
+  const handlePlatform = () => {
+    navigate('/platform-edit');
+  }
 
   const [selectedProductType, setSelectedProductType] = useState(null);
   const [customProductType, setCustomProductType] = useState("");
@@ -333,8 +340,11 @@ function CreateCampaign() {
             <button className="bg-red-500 text-white font-custom font-bold py-2 px-5 rounded-md">
               Discard
             </button>
-            <button className="bg-epash-green text-white font-custom font-bold py-2 px-5 rounded-md">
-              Save
+            <button onClick={handlePlatform} className="bg-white shadow-md text-black font-custom font-bold py-2 px-5 rounded-md">
+              <div className="flex gap-3 items-center justify-between">
+                <img src={google} className="w-16" alt="google" />
+                <p className="font-custom text-md">Edit For Google</p>
+              </div>
             </button>
           </div>
         </div>
