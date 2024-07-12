@@ -14,6 +14,7 @@ import NotFound from '../pages/notfound';
 import Callback from './callback'; // Ensure correct import path
 import ProfileLinkage from '../pages/profilelinkage';
 import SuccessGoogle from '../pages/success_google';
+import PlatformGoogle from '../pages/platform_google_edit';
 
 function RouteChangeTracker() {
     const location = useLocation();
@@ -46,6 +47,7 @@ function RouterSetup() {
                     <Route path="/dashboard/product-profiles" element={<PrivateRoute><NotFound/></PrivateRoute>} />
                     <Route path="/auth/google/callback" element={<Callback />} /> {/* Use wildcard route */}
                     <Route path="/success-google" element={<SuccessGoogle />} /> {/* Use wildcard route */}
+                    <Route path="/platform-edit" element={<PlatformGoogle />} /> {/* Use wildcard route */}
                     <Route path="/account/settings/profilelinkage" element={<PrivateRoute><ProfileLinkage/></PrivateRoute>} />
                 </Routes>
             </AuthProvider>
