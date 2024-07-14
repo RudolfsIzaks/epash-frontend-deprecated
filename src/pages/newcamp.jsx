@@ -19,15 +19,20 @@ import google from '../assets/google.png'
 
 
 function parseCampaignData(rawData) {
-  // Splitting the raw data into individual properties based on their structure
+  // Helper function to clean and parse JSON strings
+  const cleanAndParseJson = (jsonString) => {
+    const cleanedString = jsonString.replace(/\\\"/g, '"');
+    return JSON.parse(cleanedString);
+  };
+
   try {
     const parts = rawData.split("; ");
     
     const campaignId = parts[0].split(": ")[1];
-    const headings = JSON.parse(parts[1].split(": ")[1]);
-    const longHeadings = JSON.parse(parts[2].split(": ")[1]);
-    const descriptions = JSON.parse(parts[3].split(": ")[1]);
-    const images = JSON.parse(parts[4].split(": ")[1]);
+    const headings = cleanAndParseJson(parts[1].split(": ")[1]);
+    const longHeadings = cleanAndParseJson(parts[2].split(": ")[1]);
+    const descriptions = cleanAndParseJson(parts[3].split(": ")[1]);
+    const images = cleanAndParseJson(parts[4].split(": ")[1]);
 
     // Extracting the first item from each list for the preview
     const text = headings[0] || "";
@@ -335,7 +340,6 @@ function CreateCampaign() {
   };
   
   
-
   if (loading) {
     return (
       <div className="w-full h-screen bg-white flex justify-center items-center">
