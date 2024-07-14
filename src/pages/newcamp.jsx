@@ -25,16 +25,35 @@ function parseCampaignData(rawData) {
 
   return rawData.map((item) => {
     try {
-      const [textPart, imageUrlPart] = item.split("; ");
-      const text = textPart.split(": ")[1].replace(/(^"|"$)/g, ''); // Split and remove quotes
-      const image_url = imageUrlPart.split(": ")[1];
-      return { text, image_url };
+      // Assuming the item is a single object with specific properties
+      const {
+        "Campaign id": campaignId,
+        "Headings": headings,
+        "Long Headings": longHeadings,
+        "Descriptions": descriptions,
+        "Images": images,
+      } = item;
+
+      // Extracting and cleaning up the required fields
+      const text = (headings && headings[0]) || "";
+      const longText = (longHeadings && longHeadings[0]) || "";
+      const description = (descriptions && descriptions[0]) || "";
+      const image_url = (images && images[0]) || "";
+
+      return {
+        campaignId,
+        text,
+        longText,
+        description,
+        image_url,
+      };
     } catch (e) {
       console.error(`Failed to parse campaign data:`, item, e);
       return { text: "", image_url: "" };
     }
   });
 }
+
 
 
 function CreateCampaign() {
