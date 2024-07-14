@@ -21,7 +21,12 @@ import google from '../assets/google.png'
 function parseCampaignData(rawData) {
   // Helper function to clean and parse JSON strings
   const cleanAndParseJson = (jsonString) => {
-    const cleanedString = jsonString.replace(/\\\"/g, '"');
+    const cleanedString = jsonString
+      .replace(/\\\"/g, '"') // Replace escaped double quotes with actual double quotes
+      .replace(/(\w+):\s/g, '"$1": ') // Add quotes around keys
+      .replace(/'/g, '"') // Replace single quotes with double quotes
+      .replace(/(\\u[\dA-Fa-f]{4})/g, (match) => match.toLowerCase()); // Lowercase Unicode escape sequences
+
     return JSON.parse(cleanedString);
   };
 
@@ -338,6 +343,7 @@ function CreateCampaign() {
       setLoading(false);
     }
   };
+  
   
   
   if (loading) {
