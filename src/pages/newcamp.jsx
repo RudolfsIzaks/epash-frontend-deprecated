@@ -19,41 +19,35 @@ import google from '../assets/google.png'
 
 
 function parseCampaignData(rawData) {
-  if (!Array.isArray(rawData)) {
-    console.error("Expected an array of campaigns, received:", rawData);
+  // Splitting the raw data into individual properties based on their structure
+  try {
+    const parts = rawData.split("; ");
+    
+    const campaignId = parts[0].split(": ")[1];
+    const headings = JSON.parse(parts[1].split(": ")[1]);
+    const longHeadings = JSON.parse(parts[2].split(": ")[1]);
+    const descriptions = JSON.parse(parts[3].split(": ")[1]);
+    const images = JSON.parse(parts[4].split(": ")[1]);
+
+    // Extracting the first item from each list for the preview
+    const text = headings[0] || "";
+    const longText = longHeadings[0] || "";
+    const description = descriptions[0] || "";
+    const image_url = images[0] || "";
+
+    return [{
+      campaignId,
+      text,
+      longText,
+      description,
+      image_url,
+    }];
+  } catch (e) {
+    console.error(`Failed to parse campaign data:`, rawData, e);
     return [];
   }
-
-  return rawData.map((item) => {
-    try {
-      // Assuming the item is a single object with specific properties
-      const {
-        "Campaign id": campaignId,
-        "Headings": headings,
-        "Long Headings": longHeadings,
-        "Descriptions": descriptions,
-        "Images": images,
-      } = item;
-
-      // Extracting and cleaning up the required fields
-      const text = (headings && headings[0]) || "";
-      const longText = (longHeadings && longHeadings[0]) || "";
-      const description = (descriptions && descriptions[0]) || "";
-      const image_url = (images && images[0]) || "";
-
-      return {
-        campaignId,
-        text,
-        longText,
-        description,
-        image_url,
-      };
-    } catch (e) {
-      console.error(`Failed to parse campaign data:`, item, e);
-      return { text: "", image_url: "" };
-    }
-  });
 }
+
 
 function CreateCampaign() {
   const { user } = useAuth();
@@ -328,7 +322,7 @@ function CreateCampaign() {
         throw new Error("Network response was not ok");
       }
   
-      const data = await response.json();
+      const data = await response.text();
       console.log("Raw campaign data received from backend:", data); // Add this line for debugging
       const formattedCampaigns = parseCampaignData(data);
       console.log("Parsed campaign data:", formattedCampaigns); // Add this line for debugging
@@ -339,6 +333,7 @@ function CreateCampaign() {
       setLoading(false);
     }
   };
+  
   
 
   if (loading) {
