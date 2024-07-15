@@ -47,8 +47,9 @@ function RouterSetup() {
                     <Route path="/dashboard/product-profiles" element={<PrivateRoute><NotFound/></PrivateRoute>} />
                     <Route path="/auth/google/callback" element={<Callback />} /> {/* Use wildcard route */}
                     <Route path="/success-google" element={<SuccessGoogle />} /> {/* Use wildcard route */}
-                    <Route path="/platform-edit" element={<PlatformGoogle />} /> {/* Use wildcard route */}
+                    <Route path="/platform-edit" element={<PrivateRoute><PlatformGoogle /></PrivateRoute>} /> {/* Use wildcard route */}
                     <Route path="/account/settings/profilelinkage" element={<PrivateRoute><ProfileLinkage/></PrivateRoute>} />
+                    <Route path="/platform-select" element={<PrivateRoute><PlatformSelect/></PrivateRoute>} />
                 </Routes>
             </AuthProvider>
         </Router>

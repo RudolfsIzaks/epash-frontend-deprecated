@@ -15,7 +15,7 @@ import {
 import Select from "react-select";
 import "react-calendar/dist/Calendar.css";
 import { useAuth } from "../components/auth";
-import google from '../assets/google.png'
+import google from '../assets/google.png';
 
 
 function parseCampaignData(rawData) {
@@ -318,7 +318,7 @@ function CreateCampaign() {
     e.preventDefault();
     setLoading(true);
     formData.user_id = user.user_id;
-  
+
     try {
       const response = await fetch(
         "https://epash-ai-jaroslavsbolsak.replit.app/api/start_campaign",
@@ -330,23 +330,18 @@ function CreateCampaign() {
           body: JSON.stringify(formData),
         }
       );
-  
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-  
-      const data = await response.text();
-      console.log("Raw campaign data received from backend:", data); // Add this line for debugging
-      const formattedCampaigns = parseCampaignData(data);
-      console.log("Parsed campaign data:", formattedCampaigns); // Add this line for debugging
-      setCampaignResults(formattedCampaigns);
+
       setLoading(false);
+      navigate('/platform-select'); // Replace with your actual next page path
     } catch (error) {
       console.error("Error creating campaign:", error.message);
       setLoading(false);
     }
   };
-  
   
   
   if (loading) {
