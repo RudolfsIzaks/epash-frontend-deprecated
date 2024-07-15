@@ -278,15 +278,19 @@ function CreateCampaign() {
         throw new Error("Network response was not ok");
       }
   
-      const campaign_id = await response.text(); // Read the response as text
+      let campaign_id = await response.text(); // Read the response as text
+  
+      // Clean up the campaign_id
+      campaign_id = campaign_id.trim().replace(/^"|"$/g, "");
   
       setLoading(false);
-      navigate('/platform-select', { state: { campaign_id } }); // Pass campaign_id to PlatformSelect
+      navigate('/platform-select', { state: { campaign_id } }); // Pass cleaned campaign_id to PlatformSelect
     } catch (error) {
       console.error("Error creating campaign:", error.message);
       setLoading(false);
     }
   };
+  
   
 
   if (loading) {
