@@ -2,25 +2,18 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import NavLogo from "../components/navLogo";
 import DashNav from "../components/dashNav";
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from "react-places-autocomplete";
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSearch,
-  faTimes,
-  faArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faTimes, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
 import "react-calendar/dist/Calendar.css";
 import { useAuth } from "../components/auth";
+import google from '../assets/google.png';
 
 function CreateCampaign() {
   const { user } = useAuth();
   const [hovered, setHovered] = useState(false);
   const navigate = useNavigate();
-
 
   const [selectedProductType, setSelectedProductType] = useState(null);
   const [customProductType, setCustomProductType] = useState("");
@@ -29,7 +22,6 @@ function CreateCampaign() {
   const [addressInput, setAddressInput] = useState("");
   const [selectedLocations, setSelectedLocations] = useState([]);
   let autocompleteRef = useRef(null);
-  const [campaignResults, setCampaignResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -269,7 +261,7 @@ function CreateCampaign() {
     e.preventDefault();
     setLoading(true);
     formData.user_id = user.user_id;
-
+  
     try {
       const response = await fetch(
         "https://epash-ai-jaroslavsbolsak.replit.app/api/start_campaign",
@@ -281,20 +273,23 @@ function CreateCampaign() {
           body: JSON.stringify(formData),
         }
       );
-
+  
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
+  
+      const data = await response.json(); // Assuming response contains campaign_id
+      const campaign_id = data.campaign_id;
+  
       setLoading(false);
-      navigate('/platform-select'); // Replace with your actual next page path
+      navigate('/platform-select', { state: { campaign_id } });
     } catch (error) {
       console.error("Error creating campaign:", error.message);
       setLoading(false);
     }
   };
   
-  
+
   if (loading) {
     return (
       <div className="w-full h-screen bg-white flex justify-center items-center">
