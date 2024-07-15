@@ -15,6 +15,7 @@ import Callback from './callback'; // Ensure correct import path
 import ProfileLinkage from '../pages/profilelinkage';
 import SuccessGoogle from '../pages/success_google';
 import PlatformGoogle from '../pages/platform_google_edit';
+import PlatformSelect from '../pages/platform_select';
 
 function RouteChangeTracker() {
     const location = useLocation();
