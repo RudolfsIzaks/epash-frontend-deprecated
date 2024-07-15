@@ -278,11 +278,10 @@ function CreateCampaign() {
         throw new Error("Network response was not ok");
       }
   
-      const data = await response.json(); // Assuming response contains campaign_id
-      const campaign_id = data.campaign_id;
+      const campaign_id = await response.text(); // Read the response as text
   
       setLoading(false);
-      navigate('/platform-select', { state: { campaign_id } });
+      navigate('/platform-select', { state: { campaign_id } }); // Pass campaign_id to PlatformSelect
     } catch (error) {
       console.error("Error creating campaign:", error.message);
       setLoading(false);
