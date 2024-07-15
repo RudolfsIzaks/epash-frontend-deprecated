@@ -3,6 +3,7 @@ import '../index.css';
 import NavLogo from "../components/navLogo";
 import google from '../assets/google.png';
 import { useNavigate } from "react-router-dom";
+import meta from '../assets/meta.png';
 
 
 function PlatformSelect() {
@@ -26,7 +27,9 @@ function PlatformSelect() {
             </button>
           </div>
         </div>
-        <div className="h-[90dvh] flex items-center justify-center gap-5">
+        <div className="h-[90dvh] flex flex-col items-center justify-center gap-5">
+            <h2 className="text-4xl font-custom font-bold">Choose your Advertisement platform.</h2>
+            <div className="flex items-center gap-5">
             <button onClick={handlePlatformGoogle} className="bg-white shadow-md text-black font-custom font-bold py-2 px-5 rounded-md">
               <div className="flex gap-3 items-center justify-between">
                 <img src={google} className="w-16" alt="google" />
@@ -35,10 +38,11 @@ function PlatformSelect() {
             </button>
             <button onClick={handlePlatformFB} className="bg-white shadow-md text-black font-custom font-bold py-2 px-5 rounded-md">
               <div className="flex gap-3 items-center justify-between">
-                <img src={google} className="w-16" alt="google" />
-                <p className="font-custom text-md">Edit For Google</p>
+                <img src={meta} className="w-16" alt="google" />
+                <p className="font-custom text-md">FaceBook</p>
               </div>
             </button>
+            </div>
         </div>
         </>
     )
