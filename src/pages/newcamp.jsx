@@ -15,61 +15,12 @@ import {
 import Select from "react-select";
 import "react-calendar/dist/Calendar.css";
 import { useAuth } from "../components/auth";
-import google from '../assets/google.png';
-
-
-function parseCampaignData(rawData) {
-  // Helper function to clean and parse JSON strings
-  const cleanAndParseJson = (jsonString) => {
-    const cleanedString = jsonString
-      .replace(/\\\"/g, '"') // Replace escaped double quotes with actual double quotes
-      .replace(/^\[\\\"/, '["').replace(/\\\"\]$/, '"]') // Handle the start and end of the string
-      .replace(/\\\\"/g, '\\\"') // Replace escaped backslashes followed by quotes
-      .replace(/\\u([\dA-Fa-f]{4})/g, (match, grp) => {
-        return String.fromCharCode(parseInt(grp, 16)); // Replace Unicode escape sequences
-      });
-
-    return JSON.parse(cleanedString);
-  };
-
-  try {
-    const parts = rawData.split("; ");
-    
-    const campaignId = parts[0].split(": ")[1];
-    const headings = cleanAndParseJson(parts[1].split(": ")[1]);
-    const longHeadings = cleanAndParseJson(parts[2].split(": ")[1]);
-    const descriptions = cleanAndParseJson(parts[3].split(": ")[1]);
-    const images = cleanAndParseJson(parts[4].split(": ")[1]);
-
-    // Extracting the first item from each list for the preview
-    const text = headings[0] || "";
-    const longText = longHeadings[0] || "";
-    const description = descriptions[0] || "";
-    const image_url = images[0] || "";
-
-    return [{
-      campaignId,
-      text,
-      longText,
-      description,
-      image_url,
-    }];
-  } catch (e) {
-    console.error(`Failed to parse campaign data:`, rawData, e);
-    return [];
-  }
-}
-
-
 
 function CreateCampaign() {
   const { user } = useAuth();
   const [hovered, setHovered] = useState(false);
   const navigate = useNavigate();
 
-  const handlePlatform = () => {
-    navigate('/platform-edit');
-  }
 
   const [selectedProductType, setSelectedProductType] = useState(null);
   const [customProductType, setCustomProductType] = useState("");
@@ -351,49 +302,6 @@ function CreateCampaign() {
           <img src="https://res.cloudinary.com/drcze5fsl/image/upload/v1718707751/o6uk4vdhzumrmjztnp4a.png" alt="Logo Epash" className="w-16" />
           <h1 className="font-bold text-4xl">Epash AI</h1>
         </div>
-      </div>
-    );
-  }
-
-  if (campaignResults.length > 0) {
-    return (
-      <div className="campaign-results">
-        <div className="flex w-full justify-between items-center py-5 px-48">
-          <NavLogo />
-          <div className="flex gap-3">
-            <button className="bg-red-500 text-white font-custom font-bold py-2 px-5 rounded-md">
-              Discard
-            </button>
-            <button onClick={handlePlatform} className="bg-white shadow-md text-black font-custom font-bold py-2 px-5 rounded-md">
-              <div className="flex gap-3 items-center justify-between">
-                <img src={google} className="w-16" alt="google" />
-                <p className="font-custom text-md">Edit For Google</p>
-              </div>
-            </button>
-          </div>
-        </div>
-        <div className="grid gap-4 grid-cols-2">
-            {campaignResults.map((campaign, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center p-5 border rounded-md shadow-md w-1/2"
-              >
-                <p>{campaign.text}</p>
-                <img
-                  className="w-96 rounded-md"
-                  src={campaign.image_url}
-                  alt={`Campaign ${index + 1}`}
-                />
-                {/* Displaying additional form data */}
-                <div className="mt-4">
-                  <p><strong>Campaign Name:</strong> {formData.camp_name}</p>
-                  <p><strong>Product Name:</strong> {formData.product_name}</p>
-                  <p><strong>Location:</strong> {formData.location.join(', ')}</p>
-                  <p><strong>Budget:</strong> {formData.budget}</p>
-                </div>
-              </div>
-            ))}
-          </div>
       </div>
     );
   }
