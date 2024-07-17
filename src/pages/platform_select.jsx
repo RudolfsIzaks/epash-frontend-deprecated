@@ -29,7 +29,7 @@ function PlatformSelect() {
                 throw new Error("Network response was not ok");
             }
     
-            const data = await response.text();
+            const data = await response.json();
     
             // Clean and parse the data
             const parsedData = parseCampaignData(data);
@@ -42,25 +42,18 @@ function PlatformSelect() {
     };
     
     
+    
     const parseCampaignData = (data) => {
-        // Split the response by '; ' to separate each part
-        const parts = data.split('; ');
-    
-        // Extract each part by splitting at ': ' and cleaning the strings
-        const campaignId = parts[0].split(': ')[1];
-        const headings = JSON.parse(parts[1].split(': ')[1].replace(/'/g, '"').replace(/\\\\\"/g, '\\"').replace(/\\\"/g, '"'));
-        const longHeadings = JSON.parse(parts[2].split(': ')[1].replace(/'/g, '"').replace(/\\\\\"/g, '\\"').replace(/\\\"/g, '"'));
-        const descriptions = JSON.parse(parts[3].split(': ')[1].replace(/'/g, '"').replace(/\\\\\"/g, '\\"').replace(/\\\"/g, '"'));
-        const images = JSON.parse(parts[4].split(': ')[1].replace(/'/g, '"').replace(/\\\\\"/g, '\\"').replace(/\\\"/g, '"'));
-    
-        return {
-            campaignId,
-            headings,
-            longHeadings,
-            descriptions,
-            images,
+        const parsedData = {
+            campaignId: data.campaign_id,
+            headings: JSON.parse(data.Headings[0]),
+            longHeadings: JSON.parse(data['Long Headings'][0]),
+            descriptions: JSON.parse(data.Descriptions[0]),
+            images: JSON.parse(data.Images[0]),
         };
+        return parsedData;
     };
+    
     
     
 
