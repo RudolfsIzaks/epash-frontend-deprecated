@@ -42,20 +42,21 @@ function PlatformSelect() {
     };
     
     
-    
     const parseCampaignData = (data) => {
+        const cleanText = (textArray) => {
+            return textArray.map(text => text.replace(/\\\"/g, '"').replace(/^"|"$/g, ''));
+        };
+
         const parsedData = {
             campaignId: data.campaign_id,
-            headings: JSON.parse(data.Headings[0]),
-            longHeadings: JSON.parse(data['Long Headings'][0]),
-            descriptions: JSON.parse(data.Descriptions[0]),
+            headings: cleanText(JSON.parse(data.Headings[0])),
+            longHeadings: cleanText(JSON.parse(data['Long Headings'][0])),
+            descriptions: cleanText(JSON.parse(data.Descriptions[0])),
             images: JSON.parse(data.Images[0]),
         };
         return parsedData;
     };
-    
-    
-    
+
 
     return( 
         <>
