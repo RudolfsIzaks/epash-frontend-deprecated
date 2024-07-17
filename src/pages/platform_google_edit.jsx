@@ -53,7 +53,7 @@ function PlatformGoogle() {
                 <input key={index} type="text" defaultValue={longHeadline} className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"/>
               ))}
             </div>
-            <div className="flex flex-col items-end">
+            <div className="flex flex-col items-end flex-grow">
               <p>{images[0]}</p>
               <img src={images[0]} alt="Google Ad" className="w-96 h-96 object-cover rounded-md mb-5"/>
               <div className="flex gap-5">
