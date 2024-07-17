@@ -22,7 +22,7 @@ function PlatformSelect() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ campaign_id:'cZBSMT19tskEIVmq', platform }),
+                body: JSON.stringify({ campaign_id, platform }),
             });
     
             if (!response.ok) {
