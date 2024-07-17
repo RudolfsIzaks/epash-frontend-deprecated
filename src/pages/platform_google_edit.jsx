@@ -38,7 +38,7 @@ function PlatformGoogle() {
         <p className="text-center mb-20 mt-5 text-xl">Change headlines, body text and contents of your google ads.</p>
         <div className="flex flex-col m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
           <h1 className="text-4xl font-custom">Google Ad 1:</h1>
-          <div className="flex gap-10 items-center justify-between mt-10">
+          <div className="flex gap-10 justify-between mt-10">
             <div className="flex flex-col gap-4 flex-grow">
               <h2 className="text-xl font-custom">Headlines</h2>
               {headings.map((headline, index) => (
@@ -53,7 +53,7 @@ function PlatformGoogle() {
                 <input key={index} type="text" defaultValue={longHeadline} className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"/>
               ))}
             </div>
-            <div className="flex flex-col items-center justify-start mt-10 flex-grow">
+            <div className="flex flex-col items-center mt-10 flex-grow">
               <p>{images[0]}</p>
               <img src={images[0]} alt="Google Ad" className="w-96 h-96 object-cover rounded-md mb-5"/>
               <div className="flex gap-5">
