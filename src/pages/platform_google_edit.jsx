@@ -48,6 +48,10 @@ function PlatformGoogle() {
               {descriptions.map((description, index) => (
                 <input key={index} type="text" defaultValue={description} className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"/>
               ))}
+              <h2 className="text-xl font-custom mt-5">Long Headlines</h2>
+              {longHeadings.map((longHeadline, index) => (
+                <input key={index} type="text" defaultValue={longHeadline} className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"/>
+              ))}
             </div>
             <div className="flex flex-col items-end">
               <p>{images[0]}</p>
