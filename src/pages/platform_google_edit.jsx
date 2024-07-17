@@ -5,18 +5,18 @@ import '../index.css';
 
 function PlatformGoogle() {
   const location = useLocation();
-  const { data } = location.state || {};
+  const { parsedData } = location.state || {};
 
-  if (!data) {
+  if (!parsedData) {
     return <div>Loading...</div>;
   }
 
   const {
-    Headings: headings,
-    LongHeadings: longHeadings,
-    Descriptions: descriptions,
-    Images: images,
-  } = JSON.parse(data);
+    headings,
+    longHeadings,
+    descriptions,
+    images,
+  } = parsedData;
 
   return (
     <>
@@ -36,7 +36,7 @@ function PlatformGoogle() {
       <div>
         <h1 className="text-center mt-20 text-5xl font-custom font-bold">Modify your google ads</h1>
         <p className="text-center mb-20 mt-5 text-xl">Change headlines, body text and contents of your google ads.</p>
-        <div className=" flex flex-col m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
+        <div className="flex flex-col m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
           <h1 className="text-4xl font-custom">Google Ad 1:</h1>
           <div className="flex gap-10 items-center justify-between mt-10">
             <div className="flex flex-col gap-4">
