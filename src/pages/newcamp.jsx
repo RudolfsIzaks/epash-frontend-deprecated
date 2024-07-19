@@ -629,7 +629,7 @@ function CreateCampaign() {
                     : "bg-white text-black"
                 }`}
               >
-                <img src={google} className="w-12 mb-5" />
+                <img src={google} className="w-12 my-5" />
                 <p className="text-center">Google</p>
               </div>
             </div>
@@ -653,7 +653,7 @@ function CreateCampaign() {
                     : "bg-white text-black"
                 }`}
               >
-                <img src={meta} className="w-12 mb-5" />
+                <img src={meta} className="w-12 my-5" />
                 <p className="text-center">Facebook</p>
               </div>
             </div>
@@ -677,7 +677,7 @@ function CreateCampaign() {
                     : "bg-white text-black"
                 }`}
               >
-                <img src={spotify} className="w-12 mb-5" />
+                <img src={spotify} className="w-12 my-5" />
                 <p className="text-center">Spotify</p>
               </div>
             </div>
