@@ -43,7 +43,6 @@ function CreateCampaign() {
     end_date: "",
     campaign_descript: "",
     product_descript: "",
-    
   });
 
   const languageOptions = [
@@ -656,7 +655,7 @@ function CreateCampaign() {
             </div>
             <div
               className="cursor-pointer"
-              onClick={() => handlePlatformChange("Instagram")}
+              onClick={() => handlePlatformChange("Spotify")}
             >
               <input
                 type="radio"
