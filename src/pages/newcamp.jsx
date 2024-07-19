@@ -3,11 +3,15 @@ import { useNavigate } from "react-router-dom";
 import NavLogo from "../components/navLogo";
 import DashNav from "../components/dashNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faTimes, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch,
+  faTimes,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
 import "react-calendar/dist/Calendar.css";
 import { useAuth } from "../components/auth";
-import google from '../assets/google.png';
+import google from "../assets/google.png";
 
 function CreateCampaign() {
   const { user } = useAuth();
@@ -114,6 +118,15 @@ function CreateCampaign() {
       age: selectedOptions.map((option) => option.value),
     }));
   };
+
+  const handlePlatformChange = (platform) => {
+    setSelectedPlatform(platform);
+    setFormData((prevData) => ({
+      ...prevData,
+      platform: platform,
+    }));
+  };
+  
 
   // const handleAddressChange = (address) => {
   //   setAddressInput(address);
@@ -260,7 +273,7 @@ function CreateCampaign() {
     e.preventDefault();
     setLoading(true);
     formData.user_id = user.user_id;
-  
+
     try {
       const response = await fetch(
         "https://epash-ai-jaroslavsbolsak.replit.app/api/start_campaign",
@@ -272,31 +285,33 @@ function CreateCampaign() {
           body: JSON.stringify(formData),
         }
       );
-  
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-  
+
       let campaign_id = await response.text(); // Read the response as text
-  
+
       // Clean up the campaign_id
       campaign_id = campaign_id.trim().replace(/^"|"$/g, "");
-  
+
       setLoading(false);
-      navigate('/platform-select', { state: { campaign_id } }); // Pass cleaned campaign_id to PlatformSelect
+      navigate("/platform-select", { state: { campaign_id } }); // Pass cleaned campaign_id to PlatformSelect
     } catch (error) {
       console.error("Error creating campaign:", error.message);
       setLoading(false);
     }
   };
-  
-  
 
   if (loading) {
     return (
       <div className="w-full h-screen bg-white flex justify-center items-center">
         <div className="flex gap-3 items-center animate-pulse">
-          <img src="https://res.cloudinary.com/drcze5fsl/image/upload/v1718707751/o6uk4vdhzumrmjztnp4a.png" alt="Logo Epash" className="w-16" />
+          <img
+            src="https://res.cloudinary.com/drcze5fsl/image/upload/v1718707751/o6uk4vdhzumrmjztnp4a.png"
+            alt="Logo Epash"
+            className="w-16"
+          />
           <h1 className="font-bold text-4xl">Epash AI</h1>
         </div>
       </div>
@@ -535,22 +550,22 @@ function CreateCampaign() {
             className="rounded-sm shadow w-72 py-2 px-4 appearance-none focus:outline-none focus:shadow-outline"
             onChange={handleChange}
           />
-        
-<label
-  className="mt-5 font-custom text-epash-green"
-  htmlFor="website"
->
-  Website Link
-</label>
-<input
-  required
-  className="shadow appearance-none border rounded-md w-1/2 mb-5 py-2 px-2 leading-tight focus:outline-none focus:shadow-outline"
-  id="website"
-  type="text"
-  name="website"
-  placeholder="Website Link...."
-  onChange={handleChange}
-/>
+
+          <label
+            className="mt-5 font-custom text-epash-green"
+            htmlFor="website"
+          >
+            Website Link
+          </label>
+          <input
+            required
+            className="shadow appearance-none border rounded-md w-1/2 mb-5 py-2 px-2 leading-tight focus:outline-none focus:shadow-outline"
+            id="website"
+            type="text"
+            name="website"
+            placeholder="Website Link...."
+            onChange={handleChange}
+          />
 
           <label
             htmlFor="campaign_descript"
@@ -573,7 +588,8 @@ function CreateCampaign() {
             htmlFor="product_descript"
             className="mt-10 mb-2 text-epash-green font-custom rounded-md"
           >
-            Tell us about your product and why it is better than your competition.
+            Tell us about your product and why it is better than your
+            competition.
           </label>
           <textarea
             required
@@ -585,6 +601,80 @@ function CreateCampaign() {
             className="rounded-sm shadow-xl w-1/2 py-2 px-4 appearance-none focus:outline-none focus:shadow-outline"
             onChange={handleChange}
           ></textarea>
+          <label className="text-epash-green font-custom mb-2 mt-5">
+            Select Platforms You Want to Advertise In
+          </label>
+          <div className="flex gap-5">
+            <div
+              className="cursor-pointer"
+              onClick={() => handlePlatformChange("Google")}
+            >
+              <input
+                type="radio"
+                id="google"
+                name="platform"
+                value="Google"
+                checked={selectedPlatform === "Google"}
+                onChange={() => handlePlatformChange("Google")}
+                className="hidden"
+              />
+              <div
+                className={`border p-3 rounded ${
+                  selectedPlatform === "Google"
+                    ? "bg-epash-green text-white"
+                    : "bg-white text-black"
+                }`}
+              >
+                Google
+              </div>
+            </div>
+            <div
+              className="cursor-pointer"
+              onClick={() => handlePlatformChange("Facebook")}
+            >
+              <input
+                type="radio"
+                id="facebook"
+                name="platform"
+                value="Facebook"
+                checked={selectedPlatform === "Facebook"}
+                onChange={() => handlePlatformChange("Facebook")}
+                className="hidden"
+              />
+              <div
+                className={`border p-3 rounded ${
+                  selectedPlatform === "Facebook"
+                    ? "bg-epash-green text-white"
+                    : "bg-white text-black"
+                }`}
+              >
+                Facebook
+              </div>
+            </div>
+            <div
+              className="cursor-pointer"
+              onClick={() => handlePlatformChange("Instagram")}
+            >
+              <input
+                type="radio"
+                id="instagram"
+                name="platform"
+                value="Instagram"
+                checked={selectedPlatform === "Spotify"}
+                onChange={() => handlePlatformChange("Spotify")}
+                className="hidden"
+              />
+              <div
+                className={`border p-3 rounded ${
+                  selectedPlatform === "Spotify"
+                    ? "bg-epash-green text-white"
+                    : "bg-white text-black"
+                }`}
+              >
+                Spotify
+              </div>
+            </div>
+          </div>
 
           <label className="mt-10 mb-2 text-epash-green font-custom">
             If you have any inspirations or reference material, here is the
