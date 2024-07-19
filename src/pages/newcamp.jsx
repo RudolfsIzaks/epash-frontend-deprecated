@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import NavLogo from "../components/navLogo";
 import DashNav from "../components/dashNav";
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faTimes, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
@@ -29,7 +28,7 @@ function CreateCampaign() {
     camp_name: "",
     product_name: "",
     product_type: "",
-    location: [],
+    location: ["Latvia"], // Hardcoded location
     language: [],
     age: [],
     budget: "",
@@ -116,78 +115,78 @@ function CreateCampaign() {
     }));
   };
 
-  const handleAddressChange = (address) => {
-    setAddressInput(address);
-    // Assuming you want to keep track of the latest address:
-    setFormData((prevData) => ({
-      ...prevData,
-      address,
-    }));
-  };
+  // const handleAddressChange = (address) => {
+  //   setAddressInput(address);
+  //   // Assuming you want to keep track of the latest address:
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     address,
+  //   }));
+  // };
 
-  const handleSelectLocation = (address) => {
-    setAddressInput("");
-    geocodeByAddress(address)
-      .then((results) => getLatLng(results[0]))
-      .then((latLng) => {
-        setSelectedLocations((prevLocations) => {
-          const newLocations = [...prevLocations, address];
-          setFormData((prevData) => ({
-            ...prevData,
-            location: newLocations,
-          }));
-          return newLocations;
-        });
-      })
-      .catch((error) => console.error("Error in geocoding:", error));
-  };
+  // const handleSelectLocation = (address) => {
+  //   setAddressInput("");
+  //   geocodeByAddress(address)
+  //     .then((results) => getLatLng(results[0]))
+  //     .then((latLng) => {
+  //       setSelectedLocations((prevLocations) => {
+  //         const newLocations = [...prevLocations, address];
+  //         setFormData((prevData) => ({
+  //           ...prevData,
+  //           location: newLocations,
+  //         }));
+  //         return newLocations;
+  //       });
+  //     })
+  //     .catch((error) => console.error("Error in geocoding:", error));
+  // };
 
-  const removeLocation = (indexToRemove) => {
-    setSelectedLocations(
-      selectedLocations.filter((_, index) => index !== indexToRemove)
-    );
-  };
+  // const removeLocation = (indexToRemove) => {
+  //   setSelectedLocations(
+  //     selectedLocations.filter((_, index) => index !== indexToRemove)
+  //   );
+  // };
 
-  let autocomplete;
+  // let autocomplete;
 
-  const loadGoogleMapsScript = () => {
-    if (window.google) {
-      initializeAutocomplete();
-    } else {
-      const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCXiqiacBFj3x2-2OyKF0xfkvyHqKlL0jc&libraries=places`;
-      script.async = true;
-      script.defer = true;
-      document.body.appendChild(script);
-      script.onload = () => {
-        initializeAutocomplete();
-      };
-    }
-  };
+  // const loadGoogleMapsScript = () => {
+  //   if (window.google) {
+  //     initializeAutocomplete();
+  //   } else {
+  //     const script = document.createElement("script");
+  //     script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCXiqiacBFj3x2-2OyKF0xfkvyHqKlL0jc&libraries=places`;
+  //     script.async = true;
+  //     script.defer = true;
+  //     document.body.appendChild(script);
+  //     script.onload = () => {
+  //       initializeAutocomplete();
+  //     };
+  //   }
+  // };
 
-  const initializeAutocomplete = () => {
-    autocomplete = new window.google.maps.places.Autocomplete(
-      document.getElementById("autocomplete"),
-      { types: ["geocode"] }
-    );
-    autocomplete.addListener("place_changed", onPlaceChanged);
-  };
+  // const initializeAutocomplete = () => {
+  //   autocomplete = new window.google.maps.places.Autocomplete(
+  //     document.getElementById("autocomplete"),
+  //     { types: ["geocode"] }
+  //   );
+  //   autocomplete.addListener("place_changed", onPlaceChanged);
+  // };
 
-  const onPlaceChanged = () => {
-    const place = autocomplete.getPlace();
-    if (place.geometry) {
-      console.log(place); // You can extract the needed details from the 'place' object
-      setAddress(place.formatted_address);
-    } else {
-      console.log(
-        "No details available for input: '" + autocomplete.getPlace().name + "'"
-      );
-    }
-  };
+  // const onPlaceChanged = () => {
+  //   const place = autocomplete.getPlace();
+  //   if (place.geometry) {
+  //     console.log(place); // You can extract the needed details from the 'place' object
+  //     setAddress(place.formatted_address);
+  //   } else {
+  //     console.log(
+  //       "No details available for input: '" + autocomplete.getPlace().name + "'"
+  //     );
+  //   }
+  // };
 
-  useEffect(() => {
-    loadGoogleMapsScript();
-  }, []);
+  // useEffect(() => {
+  //   loadGoogleMapsScript();
+  // }, []);
 
   const renderTags = (selectedOptions) => (
     <div className="flex flex-wrap gap-2">
@@ -216,21 +215,21 @@ function CreateCampaign() {
     );
   };
 
-  const renderLocationTags = () => {
-    return selectedLocations.map((location, index) => (
-      <div
-        key={index}
-        className="flex items-center justify-between bg-epash-green font-bold text-white border-gray-200 shadow-md rounded-3xl px-5 mb-1 py-2 w-1/3"
-      >
-        {location}
-        <FontAwesomeIcon
-          icon={faTimes}
-          className="ml-2 cursor-pointer text-white"
-          onClick={() => removeLocation(index)}
-        />
-      </div>
-    ));
-  };
+  // const renderLocationTags = () => {
+  //   return selectedLocations.map((location, index) => (
+  //     <div
+  //       key={index}
+  //       className="flex items-center justify-between bg-epash-green font-bold text-white border-gray-200 shadow-md rounded-3xl px-5 mb-1 py-2 w-1/3"
+  //     >
+  //       {location}
+  //       <FontAwesomeIcon
+  //         icon={faTimes}
+  //         className="ml-2 cursor-pointer text-white"
+  //         onClick={() => removeLocation(index)}
+  //       />
+  //     </div>
+  //   ));
+  // };
 
   const [files, setFiles] = useState([]);
 
@@ -381,6 +380,10 @@ function CreateCampaign() {
           <label className="text-epash-green font-custom mb-2 mt-5">
             Target Location
           </label>
+          <div className="py-2 px-5 shadow-md rounded-md">Latvia</div>
+          {/* <label className="text-epash-green font-custom mb-2 mt-5">
+            Target Location
+          </label>
           <PlacesAutocomplete
             value={addressInput}
             onChange={handleAddressChange}
@@ -425,7 +428,7 @@ function CreateCampaign() {
               </div>
             )}
           </PlacesAutocomplete>
-          {renderLocationTags()}
+          {renderLocationTags()} */}
           <label
             htmlFor="age"
             className="block mt-5 mb-2 text-epash-green font-custom"
