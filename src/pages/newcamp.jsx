@@ -139,6 +139,14 @@ function CreateCampaign() {
     }));
   };
 
+  const handleSliderChange = (e, name) => {
+    const { value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   // const handleAddressChange = (address) => {
   //   setAddressInput(address);
   //   // Assuming you want to keep track of the latest address:
@@ -689,6 +697,42 @@ function CreateCampaign() {
               </div>
             </div>
           </div>
+          <div className="mt-5">
+            <label className="text-epash-green font-custom mb-2">
+              Evolution Speed
+            </label>
+            <div className="relative">
+              <input
+                type="range"
+                min="1"
+                max="14"
+                value={formData.evolutionSpeed || 1}
+                onChange={(e) => handleSliderChange(e, "evolutionSpeed")}
+                className="w-full"
+              />
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-gray-700 text-white text-xs rounded px-2 py-1">
+                {formData.evolutionSpeed || 1}
+              </div>
+            </div>
+          </div>
+          <div className="mt-5">
+            <label className="text-epash-green font-custom mb-2">
+              Evolution Harshness
+            </label>
+            <div className="relative">
+              <input
+                type="range"
+                min="5"
+                max="20"
+                value={formData.evolutionHarshness || 5}
+                onChange={(e) => handleSliderChange(e, "evolutionHarshness")}
+                className="w-full"
+              />
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-gray-700 text-white text-xs rounded px-2 py-1">
+                {formData.evolutionHarshness || 5}%
+              </div>
+            </div>
+          </div>
 
           <label className="mt-10 mb-2 text-epash-green font-custom">
             If you have any inspirations or reference material, here is the
@@ -754,13 +798,10 @@ function CreateCampaign() {
                   })
                 }
               >
-                <p>
-                  I want to add my own Ads
-                </p>
+                <p>I want to add my own Ads</p>
               </div>
             </label>
           </div>
-
           <button
             type="submit"
             className={`text-epash-green font-custom font-black text-3xl py-4 rounded-md hover:scale-110 duration-200 flex items-center justify-center text-right' ${
