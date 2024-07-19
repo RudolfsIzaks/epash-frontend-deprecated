@@ -41,6 +41,7 @@ function CreateCampaign() {
     end_date: "",
     campaign_descript: "",
     product_descript: "",
+    platform: "",
   });
 
   const languageOptions = [
