@@ -622,7 +622,7 @@ function CreateCampaign() {
                 className="hidden"
               />
               <div
-                className={`border p-3 rounded ${
+                className={`border p-3 rounded flex flex-col items-center justify-center ${
                   selectedPlatform === "Google"
                     ? "bg-black text-white"
                     : "bg-white text-black"
@@ -646,7 +646,7 @@ function CreateCampaign() {
                 className="hidden"
               />
               <div
-                className={`border p-3 rounded ${
+                className={`border p-3 rounded flex flex-col items-center justify-center ${
                   selectedPlatform === "Facebook"
                     ? "bg-black text-white"
                     : "bg-white text-black"
