@@ -13,6 +13,7 @@ import "react-calendar/dist/Calendar.css";
 import { useAuth } from "../components/auth";
 import google from "../assets/google.png";
 import meta from '../assets/meta.png';
+import spotify from '../assets/spotify.png';
 
 function CreateCampaign() {
   const { user } = useAuth();
@@ -670,13 +671,14 @@ function CreateCampaign() {
                 className="hidden"
               />
               <div
-                className={`border p-3 rounded ${
+                className={`border p-3 rounded flex flex-col items-center justify-center ${
                   selectedPlatform === "Spotify"
-                    ? "bg-epash-green text-white"
+                    ? "bg-black text-white"
                     : "bg-white text-black"
                 }`}
               >
-                Spotify
+                <img src={spotify} className="w-12 mb-5" />
+                <p className="text-center">Spotify</p>
               </div>
             </div>
           </div>
