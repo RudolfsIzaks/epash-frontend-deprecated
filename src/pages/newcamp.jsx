@@ -694,7 +694,7 @@ function CreateCampaign() {
             If you have any inspirations or reference material, here is the
             place to put them.
           </label>
-          <div className="flex items-end gap-3 mb-20">
+          <div className="flex items-end gap-3 mb-5">
             <input
               type="file"
               id="file_input"
@@ -734,7 +734,7 @@ function CreateCampaign() {
               )}
             </div>
           </div>
-          <div className="mt-5">
+          <div className="mt-5 mb-20">
             <label className="flex items-center">
               <input
                 type="checkbox"
@@ -743,14 +743,20 @@ function CreateCampaign() {
                 className="hidden"
               />
               <div
-                className="border p-3 rounded cursor-pointer"
+                className={`border p-3 rounded ${
+                  formData.addOwnAds
+                    ? "bg-epash-green text-white"
+                    : "bg-white text-black"
+                }`}
                 onClick={() =>
                   handleCheckboxChange({
                     target: { checked: !formData.addOwnAds },
                   })
                 }
               >
-                {formData.addOwnAds ? "☑" : "☐"} I want to add my own Ads
+                <p>
+                  I want to add my own Ads
+                </p>
               </div>
             </label>
           </div>
