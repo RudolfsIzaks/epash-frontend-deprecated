@@ -535,6 +535,23 @@ function CreateCampaign() {
             className="rounded-sm shadow w-72 py-2 px-4 appearance-none focus:outline-none focus:shadow-outline"
             onChange={handleChange}
           />
+          // Add this snippet where other input fields are defined in the form
+<label
+  className="mt-5 font-custom text-epash-green"
+  htmlFor="website"
+>
+  Website Link
+</label>
+<input
+  required
+  className="shadow appearance-none border rounded-md w-1/2 mb-5 py-2 px-2 leading-tight focus:outline-none focus:shadow-outline"
+  id="website"
+  type="text"
+  name="website"
+  placeholder="Website Link...."
+  onChange={handleChange}
+/>
+
           <label
             htmlFor="campaign_descript"
             className="mt-10 mb-2 text-epash-green font-custom rounded-md"
@@ -556,8 +573,7 @@ function CreateCampaign() {
             htmlFor="product_descript"
             className="mt-10 mb-2 text-epash-green font-custom rounded-md"
           >
-            Write why your product is better than competitor’s and what are the
-            main features.
+            Tell us about your product and why it is better than your competition.
           </label>
           <textarea
             required
