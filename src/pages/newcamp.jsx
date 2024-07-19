@@ -12,6 +12,7 @@ import Select from "react-select";
 import "react-calendar/dist/Calendar.css";
 import { useAuth } from "../components/auth";
 import google from "../assets/google.png";
+import meta from '../assets/meta.png';
 
 function CreateCampaign() {
   const { user } = useAuth();
@@ -623,10 +624,11 @@ function CreateCampaign() {
               <div
                 className={`border p-3 rounded ${
                   selectedPlatform === "Google"
-                    ? "bg-epash-green text-white"
+                    ? "bg-black text-white"
                     : "bg-white text-black"
                 }`}
               >
+                <img src={google} className="w-24 mb-5" />
                 Google
               </div>
             </div>
@@ -646,10 +648,11 @@ function CreateCampaign() {
               <div
                 className={`border p-3 rounded ${
                   selectedPlatform === "Facebook"
-                    ? "bg-epash-green text-white"
+                    ? "bg-black text-white"
                     : "bg-white text-black"
                 }`}
               >
+                <img src={meta} className="w-24 mb-5" />
                 Facebook
               </div>
             </div>
