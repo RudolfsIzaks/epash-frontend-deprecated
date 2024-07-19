@@ -7,6 +7,7 @@ import {
   faSearch,
   faTimes,
   faArrowRight,
+  faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
 import "react-calendar/dist/Calendar.css";
@@ -14,6 +15,7 @@ import { useAuth } from "../components/auth";
 import google from "../assets/google.png";
 import meta from "../assets/meta.png";
 import spotify from "../assets/spotify.png";
+import Swal from "sweetalert2";
 
 function CreateCampaign() {
   const { user } = useAuth();
@@ -145,6 +147,24 @@ function CreateCampaign() {
       ...prevData,
       [name]: value,
     }));
+  };
+
+  const showEvolutionSpeedInfo = () => {
+    Swal.fire({
+      title: "Evolution Speed",
+      text: "Evolution Speed determines how quickly the ad algorithm adapts to new data and changes in performance metrics. A higher speed means faster adaptation.",
+      icon: "info",
+      confirmButtonText: "Got it!",
+    });
+  };
+
+  const showEvolutionHarshnessInfo = () => {
+    Swal.fire({
+      title: "Evolution Harshness",
+      text: "Evolution Harshness controls the strictness of the algorithm's adjustments. Higher harshness means more significant changes are made based on performance data.",
+      icon: "info",
+      confirmButtonText: "Got it!",
+    });
   };
 
   // const handleAddressChange = (address) => {
@@ -698,8 +718,14 @@ function CreateCampaign() {
             </div>
           </div>
           <div className="mt-5">
-            <label className="text-epash-green font-custom mb-2">
-              Evolution Speed
+            <label className="text-epash-green font-custom mb-2 flex gap-3">
+              Evolution Speed (Days)
+              <button onClick={showEvolutionSpeedInfo}>
+                <FontAwesomeIcon
+                  icon={faInfoCircle}
+                  className="text-epash-green"
+                />
+              </button>
             </label>
             <div className="relative">
               <input
@@ -716,8 +742,14 @@ function CreateCampaign() {
             </div>
           </div>
           <div className="mt-5">
-            <label className="text-epash-green font-custom mb-2">
+            <label className="text-epash-green font-custom mb-2 flex gap-3">
               Evolution Harshness
+              <button onClick={showEvolutionHarshnessInfo}>
+                <FontAwesomeIcon
+                  icon={faInfoCircle}
+                  className="text-epash-green"
+                />
+              </button>
             </label>
             <div className="relative">
               <input
