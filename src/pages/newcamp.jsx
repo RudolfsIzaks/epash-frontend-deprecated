@@ -628,8 +628,8 @@ function CreateCampaign() {
                     : "bg-white text-black"
                 }`}
               >
-                <img src={google} className="w-24 mb-5" />
-                Google
+                <img src={google} className="w-12 mb-5" />
+                <p className="text-center">Google</p>
               </div>
             </div>
             <div
@@ -652,8 +652,8 @@ function CreateCampaign() {
                     : "bg-white text-black"
                 }`}
               >
-                <img src={meta} className="w-24 mb-5" />
-                Facebook
+                <img src={meta} className="w-12 mb-5" />
+                <p className="text-center">Facebook</p>
               </div>
             </div>
             <div
