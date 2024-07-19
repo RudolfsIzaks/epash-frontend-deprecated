@@ -505,20 +505,6 @@ function CreateCampaign() {
             <p className="text-gray-700">$</p>
           </div>
           <label
-            htmlFor="end_date"
-            className="mt-5 mb-2 text-epash-green font-custom"
-          >
-            Set an end date
-          </label>
-          <input
-            required
-            type="date"
-            id="end_date"
-            name="end_date"
-            className="rounded-sm shadow w-72 py-2 px-4 appearance-none focus:outline-none focus:shadow-outline"
-            onChange={handleChange}
-          />
-          <label
             htmlFor="start_date"
             className="mt-5 mb-2 text-epash-green font-custom"
           >
@@ -529,6 +515,20 @@ function CreateCampaign() {
             type="date"
             name="start_date"
             id="start_date"
+            className="rounded-sm shadow w-72 py-2 px-4 appearance-none focus:outline-none focus:shadow-outline"
+            onChange={handleChange}
+          />
+          <label
+            htmlFor="end_date"
+            className="mt-5 mb-2 text-epash-green font-custom"
+          >
+            Set an end date
+          </label>
+          <input
+            required
+            type="date"
+            id="end_date"
+            name="end_date"
             className="rounded-sm shadow w-72 py-2 px-4 appearance-none focus:outline-none focus:shadow-outline"
             onChange={handleChange}
           />
