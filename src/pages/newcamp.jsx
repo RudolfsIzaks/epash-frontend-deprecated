@@ -24,6 +24,8 @@ function CreateCampaign() {
   const [selectedAges, setSelectedAges] = useState([]);
   const [addressInput, setAddressInput] = useState("");
   const [selectedLocations, setSelectedLocations] = useState([]);
+  const [selectedPlatform, setSelectedPlatform] = useState(null);
+
   let autocompleteRef = useRef(null);
   const [loading, setLoading] = useState(false);
 
