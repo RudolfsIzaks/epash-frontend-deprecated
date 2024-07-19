@@ -623,7 +623,7 @@ function CreateCampaign() {
                 className="hidden"
               />
               <div
-                className={`border p-3 rounded flex flex-col items-center justify-center ${
+                className={`border p-3 rounded flex flex-col items-center justify-center w-32 ${
                   selectedPlatform === "Google"
                     ? "bg-black text-white"
                     : "bg-white text-black"
@@ -647,7 +647,7 @@ function CreateCampaign() {
                 className="hidden"
               />
               <div
-                className={`border p-3 rounded flex flex-col items-center justify-center ${
+                className={`border p-3 rounded flex flex-col items-center justify-center w-32 ${
                   selectedPlatform === "Facebook"
                     ? "bg-black text-white"
                     : "bg-white text-black"
@@ -671,7 +671,7 @@ function CreateCampaign() {
                 className="hidden"
               />
               <div
-                className={`border p-3 rounded flex flex-col items-center justify-center ${
+                className={`border p-3 rounded flex flex-col items-center justify-center w-32 ${
                   selectedPlatform === "Spotify"
                     ? "bg-black text-white"
                     : "bg-white text-black"
