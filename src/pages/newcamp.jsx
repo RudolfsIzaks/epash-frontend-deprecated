@@ -380,7 +380,7 @@ function CreateCampaign() {
           <label className="text-epash-green font-custom mb-2 mt-5">
             Target Location
           </label>
-          <div className="py-2 px-5 shadow-md rounded-md">Latvia</div>
+          <div className="py-2 px-5 shadow-md rounded-md w-48">Latvia</div>
           {/* <label className="text-epash-green font-custom mb-2 mt-5">
             Target Location
           </label>
