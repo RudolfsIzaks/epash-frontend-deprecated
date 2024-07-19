@@ -535,7 +535,7 @@ function CreateCampaign() {
             className="rounded-sm shadow w-72 py-2 px-4 appearance-none focus:outline-none focus:shadow-outline"
             onChange={handleChange}
           />
-          // Add this snippet where other input fields are defined in the form
+        
 <label
   className="mt-5 font-custom text-epash-green"
   htmlFor="website"
