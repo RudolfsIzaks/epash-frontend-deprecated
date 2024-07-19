@@ -743,7 +743,7 @@ function CreateCampaign() {
                 className="hidden"
               />
               <div
-                className={`border p-3 rounded ${
+                className={`border p-3 rounded transition ${
                   formData.addOwnAds
                     ? "bg-epash-green text-white"
                     : "bg-white text-black"
