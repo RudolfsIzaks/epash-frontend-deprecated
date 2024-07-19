@@ -12,8 +12,8 @@ import Select from "react-select";
 import "react-calendar/dist/Calendar.css";
 import { useAuth } from "../components/auth";
 import google from "../assets/google.png";
-import meta from '../assets/meta.png';
-import spotify from '../assets/spotify.png';
+import meta from "../assets/meta.png";
+import spotify from "../assets/spotify.png";
 
 function CreateCampaign() {
   const { user } = useAuth();
@@ -130,7 +130,14 @@ function CreateCampaign() {
       platform: platform,
     }));
   };
-  
+
+  const handleCheckboxChange = (e) => {
+    const { checked } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      addOwnAds: checked,
+    }));
+  };
 
   // const handleAddressChange = (address) => {
   //   setAddressInput(address);
@@ -727,6 +734,27 @@ function CreateCampaign() {
               )}
             </div>
           </div>
+          <div className="mt-5">
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                name="addOwnAds"
+                onChange={handleCheckboxChange}
+                className="hidden"
+              />
+              <div
+                className="border p-3 rounded cursor-pointer"
+                onClick={() =>
+                  handleCheckboxChange({
+                    target: { checked: !formData.addOwnAds },
+                  })
+                }
+              >
+                {formData.addOwnAds ? "☑" : "☐"} I want to add my own Ads
+              </div>
+            </label>
+          </div>
+
           <button
             type="submit"
             className={`text-epash-green font-custom font-black text-3xl py-4 rounded-md hover:scale-110 duration-200 flex items-center justify-center text-right' ${
