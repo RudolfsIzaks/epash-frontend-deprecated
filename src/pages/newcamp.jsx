@@ -734,7 +734,7 @@ function CreateCampaign() {
                 max="14"
                 value={formData.evolutionSpeed || 1}
                 onChange={(e) => handleSliderChange(e, "evolutionSpeed")}
-                className="w-full"
+                className="w-1/2"
               />
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-gray-700 text-white text-xs rounded px-2 py-1">
                 {formData.evolutionSpeed || 1}
@@ -758,7 +758,7 @@ function CreateCampaign() {
                 max="20"
                 value={formData.evolutionHarshness || 5}
                 onChange={(e) => handleSliderChange(e, "evolutionHarshness")}
-                className="w-full"
+                className="w-1/2"
               />
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-gray-700 text-white text-xs rounded px-2 py-1">
                 {formData.evolutionHarshness || 5}%
