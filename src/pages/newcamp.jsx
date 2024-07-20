@@ -29,6 +29,9 @@ function CreateCampaign() {
   const [addressInput, setAddressInput] = useState("");
   const [selectedLocations, setSelectedLocations] = useState([]);
   const [selectedPlatform, setSelectedPlatform] = useState(null);
+  const [evolutionSpeed, setEvolutionSpeed] = useState(1);
+  const [evolutionHarshness, setEvolutionHarshness] = useState(5);
+  const [addOwnAds, setAddOwnAds] = useState(false);
 
   let autocompleteRef = useRef(null);
   const [loading, setLoading] = useState(false);
@@ -45,8 +48,13 @@ function CreateCampaign() {
     daily_limit: "",
     start_date: "",
     end_date: "",
+    website: "",
     campaign_descript: "",
     product_descript: "",
+    platform: "",
+    evolutionSpeed: 1,
+    evolutionHarshness: 5,
+    addOwnAds: false,
   });
 
   const languageOptions = [
@@ -135,6 +143,7 @@ function CreateCampaign() {
 
   const handleCheckboxChange = (e) => {
     const { checked } = e.target;
+    setAddOwnAds(checked);
     setFormData((prevData) => ({
       ...prevData,
       addOwnAds: checked,
@@ -143,6 +152,11 @@ function CreateCampaign() {
 
   const handleSliderChange = (e, name) => {
     const { value } = e.target;
+    if (name === "evolutionSpeed") {
+      setEvolutionSpeed(value);
+    } else if (name === "evolutionHarshness") {
+      setEvolutionHarshness(value);
+    }
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -732,12 +746,12 @@ function CreateCampaign() {
                 type="range"
                 min="1"
                 max="14"
-                value={formData.evolutionSpeed || 1}
+                value={evolutionSpeed}
                 onChange={(e) => handleSliderChange(e, "evolutionSpeed")}
                 className="w-1/2"
               />
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-gray-700 text-white text-xs rounded px-2 py-1">
-                {formData.evolutionSpeed || 1}
+                {evolutionSpeed}
               </div>
             </div>
           </div>
@@ -756,12 +770,12 @@ function CreateCampaign() {
                 type="range"
                 min="5"
                 max="20"
-                value={formData.evolutionHarshness || 5}
+                value={evolutionHarshness}
                 onChange={(e) => handleSliderChange(e, "evolutionHarshness")}
                 className="w-1/2"
               />
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-gray-700 text-white text-xs rounded px-2 py-1">
-                {formData.evolutionHarshness || 5}%
+                {evolutionHarshness}%
               </div>
             </div>
           </div>
@@ -815,18 +829,17 @@ function CreateCampaign() {
               <input
                 type="checkbox"
                 name="addOwnAds"
+                checked={addOwnAds}
                 onChange={handleCheckboxChange}
                 className="hidden"
               />
               <div
                 className={`border p-3 rounded transition ${
-                  formData.addOwnAds
-                    ? "bg-epash-green text-white"
-                    : "bg-white text-black"
+                  addOwnAds ? "bg-epash-green text-white" : "bg-white text-black"
                 }`}
                 onClick={() =>
                   handleCheckboxChange({
-                    target: { checked: !formData.addOwnAds },
+                    target: { checked: !addOwnAds },
                   })
                 }
               >
