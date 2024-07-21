@@ -51,7 +51,7 @@ function CreateCampaign() {
     website: "",
     campaign_descript: "",
     product_descript: "",
-    platforms: [],
+    platforms: [], // Updated field
     evolutionSpeed: 1,
     evolutionHarshness: 5,
     addOwnAds: false,
@@ -243,6 +243,8 @@ function CreateCampaign() {
     e.preventDefault();
     setLoading(true);
     formData.user_id = user.user_id;
+
+    console.log("Form data submitted:", formData); // Debug log to inspect form data
 
     try {
       const response = await fetch(
@@ -534,7 +536,7 @@ function CreateCampaign() {
               <input
                 type="checkbox"
                 id="google"
-                name="platform"
+                name="platforms"
                 value="Google"
                 checked={selectedPlatforms.includes("Google")}
                 onChange={() => handlePlatformChange("Google")}
@@ -558,7 +560,7 @@ function CreateCampaign() {
               <input
                 type="checkbox"
                 id="facebook"
-                name="platform"
+                name="platforms"
                 value="Facebook"
                 checked={selectedPlatforms.includes("Facebook")}
                 onChange={() => handlePlatformChange("Facebook")}
@@ -582,7 +584,7 @@ function CreateCampaign() {
               <input
                 type="checkbox"
                 id="spotify"
-                name="platform"
+                name="platforms"
                 value="Spotify"
                 checked={selectedPlatforms.includes("Spotify")}
                 onChange={() => handlePlatformChange("Spotify")}
