@@ -4,6 +4,7 @@ import NavLogo from "../components/navLogo";
 import google from '../assets/google.png';
 import { useNavigate, useLocation } from "react-router-dom";
 import meta from '../assets/meta.png';
+import spotify from '../assets/spotify.png';
 
 function PlatformSelect() {
     const navigate = useNavigate();
@@ -81,6 +82,12 @@ function PlatformSelect() {
               <div className="flex gap-3 items-center justify-between">
                 <img src={meta} className="w-16" alt="meta" />
                 <p className="font-custom text-md">Edit For Facebook</p>
+              </div>
+            </button>
+            <button onClick={() => handlePlatformSelect("Spotify")} className="bg-white shadow-md text-black font-custom font-bold py-2 px-5 rounded-md">
+              <div className="flex gap-3 items-center justify-between">
+                <img src={spotify} className="w-16" alt="meta" />
+                <p className="font-custom text-md">Edit For Spotify</p>
               </div>
             </button>
             </div>

@@ -20,6 +20,7 @@ import PlatformFacebook from '../pages/platform_facebook_edit';
 import ProfileLinkageFacebook from '../pages/profilelinkage-facebook';
 import PlatformView from '../pages/platformView';
 import PlatformGoogleView from '../pages/platform_view_google';
+import PlatformSpotify from '../pages/platform_spotify_edit';
 
 function RouteChangeTracker() {
     const location = useLocation();
@@ -59,6 +60,7 @@ function RouterSetup() {
                     <Route path="/platform-select-view" element={<PrivateRoute><PlatformView/></PrivateRoute>} />
                     <Route path="/platform-view-google" element={<PrivateRoute><PlatformGoogleView/></PrivateRoute>} />
                     <Route path="/platform-edit-facebook" element={<PrivateRoute><PlatformFacebook/></PrivateRoute>} />
+                    <Route path="/platform-edit-spotify" element={<PrivateRoute><PlatformSpotify/></PrivateRoute>} />
                 </Routes>
             </AuthProvider>
         </Router>
