@@ -18,6 +18,8 @@ function PlatformGoogleView() {
     images,
   } = parsedData;
 
+  console.log(parsedData);
+
   return (
     <>
       <div className="flex w-full justify-between items-center py-5 px-48">
