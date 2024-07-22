@@ -20,6 +20,14 @@ function PlatformGoogleView() {
 
   console.log(parsedData);
 
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const handlePreviousImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
   return (
     <>
       <div className="flex w-full justify-between items-center py-5 px-48">
@@ -57,13 +65,12 @@ function PlatformGoogleView() {
               ))}
             </div>
             <div className="flex flex-col items-center mt-10 flex-grow">
-              <img src={images[0]} alt="Google Ad" className="w-auto h-96 object-cover rounded-md mb-5"/>
-              <img src={images[1]} alt="Google Ad" className="w-auto h-96 object-cover rounded-md mb-5"/>
+              <img src={images[currentImageIndex]} alt="Google Ad" className="w-auto h-96 object-cover rounded-md mb-5"/>
               <div className="flex gap-5">
-                <button className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
+                <button onClick={handlePreviousImage} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
                   Previous
                 </button>
-                <button className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
+                <button onClick={handleNextImage} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
                   Next
                 </button>
               </div>
