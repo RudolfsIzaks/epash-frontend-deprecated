@@ -1,24 +1,21 @@
 import React, {useState} from "react";
 import NavLogo from "../components/navLogo";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import '../index.css';
 
 function PlatformGoogle() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { parsedData } = location.state || {};
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  const [headlines, setHeadlines] = useState(parsedData.headings);
+  const [longHeadings, setLongHeadings] = useState(parsedData.longHeadings);
+  const [descriptions, setDescriptions] = useState(parsedData.descriptions);
+  const [images] = useState(parsedData.images);
 
   if (!parsedData) {
     return <div>Loading...</div>;
   }
-
-  const {
-    headings,
-    longHeadings,
-    descriptions,
-    images,
-  } = parsedData;
 
   const handleNextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -28,11 +25,50 @@ function PlatformGoogle() {
     setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
+  const handleChange = (setter) => (index, value) => {
+    setter(prevState => {
+      const newState = [...prevState];
+      newState[index] = value;
+      return newState;
+    });
+  };
+
+  const handleSubmit = async () => {
+    const data = {
+      campaign_id: parsedData.campaignId,  // Assuming campaignId is available in parsedData
+      headings,
+      long_headings: longHeadings,
+      descriptions,
+      images
+    };
+
+    try {
+      const response = await fetch("https://epash-ai-jaroslavsbolsak.replit.app/api/launch_google_ads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const result = await response.json();
+      console.log(result);
+      // Navigate to the next page or show a success message
+      navigate("/dashboard");  // Replace with your actual next page route
+
+    } catch (error) {
+      console.error("Error launching Google Ads:", error);
+    }
+  };
+
   return (
     <>
       <div className="flex w-full justify-between items-center py-5 px-48">
         <NavLogo />
-
         <div className="flex gap-3">
           <Link
             to="/dashboard/manage-campaigns"
@@ -51,16 +87,34 @@ function PlatformGoogle() {
           <div className="flex gap-10 justify-between mt-10">
             <div className="flex flex-col gap-4 flex-grow">
               <h2 className="text-xl font-custom">Headlines</h2>
-              {headings.map((headline, index) => (
-                <input key={index} type="text" defaultValue={headline} className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"/>
+              {headlines.map((headline, index) => (
+                <input
+                  key={index}
+                  type="text"
+                  value={headline}
+                  onChange={(e) => handleChange(setHeadlines)(index, e.target.value)}
+                  className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"
+                />
               ))}
               <h2 className="text-xl font-custom mt-5">Descriptions</h2>
               {descriptions.map((description, index) => (
-                <input key={index} type="text" defaultValue={description} className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"/>
+                <input
+                  key={index}
+                  type="text"
+                  value={description}
+                  onChange={(e) => handleChange(setDescriptions)(index, e.target.value)}
+                  className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"
+                />
               ))}
               <h2 className="text-xl font-custom mt-5">Long Headlines</h2>
               {longHeadings.map((longHeadline, index) => (
-                <input key={index} type="text" defaultValue={longHeadline} className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"/>
+                <input
+                  key={index}
+                  type="text"
+                  value={longHeadline}
+                  onChange={(e) => handleChange(setLongHeadings)(index, e.target.value)}
+                  className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"
+                />
               ))}
             </div>
             <div className="flex flex-col items-center mt-10 flex-grow">
@@ -76,7 +130,7 @@ function PlatformGoogle() {
             </div>
           </div>
           <div>
-            <button className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black mt-10">Next</button>
+            <button onClick={handleSubmit} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black mt-10">Next</button>
           </div>
         </div>
       </div>
