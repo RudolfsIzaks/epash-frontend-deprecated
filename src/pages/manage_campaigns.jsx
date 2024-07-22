@@ -162,8 +162,8 @@ function ManageCampaigns() {
               <button
                 className="bg-epash-green px-4 py-2 rounded-md text-white font-bold w-36 hover:scale-110 duration-200"
                 onClick={() =>
-                  navigate("/dashboard/manage-campaigns/campaign-details", {
-                    state: { campaignGroup },
+                  navigate("/platform-select-view", {
+                    state: { campaign_id: campaignGroup[0].id },
                   })
                 }
               >

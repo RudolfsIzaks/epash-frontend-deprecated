@@ -18,6 +18,8 @@ import PlatformGoogle from '../pages/platform_google_edit';
 import PlatformSelect from '../pages/platform_select';
 import PlatformFacebook from '../pages/platform_facebook_edit';
 import ProfileLinkageFacebook from '../pages/profilelinkage-facebook';
+import PlatformView from '../pages/platformView';
+import PlatformGoogleView from '../pages/platform_view_google';
 
 function RouteChangeTracker() {
     const location = useLocation();
@@ -54,6 +56,8 @@ function RouterSetup() {
                     <Route path="/account/settings/profilelinkage" element={<PrivateRoute><ProfileLinkage/></PrivateRoute>} />
                     <Route path="/account/settings/profilelinkage-facebook" element={<PrivateRoute><ProfileLinkageFacebook/></PrivateRoute>} />
                     <Route path="/platform-select" element={<PrivateRoute><PlatformSelect/></PrivateRoute>} />
+                    <Route path="/platform-select-view" element={<PrivateRoute><PlatformView/></PrivateRoute>} />
+                    <Route path="/platform-view-google" element={<PrivateRoute><PlatformGoogleView/></PrivateRoute>} />
                     <Route path="/platform-edit-facebook" element={<PrivateRoute><PlatformFacebook/></PrivateRoute>} />
                 </Routes>
             </AuthProvider>
