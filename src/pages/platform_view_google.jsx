@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import NavLogo from "../components/navLogo";
 import { Link, useLocation } from "react-router-dom";
 import '../index.css';
@@ -6,6 +6,8 @@ import '../index.css';
 function PlatformGoogleView() {
   const location = useLocation();
   const { parsedData } = location.state || {};
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
 
   if (!parsedData) {
     return <div>Loading...</div>;
