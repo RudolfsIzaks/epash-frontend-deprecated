@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import google from '../assets/google.png';
+import meta from '../assets/meta.png';
 
 function UserProfile() {
   const navigate = useNavigate();
@@ -82,24 +83,24 @@ function UserProfile() {
       });
   }, []);
 
-  const handleGoogleConnect = () => {
-    const clientId = '1033664191407-ai61p9okci4t9acdf1vhhn2jik7t68u1.apps.googleusercontent.com'; // Replace with your client ID
-    const redirectUri = 'https://epash-frontend.vercel.app/auth/google/callback'; // Replace with your redirect URI
-    const scope = 'https://www.googleapis.com/auth/adwords';
-    const responseType = 'code';
-    const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?response_type=${responseType}&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&access_type=offline&prompt=consent`;
+  // const handleGoogleConnect = () => {
+  //   const clientId = '1033664191407-ai61p9okci4t9acdf1vhhn2jik7t68u1.apps.googleusercontent.com'; // Replace with your client ID
+  //   const redirectUri = 'https://epash-frontend.vercel.app/auth/google/callback'; // Replace with your redirect URI
+  //   const scope = 'https://www.googleapis.com/auth/adwords';
+  //   const responseType = 'code';
+  //   const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?response_type=${responseType}&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&access_type=offline&prompt=consent`;
 
-    window.location.href = authUrl;
-  };
+  //   window.location.href = authUrl;
+  // };
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get('code');
-    if (code) {
-      console.log('Authorization Code:', code);
-      // You can now exchange the authorization code for tokens
-    }
-  }, []);
+  // useEffect(() => {
+  //   const params = new URLSearchParams(window.location.search);
+  //   const code = params.get('code');
+  //   if (code) {
+  //     console.log('Authorization Code:', code);
+  //     // You can now exchange the authorization code for tokens
+  //   }
+  // }, []);
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -160,17 +161,26 @@ function UserProfile() {
                     Google Connect
                   </h2>
                   <p className="text-xs">
-                    Connect google ads platform.
+                    Connect Google Ads platform.
                   </p>
                 </div>
               </div>
             </Link>
-            <button
-              onClick={handleGoogleConnect}
-              className="mt-4 bg-epash-green text-white rounded-md px-4 py-2 font-bold"
-            >
-              Connect to Google
-            </button>
+          </div>
+          <div>
+            <Link to="/account/settings/profilelinkage-facebook">
+              <div className="my-5 mx-5 rounded-md flex items-center text-left gap-3 px-2 py-2 hover:bg-gray-100 duration-200 ">
+                <img src={meta} className="w-[28px]"/>
+                <div>
+                  <h2 className="font-black font-custom">
+                    Facebook Connect
+                  </h2>
+                  <p className="text-xs">
+                    Connect Facebook Ad Platform.
+                  </p>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

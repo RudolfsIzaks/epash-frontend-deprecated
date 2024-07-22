@@ -17,6 +17,7 @@ import SuccessGoogle from '../pages/success_google';
 import PlatformGoogle from '../pages/platform_google_edit';
 import PlatformSelect from '../pages/platform_select';
 import PlatformFacebook from '../pages/platform_facebook_edit';
+import ProfileLinkageFacebook from '../pages/profilelinkage-facebook';
 
 function RouteChangeTracker() {
     const location = useLocation();
@@ -51,6 +52,7 @@ function RouterSetup() {
                     <Route path="/success-google" element={<SuccessGoogle />} /> {/* Use wildcard route */}
                     <Route path="/platform-edit-google" element={<PrivateRoute><PlatformGoogle /></PrivateRoute>} /> {/* Use wildcard route */}
                     <Route path="/account/settings/profilelinkage" element={<PrivateRoute><ProfileLinkage/></PrivateRoute>} />
+                    <Route path="/account/settings/profilelinkage-facebook" element={<PrivateRoute><ProfileLinkageFacebook/></PrivateRoute>} />
                     <Route path="/platform-select" element={<PrivateRoute><PlatformSelect/></PrivateRoute>} />
                     <Route path="/platform-edit-facebook" element={<PrivateRoute><PlatformFacebook/></PrivateRoute>} />
                 </Routes>
