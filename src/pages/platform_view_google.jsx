@@ -56,6 +56,7 @@ function PlatformGoogleView() {
             </div>
             <div className="flex flex-col items-center mt-10 flex-grow">
               <img src={images[0]} alt="Google Ad" className="w-auto h-96 object-cover rounded-md mb-5"/>
+              <img src={images[1]} alt="Google Ad" className="w-auto h-96 object-cover rounded-md mb-5"/>
               <div className="flex gap-5">
                 <button className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
                   Previous
