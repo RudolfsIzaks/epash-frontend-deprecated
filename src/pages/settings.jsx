@@ -155,7 +155,7 @@ function UserProfile() {
           <div>
             <Link to="/account/settings/profilelinkage">
               <div className="my-5 mx-5 rounded-md flex items-center text-left gap-3 px-2 py-2 hover:bg-gray-100 duration-200 ">
-                <img src={google} className="w-[36px] p-3"/>
+                <img src={google} className="w-[36px]"/>
                 <div>
                   <h2 className="font-black font-custom">
                     Google Connect
@@ -170,7 +170,7 @@ function UserProfile() {
           <div>
             <Link to="/account/settings/profilelinkage-facebook">
               <div className="my-5 mx-5 rounded-md flex items-center text-left gap-3 px-2 py-2 hover:bg-gray-100 duration-200 ">
-                <img src={meta} className="w-[36px] p-3"/>
+                <img src={meta} className="w-[36px]"/>
                 <div>
                   <h2 className="font-black font-custom">
                     Facebook Connect
