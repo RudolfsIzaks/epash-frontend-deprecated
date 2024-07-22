@@ -36,7 +36,8 @@ function PlatformGoogleView() {
       <div>
         <h1 className="text-center mt-20 text-5xl font-custom font-bold">Check out your google ads</h1>
         <p className="text-center mb-20 mt-5 text-xl">You can always go and change headlines, body text and contents of your google ads by pressing 'edit'.</p>
-        <div className="flex flex-col m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
+        <div className="flex justify-center">
+        <div className="flex flex-col w-2/3 m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
           <h1 className="text-4xl font-custom">Google Ads</h1>
           <div className="flex flex-col gap-10 justify-center mt-10">
             <div className="flex flex-col gap-4 flex-grow">
@@ -68,6 +69,7 @@ function PlatformGoogleView() {
           <div>
             <button className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black mt-10">Edit</button>
           </div>
+        </div>
         </div>
       </div>
     </>
