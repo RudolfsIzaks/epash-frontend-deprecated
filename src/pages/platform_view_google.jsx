@@ -2,9 +2,11 @@ import React, {useState} from "react";
 import NavLogo from "../components/navLogo";
 import { Link, useLocation } from "react-router-dom";
 import '../index.css';
+import { useNavigate } from "react-router-dom";
 
 function PlatformGoogleView() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { parsedData } = location.state || {};
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
