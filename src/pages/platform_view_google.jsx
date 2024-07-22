@@ -14,6 +14,7 @@ function PlatformGoogleView() {
   }
 
   const {
+    campaignId,
     headings,
     longHeadings,
     descriptions,
@@ -79,7 +80,14 @@ function PlatformGoogleView() {
             </div>
           </div>
           <div>
-            <button className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black mt-10">Edit</button>
+            <button
+             className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black mt-10"
+             onClick={() =>
+              navigate("/platform-select", {
+                state: { campaign_id: campaignId },
+              })
+            }
+            >Edit</button>
           </div>
         </div>
         </div>
