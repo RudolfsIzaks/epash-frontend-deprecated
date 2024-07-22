@@ -43,7 +43,7 @@ function PlatformGoogle() {
 
   const handleSubmit = async () => {
     const data = {
-      campaign_id: parsedData.campaignId, // Assuming campaignId is available in parsedData
+      campaign_id: parsedData.campaignId,
       headings,
       long_headings: longHeadings,
       descriptions,
@@ -69,7 +69,7 @@ function PlatformGoogle() {
       const result = await response.json();
       console.log(result);
       // Navigate to the next page or show a success message
-      navigate("/some-next-page"); // Replace with your actual next page route
+      navigate("/dashboard"); // Replace with your actual next page route
     } catch (error) {
       console.error("Error launching Google Ads:", error);
     }
