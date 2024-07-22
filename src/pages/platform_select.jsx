@@ -33,7 +33,8 @@ function PlatformSelect() {
     
             // Clean and parse the data
             const parsedData = parseCampaignData(data);
-    
+            console.log("Parsed Data:", parsedData); // Add this line for debugging
+
             // Navigate to the edit page with the parsed data
             navigate(`/platform-edit-${platform.toLowerCase()}`, { state: { parsedData } });
         } catch (error) {
@@ -56,7 +57,6 @@ function PlatformSelect() {
         };
         return parsedData;
     };
-
 
     return( 
         <>

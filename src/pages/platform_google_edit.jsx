@@ -10,14 +10,15 @@ function PlatformGoogle() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Ensure parsedData is correctly handled
-  const [headlines, setHeadlines] = useState([]);
+  const [headings, setHeadings] = useState([]);
   const [longHeadings, setLongHeadings] = useState([]);
   const [descriptions, setDescriptions] = useState([]);
   const [images, setImages] = useState([]);
 
   useEffect(() => {
+    console.log("Parsed Data:", parsedData); // Add this line for debugging
     if (parsedData) {
-      setHeadlines(parsedData.headings || []);
+      setHeadings(parsedData.headings || []);
       setLongHeadings(parsedData.longHeadings || []);
       setDescriptions(parsedData.descriptions || []);
       setImages(parsedData.images || []);
@@ -43,13 +44,11 @@ function PlatformGoogle() {
   const handleSubmit = async () => {
     const data = {
       campaign_id: parsedData.campaignId,
-      headings: headings,
+      headings,
       long_headings: longHeadings,
-      descriptions: descriptions,
-      images: images,
+      descriptions,
+      images
     };
-
-    console.log(data);
 
     try {
       const response = await fetch("https://epash-ai-jaroslavsbolsak.replit.app/api/launch_google_ads", {
@@ -100,12 +99,12 @@ function PlatformGoogle() {
           <div className="flex gap-10 justify-between mt-10">
             <div className="flex flex-col gap-4 flex-grow">
               <h2 className="text-xl font-custom">Headlines</h2>
-              {headlines.map((headline, index) => (
+              {headings.map((headline, index) => (
                 <input
                   key={index}
                   type="text"
                   value={headline}
-                  onChange={(e) => handleChange(setHeadlines)(index, e.target.value)}
+                  onChange={(e) => handleChange(setHeadings)(index, e.target.value)}
                   className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"
                 />
               ))}
