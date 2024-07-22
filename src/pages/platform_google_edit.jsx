@@ -43,11 +43,13 @@ function PlatformGoogle() {
   const handleSubmit = async () => {
     const data = {
       campaign_id: parsedData.campaignId,
-      headings,
+      headings: headings,
       long_headings: longHeadings,
-      descriptions,
-      images
+      descriptions: descriptions,
+      images: images,
     };
+
+    console.log(data);
 
     try {
       const response = await fetch("https://epash-ai-jaroslavsbolsak.replit.app/api/launch_google_ads", {
