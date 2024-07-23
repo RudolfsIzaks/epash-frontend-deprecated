@@ -73,16 +73,15 @@ function PlatformSpotify() {
         <div className="flex flex-col m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
           <h1 className="text-4xl font-custom">Spotify Ad 1:</h1>
           <div className="flex flex-col items-center mt-10 flex-grow">
-            <audio ref={audioRef} controls className="w-full">
+            <audio ref={audioRef} controls className="w-full bg-transparent appearance-none">
               <source src={parsedData.audio[audioIndex]} type="audio/mpeg" />
               Your browser does not support the audio element.
             </audio>
-            <div className="flex gap-5 mt-5">
+            <div className="flex justify-start gap-5 mt-5">
               <button onClick={handlePreviousAudio} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
                 Previous
               </button>
               <button onClick={handlePlayPause} className="py-2 px-5 rounded-md text-stone-400 font-custom font-black">
-                {isPlaying ? 'Pause' : 'Play'}
                 <FontAwesomeIcon
                   icon={isPlaying ? faPause : faPlay}
                 />
