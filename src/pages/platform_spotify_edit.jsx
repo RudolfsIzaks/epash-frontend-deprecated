@@ -72,15 +72,12 @@ function PlatformSpotify() {
         <p className="text-center mb-20 mt-5 text-xl">Manage your audio ads for Spotify.</p>
         <div className="flex flex-col m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
           <h1 className="text-4xl font-custom">Spotify Ad 1:</h1>
-          <div className="flex flex-col items-center mt-10 flex-grow">
+          <div className="flex flex-col items-start mt-10 flex-grow">
             <audio ref={audioRef} controls className="w-full bg-transparent appearance-none">
               <source src={parsedData.audio[audioIndex]} type="audio/mpeg" />
               Your browser does not support the audio element.
             </audio>
             <div className="flex justify-start gap-5 mt-5">
-              <button onClick={handlePreviousAudio} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
-                Previous
-              </button>
               <button onClick={handlePlayPause} className="py-2 px-5 rounded-md text-stone-400 font-custom font-black">
                 <FontAwesomeIcon
                   icon={isPlaying ? faPause : faPlay}
@@ -95,9 +92,6 @@ function PlatformSpotify() {
               <FontAwesomeIcon
                   icon={faForward}
                 />
-              </button>
-              <button onClick={handleNextAudio} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
-                Next
               </button>
             </div>
           </div>
