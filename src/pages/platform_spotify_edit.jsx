@@ -14,10 +14,14 @@ function PlatformSpotify() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
+  const fallbackAudio = [
+    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+  ];
+
   useEffect(() => {
     if (parsedData && parsedData.audio) {
       console.log("Audio URLs:", parsedData.audio);
-      // Verify if the URLs are accessible
       parsedData.audio.forEach((url) => {
         fetch(url)
           .then((response) => {
@@ -50,11 +54,11 @@ function PlatformSpotify() {
   };
 
   const handleNextAudio = () => {
-    setAudioIndex((prevIndex) => (prevIndex + 1) % parsedData.audio.length);
+    setAudioIndex((prevIndex) => (prevIndex + 1) % (parsedData?.audio?.length || fallbackAudio.length));
   };
 
   const handlePreviousAudio = () => {
-    setAudioIndex((prevIndex) => (prevIndex - 1 + parsedData.audio.length) % parsedData.audio.length);
+    setAudioIndex((prevIndex) => (prevIndex - 1 + (parsedData?.audio?.length || fallbackAudio.length)) % (parsedData?.audio?.length || fallbackAudio.length));
   };
 
   useEffect(() => {
@@ -70,6 +74,8 @@ function PlatformSpotify() {
   if (!parsedData) {
     return <div>Loading...</div>;
   }
+
+  const audioSources = parsedData.audio && parsedData.audio.length > 0 ? parsedData.audio : fallbackAudio;
 
   return (
     <>
@@ -89,10 +95,10 @@ function PlatformSpotify() {
         <h1 className="text-center mt-20 text-5xl font-custom font-bold">Modify your Spotify ads</h1>
         <p className="text-center mb-20 mt-5 text-xl">Manage your audio ads for Spotify.</p>
         <div className="flex flex-col m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
-          <h1 className="text-4xl font-custom">Spotify Ad 1:</h1>
+          <h1 className="text-4xl font-custom">Spotify Ad {audioIndex + 1}:</h1>
           <div className="flex flex-col items-start mt-10 flex-grow">
-            <audio ref={audioRef} className="w-full bg-transparent appearance-none">
-              <source src={parsedData.audio[audioIndex]} type="audio/mpeg" />
+            <audio ref={audioRef}  className="w-full bg-transparent appearance-none">
+              <source src={audioSources[audioIndex]} type="audio/mpeg" />
               Your browser does not support the audio element.
             </audio>
             <div className="flex justify-start gap-5 mt-5">
@@ -110,6 +116,12 @@ function PlatformSpotify() {
               <FontAwesomeIcon
                   icon={faForward}
                 />
+              </button>
+              <button onClick={handlePreviousAudio} className="py-2 px-5 rounded-md text-stone-400 font-custom font-black">
+                Previous
+              </button>
+              <button onClick={handleNextAudio} className="py-2 px-5 rounded-md text-stone-400 font-custom font-black">
+                Next
               </button>
             </div>
           </div>
