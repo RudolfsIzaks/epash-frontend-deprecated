@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import NavLogo from "../components/navLogo";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import '../index.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBackward, faForward, faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 
 function PlatformSpotify() {
   const location = useLocation();
@@ -79,14 +81,21 @@ function PlatformSpotify() {
               <button onClick={handlePreviousAudio} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
                 Previous
               </button>
-              <button onClick={handlePlayPause} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
+              <button onClick={handlePlayPause} className="py-2 px-5 rounded-md text-stone-400 font-custom font-black">
                 {isPlaying ? 'Pause' : 'Play'}
+                <FontAwesomeIcon
+                  icon={isPlaying ? faPause : faPlay}
+                />
               </button>
-              <button onClick={handleRewind} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
-                Rewind 10s
+              <button onClick={handleRewind} className="py-2 px-5 rounded-md text-stone-400 font-custom font-black">
+                <FontAwesomeIcon
+                  icon={faBackward}
+                />
               </button>
-              <button onClick={handleSkipForward} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
-                Skip 10s
+              <button onClick={handleSkipForward} className="py-2 px-5 rounded-md text-stone-400 font-custom font-black">
+              <FontAwesomeIcon
+                  icon={faForward}
+                />
               </button>
               <button onClick={handleNextAudio} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
                 Next
