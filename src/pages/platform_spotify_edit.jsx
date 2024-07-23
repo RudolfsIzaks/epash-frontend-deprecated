@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import NavLogo from "../components/navLogo";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import '../index.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBackward, faForward, faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 
 function PlatformSpotify() {
   const location = useLocation();
@@ -13,6 +11,24 @@ function PlatformSpotify() {
   const [audioIndex, setAudioIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (parsedData && parsedData.audio) {
+      console.log("Audio URLs:", parsedData.audio);
+      // Verify if the URLs are accessible
+      parsedData.audio.forEach((url) => {
+        fetch(url)
+          .then((response) => {
+            if (response.ok) {
+              console.log(`URL ${url} is accessible`);
+            } else {
+              console.error(`URL ${url} is not accessible`);
+            }
+          })
+          .catch((error) => console.error(`Error accessing URL ${url}:`, error));
+      });
+    }
+  }, [parsedData]);
 
   const handlePlayPause = () => {
     if (isPlaying) {
