@@ -33,7 +33,7 @@ function PlatformSelect() {
             const data = await response.json();
     
             // Clean and parse the data
-            const parsedData = parseCampaignData(data);
+            const parsedData = parseCampaignData(data, platform);
             console.log("Parsed Data:", parsedData); // Add this line for debugging
 
             // Navigate to the edit page with the parsed data
@@ -43,20 +43,25 @@ function PlatformSelect() {
         }
     };
     
-    
-    const parseCampaignData = (data) => {
+    const parseCampaignData = (data, platform) => {
+        if (platform === "Spotify") {
+            return {
+                campaignId: data.campaign_id,
+                audio: JSON.parse(data.Audio[0]),
+            };
+        }
+
         const cleanText = (textArray) => {
             return textArray.map(text => text.replace(/\\\"/g, '"').replace(/^"|"$/g, ''));
         };
 
-        const parsedData = {
+        return {
             campaignId: data.campaign_id,
             headings: cleanText(JSON.parse(data.Headings[0])),
             longHeadings: cleanText(JSON.parse(data['Long Headings'][0])),
             descriptions: cleanText(JSON.parse(data.Descriptions[0])),
             images: JSON.parse(data.Images[0]),
         };
-        return parsedData;
     };
 
     return( 
