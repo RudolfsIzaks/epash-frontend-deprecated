@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import NavLogo from "../components/navLogo";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import '../index.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay, faPause, faForward, faBackward } from "@fortawesome/free-solid-svg-icons";
 
 function PlatformSpotify() {
   const location = useLocation();
