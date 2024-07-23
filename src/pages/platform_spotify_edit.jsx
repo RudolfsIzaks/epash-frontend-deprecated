@@ -73,7 +73,7 @@ function PlatformSpotify() {
         <div className="flex flex-col m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
           <h1 className="text-4xl font-custom">Spotify Ad 1:</h1>
           <div className="flex flex-col items-start mt-10 flex-grow">
-            <audio ref={audioRef} controls className="w-full bg-transparent appearance-none">
+            <audio ref={audioRef} className="w-full bg-transparent appearance-none">
               <source src={parsedData.audio[audioIndex]} type="audio/mpeg" />
               Your browser does not support the audio element.
             </audio>
