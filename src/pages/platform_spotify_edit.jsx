@@ -132,7 +132,7 @@ function PlatformSpotify() {
         <p className="text-center mb-20 mt-5 text-xl">Manage your audio ads for Spotify.</p>
         <div className="flex flex-col m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
           <h1 className="text-4xl font-custom">Spotify Ad {audioIndex + 1}:</h1>
-          <div className="flex flex-col items-start mt-10 flex-grow shadow-lg rounded-md">
+          <div className="flex flex-col items-start mt-10 flex-grow shadow-lg rounded-md p-10">
             <div className="flex gap-5 items-center justify-start">
               <img src={parsedData.images[0]} className="w-36 h-36 rounded-md"/>
               <h1 className="font-custom text-2xl">{parsedData.title}</h1>
