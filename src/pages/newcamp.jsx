@@ -278,7 +278,7 @@ function CreateCampaign() {
     return (
       <div className="w-full h-screen bg-white flex justify-center items-center">
         <div>
-        <div className="flex gap-3 items-center animate-pulse">
+        <div className="flex gap-3 items-center justify-center animate-pulse">
           <img
             src="https://res.cloudinary.com/drcze5fsl/image/upload/v1718707751/o6uk4vdhzumrmjztnp4a.png"
             alt="Logo Epash"
