@@ -44,27 +44,27 @@ function PlatformSelect() {
     };
     
     const parseCampaignData = (data, platform) => {
-        if (platform === "Spotify") {
-            return {
-                campaignId: data.campaign_id,
-                audio: JSON.parse(data.Audio[0]),
-                images: JSON.parse(data.images[0]),
-                title: data.title,
-            };
-        }
+      if (platform === "Spotify") {
+          return {
+              campaignId: data.campaign_id,
+              audio: JSON.parse(data.Audio[0]),
+              images: JSON.parse(data.Images[0]),
+              title: data.title,
+          };
+      }
 
-        const cleanText = (textArray) => {
-            return textArray.map(text => text.replace(/\\\"/g, '"').replace(/^"|"$/g, ''));
-        };
+      const cleanText = (textArray) => {
+          return textArray.map(text => text.replace(/\\\"/g, '"').replace(/^"|"$/g, ''));
+      };
 
-        return {
-            campaignId: data.campaign_id,
-            headings: cleanText(JSON.parse(data.Headings[0])),
-            longHeadings: cleanText(JSON.parse(data['Long Headings'][0])),
-            descriptions: cleanText(JSON.parse(data.Descriptions[0])),
-            images: JSON.parse(data.Images[0]),
-        };
-    };
+      return {
+          campaignId: data.campaign_id,
+          headings: cleanText(JSON.parse(data.Headings[0])),
+          longHeadings: cleanText(JSON.parse(data['Long Headings'][0])),
+          descriptions: cleanText(JSON.parse(data.Descriptions[0])),
+          images: JSON.parse(data.Images[0]),
+      };
+  };
 
     return( 
         <>
