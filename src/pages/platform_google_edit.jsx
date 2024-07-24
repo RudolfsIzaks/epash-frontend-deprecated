@@ -110,10 +110,10 @@ function PlatformGoogle() {
         </p>
         <div className="flex gap-3 mx-10 justify-start items-center">
           <div className="px-10 py-5 shadow-md border border-stone-100 rounded-sm my-3">
-            <p className="font-custom text-xl">Locations: {locations[0]}</p>
+            <p className="font-custom text-2xl">Locations: {locations[0]}</p>
           </div>
           <div className="px-10 py-5 shadow-md border border-stone-100 rounded-sm my-3">
-            <p className="font-custom text-xl">Budget: {budget}$</p>
+            <p className="font-custom text-2xl"> Daily Budget: {budget}$</p>
           </div>
         </div>
         <div className="flex flex-col m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
