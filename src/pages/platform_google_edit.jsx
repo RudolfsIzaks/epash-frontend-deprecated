@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NavLogo from "../components/navLogo";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import '../index.css';
+import "../index.css";
 
 function PlatformGoogle() {
   const location = useLocation();
@@ -14,6 +14,8 @@ function PlatformGoogle() {
   const [longHeadings, setLongHeadings] = useState([]);
   const [descriptions, setDescriptions] = useState([]);
   const [images, setImages] = useState([]);
+  const [budget, setBudget] = useState("");
+  const [locations, setLocations] = useState([]);
 
   useEffect(() => {
     console.log("Parsed Data:", parsedData); // Add this line for debugging
@@ -22,6 +24,8 @@ function PlatformGoogle() {
       setLongHeadings(parsedData.longHeadings || []);
       setDescriptions(parsedData.descriptions || []);
       setImages(parsedData.images || []);
+      setBudget(parsedData.budget || "");
+      setLocations(parsedData.locations || []);
     }
   }, [parsedData]);
 
@@ -30,11 +34,13 @@ function PlatformGoogle() {
   };
 
   const handlePreviousImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentImageIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
   };
 
   const handleChange = (setter) => (index, value) => {
-    setter(prevState => {
+    setter((prevState) => {
       const newState = [...prevState];
       newState[index] = value;
       return newState;
@@ -47,17 +53,22 @@ function PlatformGoogle() {
       headings,
       long_headings: longHeadings,
       descriptions,
-      images
+      images,
+      budget,
+      locations,
     };
 
     try {
-      const response = await fetch("https://epash-ai-jaroslavsbolsak.replit.app/api/launch_google_ads", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://epash-ai-jaroslavsbolsak.replit.app/api/launch_google_ads",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -66,8 +77,7 @@ function PlatformGoogle() {
       const result = await response.json();
       console.log(result);
       // Navigate to the next page or show a success message
-      navigate("/dashboard");  // Replace with your actual next page route
-
+      navigate("/dashboard"); // Replace with your actual next page route
     } catch (error) {
       console.error("Error launching Google Ads:", error);
     }
@@ -92,8 +102,20 @@ function PlatformGoogle() {
       </div>
       <hr />
       <div>
-        <h1 className="text-center mt-20 text-5xl font-custom font-bold">Modify your google ads</h1>
-        <p className="text-center mb-20 mt-5 text-xl">Change headlines, body text and contents of your google ads.</p>
+        <h1 className="text-center mt-20 text-5xl font-custom font-bold">
+          Modify your google ads
+        </h1>
+        <p className="text-center mb-20 mt-5 text-xl">
+          Change headlines, body text and contents of your google ads.
+        </p>
+        <div className="flex gap-3 mx-10 justify-start items-center">
+          <div className="px-10 py-5 shadow-md border border-stone-100 rounded-sm my-3">
+            <p className="font-custom text-xl">Locations: {locations[0]}</p>
+          </div>
+          <div className="px-10 py-5 shadow-md border border-stone-100 rounded-sm my-3">
+            <p className="font-custom text-xl">Budget: {budget}$</p>
+          </div>
+        </div>
         <div className="flex flex-col m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
           <h1 className="text-4xl font-custom">Google Ad 1:</h1>
           <div className="flex gap-10 justify-between mt-10">
@@ -104,7 +126,9 @@ function PlatformGoogle() {
                   key={index}
                   type="text"
                   value={headline}
-                  onChange={(e) => handleChange(setHeadings)(index, e.target.value)}
+                  onChange={(e) =>
+                    handleChange(setHeadings)(index, e.target.value)
+                  }
                   className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"
                 />
               ))}
@@ -114,7 +138,9 @@ function PlatformGoogle() {
                   key={index}
                   type="text"
                   value={description}
-                  onChange={(e) => handleChange(setDescriptions)(index, e.target.value)}
+                  onChange={(e) =>
+                    handleChange(setDescriptions)(index, e.target.value)
+                  }
                   className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"
                 />
               ))}
@@ -124,25 +150,42 @@ function PlatformGoogle() {
                   key={index}
                   type="text"
                   value={longHeadline}
-                  onChange={(e) => handleChange(setLongHeadings)(index, e.target.value)}
+                  onChange={(e) =>
+                    handleChange(setLongHeadings)(index, e.target.value)
+                  }
                   className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"
                 />
               ))}
             </div>
             <div className="flex flex-col items-center mt-10 flex-grow">
-              <img src={images[currentImageIndex]} alt="Google Ad" className="w-auto h-96 object-cover rounded-md mb-5"/>
+              <img
+                src={images[currentImageIndex]}
+                alt="Google Ad"
+                className="w-auto h-96 object-cover rounded-md mb-5"
+              />
               <div className="flex gap-5">
-                <button onClick={handlePreviousImage} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
+                <button
+                  onClick={handlePreviousImage}
+                  className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black"
+                >
                   Previous
                 </button>
-                <button onClick={handleNextImage} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black">
+                <button
+                  onClick={handleNextImage}
+                  className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black"
+                >
                   Next
                 </button>
               </div>
             </div>
           </div>
           <div>
-            <button onClick={handleSubmit} className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black mt-10">Next</button>
+            <button
+              onClick={handleSubmit}
+              className="py-2 px-5 bg-epash-green rounded-md text-white font-custom font-black mt-10"
+            >
+              Next
+            </button>
           </div>
         </div>
       </div>

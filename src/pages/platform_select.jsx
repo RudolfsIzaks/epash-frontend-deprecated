@@ -52,19 +52,22 @@ function PlatformSelect() {
               title: data.title,
           };
       }
-
+  
       const cleanText = (textArray) => {
           return textArray.map(text => text.replace(/\\\"/g, '"').replace(/^"|"$/g, ''));
       };
-
+  
       return {
           campaignId: data.campaign_id,
           headings: cleanText(JSON.parse(data.Headings[0])),
           longHeadings: cleanText(JSON.parse(data['Long Headings'][0])),
           descriptions: cleanText(JSON.parse(data.Descriptions[0])),
           images: JSON.parse(data.Images[0]),
+          budget: data.Budget, // Added field
+          locations: JSON.parse(data.Locations[0]), // Added field
       };
   };
+  
 
     return( 
         <>
