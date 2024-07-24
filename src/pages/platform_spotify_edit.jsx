@@ -143,7 +143,7 @@ function PlatformSpotify() {
             </audio>
 
             <div className="relative w-full bg-gray-200 h-2 mt-5">
-              <div style={{ width: `${progress}%` }} className="absolute top-0 left-0 h-full bg-blue-600" />
+              <div style={{ width: `${progress}%` }} className="absolute top-0 left-0 h-full bg-epash-green" />
             </div>
 
             <div className="flex justify-start gap-5 mt-5">
