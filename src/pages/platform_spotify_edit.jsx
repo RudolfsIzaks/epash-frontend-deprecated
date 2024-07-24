@@ -77,7 +77,7 @@ function PlatformSpotify() {
         audioRef.current.play();
       }
     }
-  }, [audioIndex, isPlaying]);
+  }, [audioIndex]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -90,6 +90,22 @@ function PlatformSpotify() {
       };
     }
   }, []);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      if (isPlaying) {
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((error) => {
+            console.error('Error attempting to play audio:', error);
+          });
+        }
+      } else {
+        audio.pause();
+      }
+    }
+  }, [isPlaying]);
 
   if (!parsedData) {
     return <div>Loading...</div>;
@@ -123,7 +139,7 @@ function PlatformSpotify() {
             </audio>
 
             <div className="relative w-full bg-gray-200 h-2 mt-5">
-              <div style={{ width: `${progress}%` }} className="absolute top-0 left-0 h-full bg-epash-green" />
+              <div style={{ width: `${progress}%` }} className="absolute top-0 left-0 h-full bg-blue-600" />
             </div>
 
             <div className="flex justify-start gap-5 mt-5">
