@@ -340,7 +340,7 @@ function CreateCampaign() {
             name="customer_description"
             id="customer_description"
             cols="10"
-            rows="10"
+            rows="3"
             placeholder="Describe your ideal customer here..."
             className="rounded-sm shadow-xl w-1/2 py-2 px-4 appearance-none focus:outline-none focus:shadow-outline"
             onChange={handleChange}
