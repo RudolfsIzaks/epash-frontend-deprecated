@@ -334,10 +334,9 @@ function CreateCampaign() {
             htmlFor="customer_description"
             className="mt-10 mb-2 text-epash-green font-custom rounded-md"
           >
-            Describe your ideal customer
+            Describe your ideal customer (Optional)
           </label>
           <textarea
-            required
             name="customer_description"
             id="customer_description"
             cols="10"
