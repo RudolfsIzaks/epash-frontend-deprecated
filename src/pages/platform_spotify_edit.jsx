@@ -135,7 +135,7 @@ function PlatformSpotify() {
           <div className="flex flex-col items-start mt-10 flex-grow shadow-xl rounded-md p-10 border border-stone-100">
             <div className="flex gap-5 items-end justify-start">
               <img src={parsedData.images[0]} className="w-36 h-36 rounded-md"/>
-              <h1 className="font-custom text-2xl">{parsedData.title}</h1>
+              <h1 className="font-custom font-bold mb-5 text-3xl">{parsedData.title}</h1>
             </div>
             <audio ref={audioRef} className="w-full bg-transparent appearance-none">
               <source src={audioSources[audioIndex]} type="audio/mpeg" />
