@@ -277,6 +277,7 @@ function CreateCampaign() {
   if (loading) {
     return (
       <div className="w-full h-screen bg-white flex justify-center items-center">
+        <div>
         <div className="flex gap-3 items-center animate-pulse">
           <img
             src="https://res.cloudinary.com/drcze5fsl/image/upload/v1718707751/o6uk4vdhzumrmjztnp4a.png"
@@ -285,6 +286,9 @@ function CreateCampaign() {
           />
           <h1 className="font-bold text-4xl">Epash AI</h1>
         </div>
+        <p className="font-custom text-xl text-center mt-2 animate-pulse">This might take a moment, your ads are being generated...</p>
+        </div>
+       
       </div>
     );
   }
