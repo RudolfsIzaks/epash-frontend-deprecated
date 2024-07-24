@@ -132,7 +132,7 @@ function PlatformSpotify() {
         <p className="text-center mb-20 mt-5 text-xl">Manage your audio ads for Spotify.</p>
         <div className="flex flex-col m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
           <h1 className="text-4xl font-custom">Spotify Ad {audioIndex + 1}:</h1>
-          <div className="flex flex-col items-start mt-10 flex-grow shadow-xl rounded-md p-10">
+          <div className="flex flex-col items-start mt-10 flex-grow shadow-xl rounded-md p-10 border border-stone-100">
             <div className="flex gap-5 items-center justify-start">
               <img src={parsedData.images[0]} className="w-36 h-36 rounded-md"/>
               <h1 className="font-custom text-2xl">{parsedData.title}</h1>
@@ -142,8 +142,8 @@ function PlatformSpotify() {
               Your browser does not support the audio element.
             </audio>
 
-            <div className="relative w-full bg-gray-200 h-2 mt-5">
-              <div style={{ width: `${progress}%` }} className="absolute top-0 left-0 h-full bg-epash-green" />
+            <div className="relative w-full bg-gray-200 h-2 mt-5 rounded-md">
+              <div style={{ width: `${progress}%` }} className="absolute top-0 left-0 h-full rounded-md bg-epash-green" />
             </div>
 
             <div className="flex justify-start gap-5 mt-5">
