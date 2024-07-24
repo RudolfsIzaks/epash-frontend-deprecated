@@ -48,6 +48,8 @@ function PlatformSelect() {
             return {
                 campaignId: data.campaign_id,
                 audio: JSON.parse(data.Audio[0]),
+                images: JSON.parse(data.images[0]),
+                title: data.title,
             };
         }
 
