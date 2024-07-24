@@ -12,6 +12,7 @@ function PlatformSpotify() {
 
   const [audioIndex, setAudioIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
   const audioRef = useRef(null);
 
   const fallbackAudio = [
@@ -53,6 +54,13 @@ function PlatformSpotify() {
     audioRef.current.currentTime += 10;
   };
 
+  const updateProgress = () => {
+    if (audioRef.current) {
+      const audioProgression = (audioRef.current.currentTime / audioRef.current.duration) * 100;
+      setProgress(audioProgression);
+    }
+  };
+
   const handleNextAudio = () => {
     setAudioIndex((prevIndex) => (prevIndex + 1) % (parsedData?.audio?.length || fallbackAudio.length));
   };
@@ -69,7 +77,19 @@ function PlatformSpotify() {
         audioRef.current.play();
       }
     }
-  }, [audioIndex]);
+  }, [audioIndex, isPlaying]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.addEventListener('timeupdate', updateProgress);
+
+      // Clean up event listener on component unmount
+      return () => {
+        audio.removeEventListener('timeupdate', updateProgress);
+      };
+    }
+  }, []);
 
   if (!parsedData) {
     return <div>Loading...</div>;
@@ -97,25 +117,24 @@ function PlatformSpotify() {
         <div className="flex flex-col m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
           <h1 className="text-4xl font-custom">Spotify Ad {audioIndex + 1}:</h1>
           <div className="flex flex-col items-start mt-10 flex-grow">
-            <audio ref={audioRef}  className="w-full bg-transparent appearance-none">
+            <audio ref={audioRef} className="w-full bg-transparent appearance-none">
               <source src={audioSources[audioIndex]} type="audio/mpeg" />
               Your browser does not support the audio element.
             </audio>
+
+            <div className="relative w-full bg-gray-200 h-2 mt-5">
+              <div style={{ width: `${progress}%` }} className="absolute top-0 left-0 h-full bg-epash-green" />
+            </div>
+
             <div className="flex justify-start gap-5 mt-5">
               <button onClick={handlePlayPause} className="py-2 px-5 rounded-md text-stone-400 font-custom font-black">
-                <FontAwesomeIcon
-                  icon={isPlaying ? faPause : faPlay}
-                />
+                <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
               </button>
               <button onClick={handleRewind} className="py-2 px-5 rounded-md text-stone-400 font-custom font-black">
-                <FontAwesomeIcon
-                  icon={faBackward}
-                />
+                <FontAwesomeIcon icon={faBackward} />
               </button>
               <button onClick={handleSkipForward} className="py-2 px-5 rounded-md text-stone-400 font-custom font-black">
-              <FontAwesomeIcon
-                  icon={faForward}
-                />
+                <FontAwesomeIcon icon={faForward} />
               </button>
               <button onClick={handlePreviousAudio} className="py-2 px-5 rounded-md text-stone-400 font-custom font-black">
                 Previous
