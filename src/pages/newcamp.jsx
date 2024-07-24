@@ -51,11 +51,13 @@ function CreateCampaign() {
     website: "",
     campaign_descript: "",
     product_descript: "",
-    platforms: [], // Updated field
+    customer_description: "", // New field added
+    platforms: [],
     evolutionSpeed: 1,
     evolutionHarshness: 5,
     addOwnAds: false,
   });
+  
 
   const languageOptions = [
     { value: "en_US", label: "English - United States" },
@@ -278,17 +280,18 @@ function CreateCampaign() {
     return (
       <div className="w-full h-screen bg-white flex justify-center items-center">
         <div>
-        <div className="flex gap-3 items-center justify-center animate-pulse">
-          <img
-            src="https://res.cloudinary.com/drcze5fsl/image/upload/v1718707751/o6uk4vdhzumrmjztnp4a.png"
-            alt="Logo Epash"
-            className="w-16"
-          />
-          <h1 className="font-bold text-4xl">Epash AI</h1>
+          <div className="flex gap-3 items-center justify-center animate-pulse">
+            <img
+              src="https://res.cloudinary.com/drcze5fsl/image/upload/v1718707751/o6uk4vdhzumrmjztnp4a.png"
+              alt="Logo Epash"
+              className="w-16"
+            />
+            <h1 className="font-bold text-4xl">Epash AI</h1>
+          </div>
+          <p className="font-custom text-xl text-center mt-2 animate-pulse">
+            This might take a moment, your ads are being generated...
+          </p>
         </div>
-        <p className="font-custom text-xl text-center mt-2 animate-pulse">This might take a moment, your ads are being generated...</p>
-        </div>
-       
       </div>
     );
   }
@@ -327,6 +330,22 @@ function CreateCampaign() {
             placeholder="Campaign Name...."
             onChange={handleChange}
           />
+          <label
+            htmlFor="customer_description"
+            className="mt-10 mb-2 text-epash-green font-custom rounded-md"
+          >
+            Describe your ideal customer
+          </label>
+          <textarea
+            required
+            name="customer_description"
+            id="customer_description"
+            cols="10"
+            rows="10"
+            placeholder="Describe your ideal customer here..."
+            className="rounded-sm shadow-xl w-1/2 py-2 px-4 appearance-none focus:outline-none focus:shadow-outline"
+            onChange={handleChange}
+          ></textarea>
           <label
             className="mt-5 font-custom text-epash-green"
             htmlFor="product_name"
@@ -709,7 +728,9 @@ function CreateCampaign() {
               />
               <div
                 className={`border p-3 rounded transition ${
-                  addOwnAds ? "bg-epash-green text-white" : "bg-white text-black"
+                  addOwnAds
+                    ? "bg-epash-green text-white"
+                    : "bg-white text-black"
                 }`}
                 onClick={() =>
                   handleCheckboxChange({
