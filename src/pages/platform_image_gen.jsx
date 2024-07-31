@@ -1,5 +1,6 @@
 import React from "react";
 import "../index.css";
+import NavLogo from "../components/navLogo";
 
 function PlatformImageGeneration() {
   return (
