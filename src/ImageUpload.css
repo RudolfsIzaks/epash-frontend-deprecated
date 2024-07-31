@@ -7,29 +7,7 @@
     margin-bottom: 5px;
   }
   
-  .upload-button {
-    display: inline-block;
-    margin-top: 5px;
-    padding: 10px 20px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .upload-button:hover {
-    background-color: #333;
-  }
-  
-  .file-tag {
-    display: inline-flex;
-    align-items: center;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin-top: 5px;
-  }
+
   
   .remove-button {
     background: none;
@@ -42,6 +20,7 @@
   .radio-group {
     display: flex;
     flex-wrap: wrap;
+    gap: 2em;
   }
   
   .radio-label {

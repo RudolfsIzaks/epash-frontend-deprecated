@@ -89,7 +89,7 @@ function PlatformImageGeneration() {
                 Upload
               </button>
               {selectedFile1 && (
-                <div className="file-tag">
+                <div className="flex w-auto gap-3 p-2 bg-stone-200">
                   {selectedFile1.name}
                   <button onClick={handleRemoveFile1} className="remove-button">x</button>
                 </div>
@@ -114,7 +114,7 @@ function PlatformImageGeneration() {
                 Upload
               </button>
               {selectedFile2 && (
-                <div className="file-tag">
+                <div className="flex w-auto gap-3 p-2 bg-stone-200">
                   {selectedFile2.name}
                   <button onClick={handleRemoveFile2} className="remove-button">x</button>
                 </div>
