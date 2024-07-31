@@ -64,7 +64,7 @@ function PlatformImageGeneration() {
             Upload Your Images and Add Your Styles
           </h1>
           <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 mb-5">
               <label htmlFor="image1">
                 Upload an image <i>of only the product</i>.
               </label>
@@ -79,10 +79,10 @@ function PlatformImageGeneration() {
                 onClick={() => document.getElementById('image1').click()}
                 className="px-5 py-2 bg-black rounded-md text-white font-custom w-48"
               >
-                Upload Image 1
+                Upload
               </button>
             </div>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 mb-5">
               <label htmlFor="image2">
                 Upload an image that you might want to use for the ads.
               </label>
@@ -97,7 +97,7 @@ function PlatformImageGeneration() {
                 onClick={() => document.getElementById('image2').click()}
                 className="px-5 py-2 bg-black rounded-md text-white font-custom w-48"
               >
-                Upload Image 2
+                Upload
               </button>
             </div>
             <div>
