@@ -1,16 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "../index.css";
 import NavLogo from "../components/navLogo";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import '../ImageUpload.css';
+import "../ImageUpload.css";
 
 function PlatformImageGeneration() {
   const [selectedFile1, setSelectedFile1] = useState(null);
   const [selectedFile2, setSelectedFile2] = useState(null);
   const [selectedStyle, setSelectedStyle] = useState("");
-  const [campaignId, setCampaignId] = useState("");
-  const [inputPoint, setInputPoint] = useState("");
 
   const handleFileChange1 = (event) => {
     setSelectedFile1(event.target.files[0]);
@@ -24,6 +20,15 @@ function PlatformImageGeneration() {
     setSelectedStyle(event.target.value);
   };
 
+  const handleRemoveFile1 = () => {
+    setSelectedFile1(null);
+    document.getElementById('image1').value = null;
+  };
+
+  const handleRemoveFile2 = () => {
+    setSelectedFile2(null);
+    document.getElementById('image2').value = null;
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -74,6 +79,7 @@ function PlatformImageGeneration() {
                 id="image1"
                 onChange={handleFileChange1}
                 style={{ display: 'none' }}
+                accept="image/*"
               />
               <button
                 type="button"
@@ -82,6 +88,12 @@ function PlatformImageGeneration() {
               >
                 Upload
               </button>
+              {selectedFile1 && (
+                <div className="file-tag">
+                  {selectedFile1.name}
+                  <button onClick={handleRemoveFile1} className="remove-button">x</button>
+                </div>
+              )}
             </div>
             <div className="flex flex-col gap-4 mb-5">
               <label htmlFor="image2">
@@ -92,6 +104,7 @@ function PlatformImageGeneration() {
                 id="image2"
                 onChange={handleFileChange2}
                 style={{ display: 'none' }}
+                accept="image/*"
               />
               <button
                 type="button"
@@ -100,6 +113,12 @@ function PlatformImageGeneration() {
               >
                 Upload
               </button>
+              {selectedFile2 && (
+                <div className="file-tag">
+                  {selectedFile2.name}
+                  <button onClick={handleRemoveFile2} className="remove-button">x</button>
+                </div>
+              )}
             </div>
             <div>
               <label className="mb-5">Choose Image Style:</label>
