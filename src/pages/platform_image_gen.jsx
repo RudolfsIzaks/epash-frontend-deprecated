@@ -84,14 +84,14 @@ function PlatformImageGeneration() {
               <button
                 type="button"
                 onClick={() => document.getElementById('image1').click()}
-                className="px-5 py-2 bg-black rounded-md text-white font-custom w-48"
+                className="px-5 py-2 bg-epash-green rounded-md text-white font-custom w-48"
               >
                 Upload
               </button>
               {selectedFile1 && (
-                <div className="flex w-auto gap-3 p-2 bg-stone-200">
-                  {selectedFile1.name}
-                  <button onClick={handleRemoveFile1} className="remove-button">x</button>
+                <div className="flex w-auto gap-3 p-2">
+                  <p className="bg-stone-50 p-2 rounded-md font-custom">{selectedFile1.name}</p>
+                  <button onClick={handleRemoveFile1} className="bg-red-500 p-2 text-white font-custom font-black rounded-md">x</button>
                 </div>
               )}
             </div>
@@ -109,20 +109,20 @@ function PlatformImageGeneration() {
               <button
                 type="button"
                 onClick={() => document.getElementById('image2').click()}
-                className="px-5 py-2 bg-black rounded-md text-white font-custom w-48"
+                className="px-5 py-2 bg-epash-green rounded-md text-white font-custom w-48"
               >
                 Upload
               </button>
               {selectedFile2 && (
-                <div className="flex w-auto gap-3 p-2 bg-stone-200">
-                  {selectedFile2.name}
-                  <button onClick={handleRemoveFile2} className="remove-button">x</button>
+                <div className="flex w-auto gap-3 p-2 ">
+                  <p className="bg-stone-50 p-2 rounded-md font-custom">{selectedFile2.name}</p>
+                  <button onClick={handleRemoveFile2} className="bg-red-500 p-2 text-white font-custom font-black rounded-md">x</button>
                 </div>
               )}
             </div>
             <div>
               <label className="mb-5">Choose Image Style:</label>
-              <div className="radio-group">
+              <div className="flex gap-4 items-center flex-wrap">
                 <label className="radio-label">
                   <input
                     type="radio"
@@ -161,7 +161,7 @@ function PlatformImageGeneration() {
                 </label>
               </div>
             </div>
-            <button type="submit" className="submit-button my-5">Upload</button>
+            <button type="submit" className="px-5 py-2 rounded-md font-custom text-white bg-epash-green my-5">Create</button>
           </form>
         </div>
       </div>

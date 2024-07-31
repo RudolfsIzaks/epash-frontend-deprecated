@@ -7,16 +7,6 @@
     margin-bottom: 5px;
   }
   
-
-  
-  .remove-button {
-    background: none;
-    border: none;
-    margin-left: 10px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
   .radio-group {
     display: flex;
     flex-wrap: wrap;
