@@ -91,7 +91,7 @@ function PlatformImageGeneration() {
               {selectedFile1 && (
                 <div className="flex w-auto gap-3 p-2">
                   <p className="bg-stone-50 p-2 rounded-md font-custom">{selectedFile1.name}</p>
-                  <button onClick={handleRemoveFile1} className="bg-red-500 p-2 text-white font-custom font-black rounded-md">x</button>
+                  <button onClick={handleRemoveFile1} className="bg-red-500 w-8 h-8 text-white font-custom font-black rounded-md">x</button>
                 </div>
               )}
             </div>
@@ -116,7 +116,7 @@ function PlatformImageGeneration() {
               {selectedFile2 && (
                 <div className="flex w-auto gap-3 p-2 ">
                   <p className="bg-stone-50 p-2 rounded-md font-custom">{selectedFile2.name}</p>
-                  <button onClick={handleRemoveFile2} className="bg-red-500 p-2 text-white font-custom font-black rounded-md">x</button>
+                  <button onClick={handleRemoveFile2} className="bg-red-500 w-8 h-8 text-white font-custom font-black rounded-md">x</button>
                 </div>
               )}
             </div>
