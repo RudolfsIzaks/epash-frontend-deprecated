@@ -8,6 +8,8 @@ function PlatformImageGeneration() {
   const [selectedFile1, setSelectedFile1] = useState(null);
   const [selectedFile2, setSelectedFile2] = useState(null);
   const [selectedStyle, setSelectedStyle] = useState("");
+  const [campaignId, setCampaignId] = useState("");
+  const [inputPoint, setInputPoint] = useState("");
 
   const handleFileChange1 = (event) => {
     setSelectedFile1(event.target.files[0]);
@@ -19,6 +21,14 @@ function PlatformImageGeneration() {
 
   const handleStyleChange = (event) => {
     setSelectedStyle(event.target.value);
+  };
+
+  const handleCampaignIdChange = (event) => {
+    setCampaignId(event.target.value);
+  };
+
+  const handleInputPointChange = (event) => {
+    setInputPoint(event.target.value);
   };
 
   const handleSubmit = async (event) => {
@@ -63,24 +73,47 @@ function PlatformImageGeneration() {
             Upload Your Images and Add Your Styles
           </h1>
           <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div className="">
+            <div>
               <label htmlFor="image1">
                 Upload an image <i>of only the product</i>.
               </label>
-              <input type="file" id="image1" onChange={handleFileChange1} />
+              <input
+                type="file"
+                id="image1"
+                onChange={handleFileChange1}
+                style={{ display: 'none' }}
+              />
+              <button
+                type="button"
+                onClick={() => document.getElementById('image1').click()}
+                className="upload-button"
+              >
+                Upload Image 1
+              </button>
             </div>
-            <div className="">
+            <div>
               <label htmlFor="image2">
                 Upload an image that you might want to use for the ads.
               </label>
-              <input type="file" id="image2" onChange={handleFileChange2} />
+              <input
+                type="file"
+                id="image2"
+                onChange={handleFileChange2}
+                style={{ display: 'none' }}
+              />
+              <button
+                type="button"
+                onClick={() => document.getElementById('image2').click()}
+                className="upload-button"
+              >
+                Upload Image 2
+              </button>
             </div>
-            <div className="">
+            <div>
               <label>Choose Image Style:</label>
               <div className="radio-group">
-                <label className="border border-stone-100 rounded-md px-5 py-2 shadow-md mr-5">
+                <label className="radio-label">
                   <input
-                    className="pr-4"
                     type="radio"
                     value="photorealistic"
                     checked={selectedStyle === "photorealistic"}
@@ -88,9 +121,8 @@ function PlatformImageGeneration() {
                   />
                   Photorealistic
                 </label>
-                <label className="border border-stone-100 rounded-md px-5 py-2 shadow-md mr-5">
+                <label className="radio-label">
                   <input
-                    className="pr-4"
                     type="radio"
                     value="painting"
                     checked={selectedStyle === "painting"}
@@ -98,9 +130,8 @@ function PlatformImageGeneration() {
                   />
                   Painting
                 </label>
-                <label className="border border-stone-100 rounded-md px-5 py-2 shadow-md mr-5">
+                <label className="radio-label">
                   <input
-                    className="pr-4"
                     type="radio"
                     value="cartoon"
                     checked={selectedStyle === "cartoon"}
@@ -108,9 +139,8 @@ function PlatformImageGeneration() {
                   />
                   Cartoon
                 </label>
-                <label className="border border-stone-100 rounded-md px-5 py-2 shadow-md mr-5">
+                <label className="radio-label">
                   <input
-                    className="pr-4"
                     type="radio"
                     value="graphics"
                     checked={selectedStyle === "graphics"}
@@ -120,7 +150,7 @@ function PlatformImageGeneration() {
                 </label>
               </div>
             </div>
-            <button type="submit">Upload</button>
+            <button type="submit" className="submit-button">Upload</button>
           </form>
         </div>
       </div>
