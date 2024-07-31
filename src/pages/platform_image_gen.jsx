@@ -25,26 +25,29 @@ function PlatformImageGeneration() {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append('image1', selectedFile1);
-    formData.append('image2', selectedFile2);
-    formData.append('style', selectedStyle);
-    formData.append('campaign_id', campaignId);
-    formData.append('input_point', inputPoint);
+    formData.append("image1", selectedFile1);
+    formData.append("image2", selectedFile2);
+    formData.append("style", selectedStyle);
+    formData.append("campaign_id", campaignId);
+    formData.append("input_point", inputPoint);
 
     try {
-      const response = await fetch('https://epash-ai-jaroslavsbolsak.replit.app/api/image_gen', {
-        method: 'POST',
-        body: formData,
-      });
+      const response = await fetch(
+        "https://epash-ai-jaroslavsbolsak.replit.app/api/image_gen",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (response.ok) {
         const result = await response.json();
-        console.log('Success:', result);
+        console.log("Success:", result);
       } else {
-        console.error('Error:', response.statusText);
+        console.error("Error:", response.statusText);
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
@@ -59,20 +62,25 @@ function PlatformImageGeneration() {
           <h1 className="font-custom text-3xl font-black mb-10">
             Upload Your Images and Add Your Styles
           </h1>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="image1">Upload an image <p className="italic">of only the product</p>.</label>
+          <form className="flex flex-col" onSubmit={handleSubmit}>
+            <div className="">
+              <label htmlFor="image1">
+                Upload an image <i>of only the product</i>.
+              </label>
               <input type="file" id="image1" onChange={handleFileChange1} />
             </div>
-            <div className="form-group">
-              <label htmlFor="image2">Upload an image that you might want to use for the ads.</label>
+            <div className="">
+              <label htmlFor="image2">
+                Upload an image that you might want to use for the ads.
+              </label>
               <input type="file" id="image2" onChange={handleFileChange2} />
             </div>
-            <div className="form-group">
+            <div className="">
               <label>Choose Image Style:</label>
               <div className="radio-group">
-                <label>
+                <label className="border border-stone-100 rounded-md px-5 py-2 shadow-md mr-5">
                   <input
+                    className="pr-4"
                     type="radio"
                     value="photorealistic"
                     checked={selectedStyle === "photorealistic"}
@@ -80,8 +88,9 @@ function PlatformImageGeneration() {
                   />
                   Photorealistic
                 </label>
-                <label>
+                <label className="border border-stone-100 rounded-md px-5 py-2 shadow-md mr-5">
                   <input
+                    className="pr-4"
                     type="radio"
                     value="painting"
                     checked={selectedStyle === "painting"}
@@ -89,8 +98,9 @@ function PlatformImageGeneration() {
                   />
                   Painting
                 </label>
-                <label>
+                <label className="border border-stone-100 rounded-md px-5 py-2 shadow-md mr-5">
                   <input
+                    className="pr-4"
                     type="radio"
                     value="cartoon"
                     checked={selectedStyle === "cartoon"}
@@ -98,8 +108,9 @@ function PlatformImageGeneration() {
                   />
                   Cartoon
                 </label>
-                <label>
+                <label className="border border-stone-100 rounded-md px-5 py-2 shadow-md mr-5">
                   <input
+                    className="pr-4"
                     type="radio"
                     value="graphics"
                     checked={selectedStyle === "graphics"}
