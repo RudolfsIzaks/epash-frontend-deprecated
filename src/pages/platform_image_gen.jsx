@@ -77,7 +77,7 @@ function PlatformImageGeneration() {
               <button
                 type="button"
                 onClick={() => document.getElementById('image1').click()}
-                className="px-5 py-2 bg-black rounded-md text-white font-custom font-bold"
+                className="px-5 py-2 bg-black rounded-md text-white font-custom w-48"
               >
                 Upload Image 1
               </button>
@@ -95,7 +95,7 @@ function PlatformImageGeneration() {
               <button
                 type="button"
                 onClick={() => document.getElementById('image2').click()}
-                className="px-5 py-2 bg-black rounded-md text-white font-custom font-bold"
+                className="px-5 py-2 bg-black rounded-md text-white font-custom w-48"
               >
                 Upload Image 2
               </button>
