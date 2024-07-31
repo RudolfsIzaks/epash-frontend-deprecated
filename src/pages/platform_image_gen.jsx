@@ -1,6 +1,7 @@
 import React from "react";
 import "../index.css";
 import NavLogo from "../components/navLogo";
+import { Link } from "react-router-dom";
 
 function PlatformImageGeneration() {
   return (
