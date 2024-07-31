@@ -3,6 +3,7 @@ import "../index.css";
 import NavLogo from "../components/navLogo";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import '../ImageUpload.css';
 
 function PlatformImageGeneration() {
   const [selectedFile1, setSelectedFile1] = useState(null);
@@ -63,7 +64,7 @@ function PlatformImageGeneration() {
           <h1 className="font-custom text-3xl font-black mb-10">
             Upload Your Images and Add Your Styles
           </h1>
-          <form className="flex flex-col" onSubmit={handleSubmit}>
+          <form className="flex flex-col items-start" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-4 mb-5">
               <label htmlFor="image1">
                 Upload an image <i>of only the product</i>.
@@ -101,7 +102,7 @@ function PlatformImageGeneration() {
               </button>
             </div>
             <div>
-              <label>Choose Image Style:</label>
+              <label className="mb-5">Choose Image Style:</label>
               <div className="radio-group">
                 <label className="radio-label">
                   <input
@@ -141,7 +142,7 @@ function PlatformImageGeneration() {
                 </label>
               </div>
             </div>
-            <button type="submit" className="submit-button">Upload</button>
+            <button type="submit" className="submit-button my-5">Upload</button>
           </form>
         </div>
       </div>
