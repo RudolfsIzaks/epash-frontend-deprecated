@@ -23,13 +23,6 @@ function PlatformImageGeneration() {
     setSelectedStyle(event.target.value);
   };
 
-  const handleCampaignIdChange = (event) => {
-    setCampaignId(event.target.value);
-  };
-
-  const handleInputPointChange = (event) => {
-    setInputPoint(event.target.value);
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -38,8 +31,6 @@ function PlatformImageGeneration() {
     formData.append("image1", selectedFile1);
     formData.append("image2", selectedFile2);
     formData.append("style", selectedStyle);
-    formData.append("campaign_id", campaignId);
-    formData.append("input_point", inputPoint);
 
     try {
       const response = await fetch(
@@ -73,7 +64,7 @@ function PlatformImageGeneration() {
             Upload Your Images and Add Your Styles
           </h1>
           <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div>
+            <div className="flex flex-col gap-4">
               <label htmlFor="image1">
                 Upload an image <i>of only the product</i>.
               </label>
@@ -86,12 +77,12 @@ function PlatformImageGeneration() {
               <button
                 type="button"
                 onClick={() => document.getElementById('image1').click()}
-                className="upload-button"
+                className="px-5 py-2 bg-black rounded-md text-white font-custom font-bold"
               >
                 Upload Image 1
               </button>
             </div>
-            <div>
+            <div className="flex flex-col gap-4">
               <label htmlFor="image2">
                 Upload an image that you might want to use for the ads.
               </label>
@@ -104,7 +95,7 @@ function PlatformImageGeneration() {
               <button
                 type="button"
                 onClick={() => document.getElementById('image2').click()}
-                className="upload-button"
+                className="px-5 py-2 bg-black rounded-md text-white font-custom font-bold"
               >
                 Upload Image 2
               </button>
