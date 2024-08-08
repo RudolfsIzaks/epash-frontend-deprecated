@@ -45,7 +45,6 @@ function CreateCampaign() {
     language: [],
     age: [],
     budget: "",
-    daily_limit: "",
     start_date: "",
     end_date: "",
     website: "",
@@ -440,28 +439,6 @@ function CreateCampaign() {
               type="number"
               id="budget"
               placeholder="Set budget..."
-              onChange={handleChange}
-            />
-            <span className="h-6 w-px rounded-md bg-gray-200"></span>
-            <p className="text-gray-700">$</p>
-          </div>
-          <label
-            htmlFor="daily_limit"
-            className="mt-5 mb-2 text-epash-green font-custom"
-          >
-            Daily Budget
-          </label>
-          <div
-            className="shadow flex items-center border-2 py-2 px-2 mb-5 rounded-md overflow-hidden w-80
-           gap-3"
-          >
-            <input
-              required
-              name="daily_limit"
-              className="appearance-none focus:outline-none focus:shadow-outline w-72"
-              type="number"
-              id="daily_limit"
-              placeholder="Set daily budget..."
               onChange={handleChange}
             />
             <span className="h-6 w-px rounded-md bg-gray-200"></span>

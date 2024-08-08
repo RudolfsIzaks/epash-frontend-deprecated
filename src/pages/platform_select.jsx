@@ -45,28 +45,42 @@ function PlatformSelect() {
     
     const parseCampaignData = (data, platform) => {
       if (platform === "Spotify") {
-          return {
-              campaignId: data.campaign_id,
-              audio: JSON.parse(data.Audio[0]),
-              images: JSON.parse(data.Images[0]),
-              title: data.title,
-          };
-      }
-  
-      const cleanText = (textArray) => {
-          return textArray.map(text => text.replace(/\\\"/g, '"').replace(/^"|"$/g, ''));
-      };
-  
-      return {
+        return {
           campaignId: data.campaign_id,
-          headings: cleanText(JSON.parse(data.Headings[0])),
-          longHeadings: cleanText(JSON.parse(data['Long Headings'][0])),
-          descriptions: cleanText(JSON.parse(data.Descriptions[0])),
+          audio: JSON.parse(data.Audio[0]),
           images: JSON.parse(data.Images[0]),
-          budget: data.Budget, // Added field
-          locations: JSON.parse(data.Locations[0]), // Added field
+          title: data.title,
+        };
+      }
+    
+      if (platform === "Facebook") {
+        return {
+          campaignId: data.campaign_id,
+          campaignNumber: data.campaign_num,
+          budget: data.budget,
+          descriptions: data.descriptions.map(description => description.replace(/\\\"/g, '"').replace(/^"|"$/g, '')),
+          headlines: data.headlines.map(headline => headline.replace(/\\\"/g, '"').replace(/^"|"$/g, '')),
+          texts: data.texts.map(text => text.replace(/\\\"/g, '"').replace(/^"|"$/g, '')),
+          images: data.images
+        }
+      }
+    
+      const cleanText = (textArray) => {
+        return textArray.map(text => text.replace(/\\\"/g, '"').replace(/^"|"$/g, ''));
       };
-  };
+    
+      // Default parsing logic for other platforms
+      return {
+        campaignId: data.campaign_id,
+        headings: cleanText(JSON.parse(data.Headings[0])),
+        longHeadings: cleanText(JSON.parse(data['Long Headings'][0])),
+        descriptions: cleanText(JSON.parse(data.Descriptions[0])),
+        images: JSON.parse(data.Images[0]),
+        budget: data.Budget, // Added field
+        locations: JSON.parse(data.Locations[0]), // Added field
+      };
+    };
+    
   
 
     return( 
