@@ -268,7 +268,7 @@ function CreateCampaign() {
       campaign_id = campaign_id.trim().replace(/^"|"$/g, "");
 
       setLoading(false);
-      navigate("/platform-image-generation", { state: { campaign_id } }); // Pass cleaned campaign_id to PlatformSelect
+      navigate("/platform-select", { state: { campaign_id } }); // Pass cleaned campaign_id to PlatformSelect
     } catch (error) {
       console.error("Error creating campaign:", error.message);
       setLoading(false);
