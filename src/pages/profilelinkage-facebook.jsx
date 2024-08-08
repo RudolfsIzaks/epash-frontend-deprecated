@@ -1,4 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import NavLogo from "../components/navLogo";
+import { Link, useNavigate } from "react-router-dom";
+import DashNav from "../components/dashNav";
+import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import '../index.css';
 
 function ProfileLinkageFacebook() {
