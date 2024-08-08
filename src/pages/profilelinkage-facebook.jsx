@@ -139,7 +139,7 @@ function ProfileLinkageFacebook() {
                   onClick={handleGuide}
                 />
               </div>
-              <p className="text-epash-green font-custom font-bold">Ad Account ID:</p>
+              <p className="text-epash-green font-custom font-bold mt-10">Ad Account ID:</p>
               <div className="flex justify-between items-center bg-stone-100 border border-stone-300 py-2 px-4 rounded-md">
                 <input
                   type="text"
@@ -176,7 +176,7 @@ function ProfileLinkageFacebook() {
               {step === 1 && (
                 <div className="flex flex-col items-center">
                   <h2 className="text-xl font-bold mb-2">Follow These Links Where Facebook Provides Instructions For Both ID's</h2>
-                  <div className="flex gap-5 justify-center items-center">
+                  <div className="flex gap-5 justify-center items-center mt-10">
                     <a className="text-epash-green font-custom" href="https://www.facebook.com/help/1503421039731588/?helpref=uf_share">Page ID Retrieval Guide</a>
                     <a className="text-epash-green font-custom" href="https://www.facebook.com/business/help/1492627900875762">Ad Account ID Retrieval Guide</a>
                   </div>

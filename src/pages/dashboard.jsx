@@ -5,6 +5,8 @@ import NavLogo from "../components/navLogo";
 import Swal from "sweetalert2";
 import DashNav from "../components/dashNav";
 import { useAuth } from "../components/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWarning } from "@fortawesome/free-solid-svg-icons";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -109,6 +111,18 @@ function Dashboard() {
         </div>
       </div>
       <DashNav handleLogout={handleLogout}/>
+      <div className="flex my-10 items-center justify-center">
+        <div className="flex gap-10 bg-red-500 text-white font-custom p-10 rounded-md shadow-lg">
+          <FontAwesomeIcon
+            icon={faWarning}
+            className="text-5xl text-white"
+          />
+          <div>
+           <p className="text-white font-custom text-xl">To Successfully Create and Run Ad Campaigns <i>Please Connect Google and/or Facebook accounts</i></p>
+           <p className="text-stone-100 italic text-sm">Go To Settings To Link Accounts</p>
+          </div>
+        </div>
+      </div>
       <div className="mx-20 my-10">
        <h1 className="text-3xl font-custom font-black">Welcome, {userDone ? userDone.name : "Guest"}!</h1>
       </div>
