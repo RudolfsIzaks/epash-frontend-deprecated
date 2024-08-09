@@ -22,6 +22,7 @@ import PlatformView from '../pages/platformView';
 import PlatformGoogleView from '../pages/platform_view_google';
 import PlatformSpotify from '../pages/platform_spotify_edit';
 import PlatformImageGeneration from '../pages/platform_image_gen';
+import PlatformFacebookView from '../pages/platform_view_facebook';
 
 function RouteChangeTracker() {
     const location = useLocation();
@@ -60,7 +61,7 @@ function RouterSetup() {
                     <Route path="/platform-select" element={<PrivateRoute><PlatformSelect/></PrivateRoute>} />
                     <Route path="/platform-select-view" element={<PrivateRoute><PlatformView/></PrivateRoute>} />
                     <Route path="/platform-view-google" element={<PrivateRoute><PlatformGoogleView/></PrivateRoute>} />
-                    <Route path="/platform-edit-facebook" element={<PrivateRoute><PlatformFacebook/></PrivateRoute>} />
+                    <Route path="/platform-view-google" element={<PrivateRoute><PlatformFacebookView/></PrivateRoute>} />
                     <Route path="/platform-edit-spotify" element={<PrivateRoute><PlatformSpotify/></PrivateRoute>} />
                     <Route path="/platform-image-generation" element={<PrivateRoute><PlatformImageGeneration/></PrivateRoute>} />
                 </Routes>
