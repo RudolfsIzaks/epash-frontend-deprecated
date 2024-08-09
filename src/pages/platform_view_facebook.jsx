@@ -48,11 +48,11 @@ function PlatformFacebookView() {
       </div>
       <hr />
       <div>
-        <h1 className="text-center mt-20 text-5xl font-custom font-bold">Check out your google ads</h1>
-        <p className="text-center mb-20 mt-5 text-xl">You can always go and change headlines, body text and contents of your google ads by pressing 'edit'.</p>
+        <h1 className="text-center mt-20 text-5xl font-custom font-bold">Check out your Facebook ads</h1>
+        <p className="text-center mb-20 mt-5 text-xl">You can always go and change headlines, body text, and contents of your Facebook ads by pressing 'edit'.</p>
         <div className="flex justify-center">
           <div className="flex flex-col w-2/3 m-10 rounded-lg shadow-lg border border-stone-200 bg-white p-10">
-            <h1 className="text-4xl font-custom">Google Ads</h1>
+            <h1 className="text-4xl font-custom">Facebook Ads</h1>
             <div className="flex flex-col gap-10 justify-center mt-10">
               <div className="flex flex-col gap-4 flex-grow">
                 <h2 className="text-xl font-custom">Headlines</h2>
@@ -89,7 +89,7 @@ function PlatformFacebookView() {
               <div className="flex flex-col items-center mt-10 flex-grow">
                 <img
                   src={images[currentImageIndex]}
-                  alt="Google Ad"
+                  alt="Facebook Ad"
                   className="w-auto h-96 object-cover rounded-md mb-5"
                 />
                 <div className="flex gap-5">
