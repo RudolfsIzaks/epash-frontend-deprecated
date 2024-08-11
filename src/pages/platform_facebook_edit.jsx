@@ -100,8 +100,8 @@ function PlatformFacebook() {
         </p>
         <div className="flex justify-around flex-wrap">
           {titles.map((title, index) => (
-            <div key={index} className="w-full md:w-1/2 p-4 m-10">
-              <div className="p-10 border border-stone-100 shadow-lg rounded">
+            <div key={index} className="w-full md:w-1/3 p-4 m-10">
+              <div className="p-10 border border-stone-100 shadow-lg rounded-md">
                 <h2 className="font-black font-custom text-lg">Title:</h2>
                 <input
                   type="text"
@@ -125,7 +125,7 @@ function PlatformFacebook() {
           ))}
         </div>
         {images.length > 0 && (
-          <div className="text-center mt-10 flex justify-center">
+          <div className="text-center mt-10 flex flex-col items-center justify-center">
             <img
               src={images[currentImageIndex]}
               alt={`Campaign Image ${currentImageIndex + 1}`}
