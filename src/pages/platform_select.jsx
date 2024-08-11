@@ -56,13 +56,21 @@ function PlatformSelect() {
       if (platform === "Facebook") {
         return {
           campaignId: data.campaign_id,
-          campaignNumber: data.campaign_num,
-          budget: data.budget,
-          descriptions: data.descriptions.map(description => description.replace(/\\\"/g, '"').replace(/^"|"$/g, '')),
-          headlines: data.headlines.map(headline => headline.replace(/\\\"/g, '"').replace(/^"|"$/g, '')),
-          texts: data.texts.map(text => text.replace(/\\\"/g, '"').replace(/^"|"$/g, '')),
-          images: data.images
-        }
+          campaignNumber: data.campaign_num[0],
+          budget: data.budget[0],
+          descriptions: JSON.parse(data.descriptions[0]).map(description =>
+            description.replace(/\\\"/g, '"').replace(/^"|"$/g, '')
+          ),
+          headlines: JSON.parse(data.headlines[0]).map(headline =>
+            headline.replace(/\\\"/g, '"').replace(/^"|"$/g, '')
+          ),
+          texts: JSON.parse(data.texts[0]).map(text =>
+            text.replace(/\\\"/g, '"').replace(/^"|"$/g, '')
+          ),
+          images: JSON.parse(data.images[0]) // Assuming that images are a stringified array of URLs or 'None'
+            .map(image => (image === "None" ? null : image)) // Replace "None" with null
+            .filter(image => image !== null), // Filter out null values if you don't want them
+        };
       }
     
       const cleanText = (textArray) => {
