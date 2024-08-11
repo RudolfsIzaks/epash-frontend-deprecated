@@ -101,23 +101,23 @@ function PlatformFacebook() {
         <div className="flex justify-around flex-wrap">
           {titles.map((title, index) => (
             <div key={index} className="w-full md:w-1/2 p-4">
-              <div className="p-5 border rounded shadow">
-                <h2 className="font-bold text-lg">Title:</h2>
+              <div className="p-10 border border-stone-100 shadow-lg rounded">
+                <h2 className="font-black font-custom text-lg">Title:</h2>
                 <input
                   type="text"
                   value={title}
                   onChange={(e) =>
                     handleChange(setTitles)(index, e.target.value)
                   }
-                  className="w-full p-2 border rounded"
+                  className="w-full px-5 py-4 border border-stone-200 text-stone-500 focus:text-black focus:border-epash-green transition rounded"
                 />
-                <h2 className="font-bold text-lg mt-4">Description:</h2>
+                <h2 className="font-bold font-custom text-lg mt-4">Description:</h2>
                 <textarea
                   value={descriptions[index]}
                   onChange={(e) =>
                     handleChange(setDescriptions)(index, e.target.value)
                   }
-                  className="w-full p-2 border rounded"
+                  className="w-full px-5 py-4 border border-stone-200 text-stone-500 focus:text-black focus:border-epash-green transition rounded"
                   rows="3"
                 />
               </div>
@@ -134,13 +134,13 @@ function PlatformFacebook() {
             <div className="w-full text-center mt-5">
               <button
                 onClick={handlePreviousImage}
-                className="mr-5 bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"
+                className="mr-5 bg-epash-green border-epash-green text-white hover:bg-transparent hover:text-epash-green font-black font-custom transition py-2 px-5 rounded"
               >
                 Previous
               </button>
               <button
                 onClick={handleNextImage}
-                className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"
+                className="bg-epash-green border-epash-green text-white hover:bg-transparent hover:text-epash-green font-black font-custom transition py-2 px-6 rounded"
               >
                 Next
               </button>
