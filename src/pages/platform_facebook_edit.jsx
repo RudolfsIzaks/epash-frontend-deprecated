@@ -109,7 +109,7 @@ function PlatformFacebook() {
                   onChange={(e) =>
                     handleChange(setTitles)(index, e.target.value)
                   }
-                  className="w-full px-5 py-4 border border-stone-200 text-stone-500 focus:text-black focus:border-epash-green transition rounded"
+                  className="w-full px-5 py-4 border border-stone-200 text-stone-500 focus:text-black focus:outline-epash-green  active:outline-epash-green transition rounded"
                 />
                 <h2 className="font-bold font-custom text-lg mt-4">Description:</h2>
                 <textarea
@@ -117,7 +117,7 @@ function PlatformFacebook() {
                   onChange={(e) =>
                     handleChange(setDescriptions)(index, e.target.value)
                   }
-                  className="w-full px-5 py-4 border border-stone-200 text-stone-500 focus:text-black focus:border-epash-green transition rounded"
+                  className="w-full px-5 py-4 border border-stone-200 text-stone-500 focus:text-black focus:outline-epash-green active:outline-epash-green transition rounded"
                   rows="3"
                 />
               </div>
@@ -129,7 +129,7 @@ function PlatformFacebook() {
             <img
               src={images[currentImageIndex]}
               alt={`Campaign Image ${currentImageIndex + 1}`}
-              className="mt-4 w-full h-auto rounded"
+              className="mt-4 w-96 h-auto rounded-lg"
             />
             <div className="w-full text-center mt-5">
               <button
