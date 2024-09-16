@@ -14,6 +14,10 @@ function PlatformFacebook() {
   const [descriptions, setDescriptions] = useState([]);
   const [images, setImages] = useState([]);
   const [budget, setBudget] = useState("");
+  const [interests, setInterests] = useState([]);
+  const [age, setAge] = useState("");
+  const [locationData, setLocationData] = useState("");
+  const [language, setLanguage] = useState("");
 
   useEffect(() => {
     if (parsedData) {
@@ -21,6 +25,10 @@ function PlatformFacebook() {
       setDescriptions(parsedData.descriptions || []);
       setImages(parsedData.images || []);
       setBudget(parsedData.budget || "");
+      setInterests(parsedData.interests || []);
+      setAge(parsedData.age || "");
+      setLocationData(parsedData.location || "");
+      setLanguage(parsedData.language || "");
     }
   }, [parsedData]);
 
@@ -35,9 +43,14 @@ function PlatformFacebook() {
   const handleSubmit = async () => {
     const data = {
       campaign_id: parsedData.campaignId,
-      titles: titles, // Sending titles instead of headlines
+      titles: titles,
       descriptions: descriptions,
       images: images,
+      interests: interests,
+      budget: budget,
+      age: age,
+      location: locationData,
+      language: language,
     };
 
     try {
@@ -92,6 +105,12 @@ function PlatformFacebook() {
             Go Back
           </Link>
         </div>
+      </div>
+      <div className="flex justify-center gap-5 items-center">
+        <p className="text-lg">Interests: {interests}</p>
+        <p className="text-lg">Age: {age}</p>
+        <p className="text-lg">Location: {locationData}</p>
+        <p className="text-lg">Languages: {language}</p>
       </div>
       <div className="text-center mt-10">
         <h1 className="text-5xl font-bold">Facebook Ad Campaign Details</h1>
