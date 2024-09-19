@@ -20,12 +20,13 @@ function PlatformFacebookView() {
     descriptions,     // matches `descriptions` from parsedData
     images,           // matches `images` from parsedData
     budget,           // added to match `budget`
-    ageRanges: age,   // `ageRanges` from parsedData, renamed to `age`
+    ageRanges,  // `ageRanges` from parsedData, renamed to `age`
     interests,        // matches `interests` from parsedData
     location: locationData,  // `location` from parsedData, renamed to `locationData`
     language          // matches `language` from parsedData
   } = parsedData;
   
+  const age = ageRanges.join(' ');
 
   console.log(parsedData);
 
