@@ -61,7 +61,7 @@ function RouterSetup() {
                     <Route path="/platform-select" element={<PrivateRoute><PlatformSelect/></PrivateRoute>} />
                     <Route path="/platform-select-view" element={<PrivateRoute><PlatformView/></PrivateRoute>} />
                     <Route path="/platform-view-google" element={<PrivateRoute><PlatformGoogleView/></PrivateRoute>} />
-                    <Route path="/platform-view-google" element={<PrivateRoute><PlatformFacebookView/></PrivateRoute>} />
+                    <Route path="/platform-view-facebook" element={<PrivateRoute><PlatformFacebookView/></PrivateRoute>} />
                     <Route path="/platform-edit-facebook" element={<PrivateRoute><PlatformFacebook/></PrivateRoute>} />
                     <Route path="/platform-edit-spotify" element={<PrivateRoute><PlatformSpotify/></PrivateRoute>} />
                     <Route path="/platform-image-generation" element={<PrivateRoute><PlatformImageGeneration/></PrivateRoute>} />
