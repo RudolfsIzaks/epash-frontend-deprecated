@@ -19,7 +19,13 @@ function PlatformFacebookView() {
     headlines: headings,
     descriptions,
     images,
-    texts: longHeadings, // Assuming 'texts' maps to 'longHeadings' in your component
+    texts: longHeadings,
+    interests: interests,
+    budget: budget,
+    age: age,
+    location: locationData,
+    language: language,
+     // Assuming 'texts' maps to 'longHeadings' in your component
   } = parsedData;
 
   console.log(parsedData);
