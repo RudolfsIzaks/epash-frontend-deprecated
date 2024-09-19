@@ -87,7 +87,7 @@ function PlatformFacebookView() {
                     className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"
                   />
                 ))}
-                <h2 className="text-xl font-custom mt-5">Long Headlines</h2>
+                {/* <h2 className="text-xl font-custom mt-5">Long Headlines</h2>
                 {longHeadings.map((longHeadline, index) => (
                   <input
                     key={index}
@@ -96,7 +96,7 @@ function PlatformFacebookView() {
                     defaultValue={longHeadline}
                     className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"
                   />
-                ))}
+                ))} */}
               </div>
               <div className="flex flex-col items-center mt-10 flex-grow">
                 <img
