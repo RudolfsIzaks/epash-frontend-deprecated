@@ -9,24 +9,23 @@ function PlatformFacebookView() {
   const navigate = useNavigate();
   const { parsedData } = location.state || {};
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  
   if (!parsedData) {
     return <div>Loading...</div>;
   }
-
+  
   const {
-    campaign_id: campaignId,
-    headlines: headings,
-    descriptions,
-    images,
-    texts: longHeadings,
-    interests: interests,
-    budget: budget,
-    age: age,
-    location: locationData,
-    language: language,
-     // Assuming 'texts' maps to 'longHeadings' in your component
+    campaignId,       // matches `campaignId` from parsedData
+    headings,         // matches `headings` from parsedData
+    descriptions,     // matches `descriptions` from parsedData
+    images,           // matches `images` from parsedData
+    budget,           // added to match `budget`
+    ageRanges: age,   // `ageRanges` from parsedData, renamed to `age`
+    interests,        // matches `interests` from parsedData
+    location: locationData,  // `location` from parsedData, renamed to `locationData`
+    language          // matches `language` from parsedData
   } = parsedData;
+  
 
   console.log(parsedData);
 
@@ -53,6 +52,13 @@ function PlatformFacebookView() {
         </div>
       </div>
       <hr />
+      <div className="flex justify-center gap-5 items-center">
+        <p className="text-lg">Interests: {interests}</p>
+        <p className="text-lg">Age: {age}</p>
+        <p className="text-lg">Location: {locationData}</p>
+        <p className="text-lg">Languages: {language}</p>
+        <p className="text-lg">Languages: {budget}</p>
+      </div>
       <div>
         <h1 className="text-center mt-20 text-5xl font-custom font-bold">Check out your Facebook ads</h1>
         <p className="text-center mb-20 mt-5 text-xl">You can always go and change headlines, body text, and contents of your Facebook ads by pressing 'edit'.</p>
