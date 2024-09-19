@@ -53,11 +53,11 @@ function PlatformFacebookView() {
       </div>
       <hr />
       <div className="flex justify-center gap-5 items-center">
-        <p className="text-lg">Interests: {interests}</p>
-        <p className="text-lg">Age: {age}</p>
-        <p className="text-lg">Location: {locationData}</p>
-        <p className="text-lg">Languages: {language}</p>
-        <p className="text-lg">Languages: {budget}</p>
+        <p className="text-lg">Interests: <i className="font-bold italic text-epash-green">{interests}</i></p>
+        <p className="text-lg">Age: <i className="font-bold italic text-epash-green">{age}</i></p>
+        <p className="text-lg">Location: <i className="font-bold italic text-epash-green">{locationData}</i></p>
+        <p className="text-lg">Languages: <i className="font-bold italic text-epash-green">{language}</i></p>
+        <p className="text-lg">Budget: <i className="font-bold italic text-epash-green">{budget}</i></p>
       </div>
       <div>
         <h1 className="text-center mt-20 text-5xl font-custom font-bold">Check out your Facebook ads</h1>
