@@ -53,7 +53,7 @@ function PlatformFacebookView() {
         </div>
       </div>
       <hr />
-      <div className="flex justify-center gap-5 items-center">
+      <div className="flex justify-center gap-5 mt-10 items-center">
         <p className="text-lg">Interests: <i className="font-bold italic text-epash-green">{interests}</i></p>
         <p className="text-lg">Age: <i className="font-bold italic text-epash-green">{age}</i></p>
         <p className="text-lg">Location: <i className="font-bold italic text-epash-green">{locationData}</i></p>
