@@ -229,9 +229,9 @@ function SignUserUp() {
                 value={formData.confirmPassword}
               />
             </div>
-            <div className="flex gap-3 items-center ">
+            <div className="flex gap-3 items-center my-5">
             <input
-                type="check"
+                type="checkbox"
                 required
               />
             <p className="text-sm text-stone-800">I agree to the <Link to="/privacy-policy" className="text-epash-green underline">Privacy Policy</Link> and <Link to="/terms-conditions" className="text-epash-green underline">Terms & Conditions of Epash AI</Link></p>
