@@ -1,6 +1,7 @@
 import React from "react";
 import '../index.css';
 import NavbarLanding from "../components/navbar";
+import Footer from "../components/footer";
 
 function LandingPage() {
     return(
