@@ -229,6 +229,13 @@ function SignUserUp() {
                 value={formData.confirmPassword}
               />
             </div>
+            <div className="flex gap-3 items-center ">
+            <input
+                type="check"
+                required
+              />
+            <p className="text-sm text-stone-800">I agree to the <a href="/privacy-policy" className="text-epash-green underline">Privacy Policy</a> and <a href="/terms-conditions" className="text-epash-green underline">Terms & Conditions of Epash AI</a></p>
+            </div>
             <div className="flex items-center justify-between">
               <button
                 className="bg-epash-green hover:bg-green-600 hover:scale-110 duration-150 text-white font-bold text-xl py-2 px-8 rounded focus:outline-none focus:shadow-outline"

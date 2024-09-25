@@ -7,6 +7,7 @@ import DashNav from "../components/dashNav";
 import { useAuth } from "../components/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
+import Footer from "../components/footer";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -126,6 +127,7 @@ function Dashboard() {
       <div className="mx-20 my-10">
        <h1 className="text-3xl font-custom font-black">Welcome, {userDone ? userDone.name : "Guest"}!</h1>
       </div>
+      <Footer/>
     </>
   );
 }

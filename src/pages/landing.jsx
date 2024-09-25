@@ -11,6 +11,7 @@ function LandingPage() {
             <h1 className="font-custom text-5xl font-bold text-center px-48">Crushing Online Sales Records With Personalized AI Marketing</h1>
             <p className="pt-10 pb-5" >Meet Epash, the one-of-a kind AI aimed at transforming digital marketing, forever.</p>            
          </div>
+         <Footer/>
         </>
     )
 }
