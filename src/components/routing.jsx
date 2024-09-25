@@ -23,6 +23,7 @@ import PlatformGoogleView from '../pages/platform_view_google';
 import PlatformSpotify from '../pages/platform_spotify_edit';
 import PlatformImageGeneration from '../pages/platform_image_gen';
 import PlatformFacebookView from '../pages/platform_view_facebook';
+import Privacy from '../pages/privacy';
 
 function RouteChangeTracker() {
     const location = useLocation();

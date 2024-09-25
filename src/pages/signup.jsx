@@ -234,7 +234,7 @@ function SignUserUp() {
                 type="check"
                 required
               />
-            <p className="text-sm text-stone-800">I agree to the <a href="/privacy-policy" className="text-epash-green underline">Privacy Policy</a> and <a href="/terms-conditions" className="text-epash-green underline">Terms & Conditions of Epash AI</a></p>
+            <p className="text-sm text-stone-800">I agree to the <Link to="/privacy-policy" className="text-epash-green underline">Privacy Policy</Link> and <Link to="/terms-conditions" className="text-epash-green underline">Terms & Conditions of Epash AI</Link></p>
             </div>
             <div className="flex items-center justify-between">
               <button
