@@ -65,6 +65,7 @@ function RouterSetup() {
                     <Route path="/platform-edit-facebook" element={<PrivateRoute><PlatformFacebook/></PrivateRoute>} />
                     <Route path="/platform-edit-spotify" element={<PrivateRoute><PlatformSpotify/></PrivateRoute>} />
                     <Route path="/platform-image-generation" element={<PrivateRoute><PlatformImageGeneration/></PrivateRoute>} />
+                    <Route path="/privacy-policy" element={<Privacy />} />
                 </Routes>
             </AuthProvider>
         </Router>
