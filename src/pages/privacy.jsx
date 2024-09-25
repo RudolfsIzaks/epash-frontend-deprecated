@@ -4,6 +4,18 @@ import "../index.css";
 function Privacy() {
   return (
     <>
+      <div className="flex w-full justify-between items-center py-5 px-48">
+        <NavLogo />
+        <div className="flex gap-3">
+          <Link
+            to="/"
+            className="flex justify-center items-center bg-epash-green text-white rounded-md px-8 h-12 font-bold hover:scale-110 duration-100"
+          >
+            Back
+          </Link>
+        </div>
+      </div>
+      <hr />
       <div className="flex justify-center">
         <div className="md:w-1/2 flex-col gap-10 my-10 font-custom">
           <h1 className="text-3xl font-black">Privacy Policy</h1>
