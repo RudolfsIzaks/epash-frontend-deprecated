@@ -3,32 +3,36 @@ import NavLogo from "../components/navLogo";
 import { Link, useLocation } from "react-router-dom";
 import '../index.css';
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faClipboard,
+  faGear
+} from "@fortawesome/free-solid-svg-icons";
 
 function PlatformFacebookView() {
   const location = useLocation();
   const navigate = useNavigate();
   const { parsedData } = location.state || {};
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+  const [copySuccess, setCopySuccess] = useState(""); // State to track copy success message
+
   if (!parsedData) {
     return <div>Loading...</div>;
   }
-  
-  const {
-    campaignId,       // matches `campaignId` from parsedData
-    headings,         // matches `headings` from parsedData
-    descriptions,     // matches `descriptions` from parsedData
-    images,           // matches `images` from parsedData
-    budget,           // added to match `budget`
-    ageRanges,  // `ageRanges` from parsedData, renamed to `age`
-    interests,        // matches `interests` from parsedData
-    location: locationData,  // `location` from parsedData, renamed to `locationData`
-    language          // matches `language` from parsedData
-  } = parsedData;
-  
-  const age = ageRanges.join(' ');
 
-  console.log(parsedData);
+  const {
+    campaignId,
+    headings,
+    descriptions,
+    images,
+    budget,
+    ageRanges,
+    interests,
+    location: locationData,
+    language,
+  } = parsedData;
+
+  const age = ageRanges.join(' ');
 
   const handleNextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -38,11 +42,20 @@ function PlatformFacebookView() {
     setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
+  const handleCopy = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopySuccess(text); // Store the copied text to show success message
+      setTimeout(() => setCopySuccess(""), 2000); // Clear success message after 2 seconds
+    } catch (err) {
+      console.error("Failed to copy text to clipboard:", err);
+    }
+  };
+
   return (
     <>
       <div className="flex w-full justify-between items-center py-5 px-48">
         <NavLogo />
-
         <div className="flex gap-3">
           <Link
             to="/dashboard/manage-campaigns"
@@ -70,34 +83,51 @@ function PlatformFacebookView() {
               <div className="flex flex-col gap-4 flex-grow">
                 <h2 className="text-xl font-custom">Headlines</h2>
                 {headings.map((headline, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    readOnly
-                    defaultValue={headline}
-                    className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"
-                  />
+                  <div key={index} className="flex items-center gap-3">
+                    <input
+                      type="text"
+                      readOnly
+                      defaultValue={headline}
+                      className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5 w-full"
+                    />
+                    <button
+                      onClick={() => handleCopy(headline)}
+                      className="bg-stone-300 flex gap-2 items-center text-stone-500 px-3 py-1 rounded hover:bg-epash-green hover:text-white transition"
+                    >
+                      Copy 
+                      <FontAwesomeIcon 
+                        icon={faClipboard}
+                      />
+
+                    </button>
+                    {copySuccess === headline && (
+                      <span className="text-green-500">Copied!</span>
+                    )}
+                  </div>
                 ))}
                 <h2 className="text-xl font-custom mt-5">Descriptions</h2>
                 {descriptions.map((description, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    readOnly
-                    defaultValue={description}
-                    className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"
-                  />
+                  <div key={index} className="flex items-center gap-3">
+                    <input
+                      type="text"
+                      readOnly
+                      defaultValue={description}
+                      className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5 w-full"
+                    />
+                    <button
+                      onClick={() => handleCopy(description)}
+                      className="bg-stone-300 flex gap-2 items-center text-stone-500 px-3 py-1 rounded hover:bg-epash-green hover:text-white transition"
+                    >
+                      Copy
+                      <FontAwesomeIcon 
+                        icon={faClipboard}
+                      />
+                    </button>
+                    {copySuccess === description && (
+                      <span className="text-green-500">Copied!</span>
+                    )}
+                  </div>
                 ))}
-                {/* <h2 className="text-xl font-custom mt-5">Long Headlines</h2>
-                {longHeadings.map((longHeadline, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    readOnly
-                    defaultValue={longHeadline}
-                    className="rounded-md bg-stone-50 font-custom appearance-none outline-none border border-stone-200 py-2 px-5"
-                  />
-                ))} */}
               </div>
               <div className="flex flex-col items-center mt-10 flex-grow">
                 <img
