@@ -92,7 +92,7 @@ function PlatformFacebookView() {
                     />
                     <button
                       onClick={() => handleCopy(headline)}
-                      className="bg-stone-300 flex gap-2 items-center text-stone-500 px-3 py-1 rounded hover:bg-epash-green hover:text-white transition"
+                      className="bg-stone-200 flex gap-2 items-center text-stone-400 px-3 py-1 rounded hover:bg-epash-green hover:text-white transition"
                     >
                       Copy 
                       <FontAwesomeIcon 
@@ -116,7 +116,7 @@ function PlatformFacebookView() {
                     />
                     <button
                       onClick={() => handleCopy(description)}
-                      className="bg-stone-300 flex gap-2 items-center text-stone-500 px-3 py-1 rounded hover:bg-epash-green hover:text-white transition"
+                      className="bg-stone-200 flex gap-2 items-center text-stone-400 px-3 py-1 rounded hover:bg-epash-green hover:text-white transition"
                     >
                       Copy
                       <FontAwesomeIcon 
