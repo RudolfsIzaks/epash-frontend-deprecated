@@ -52,6 +52,15 @@ function PlatformFacebookView() {
     }
   };
 
+  const handleImageDownload = (imageUrl) => {
+    const link = document.createElement("a");
+    link.href = imageUrl;
+    link.download = `facebook-ad-image-${currentImageIndex + 1}.jpg`; // Default filename for the downloaded image
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       <div className="flex w-full justify-between items-center py-5 px-48">
@@ -98,7 +107,6 @@ function PlatformFacebookView() {
                       <FontAwesomeIcon 
                         icon={faClipboard}
                       />
-
                     </button>
                     {copySuccess === headline && (
                       <span className="text-green-500">Copied!</span>
@@ -149,6 +157,12 @@ function PlatformFacebookView() {
                     Next
                   </button>
                 </div>
+                <button
+                  onClick={() => handleImageDownload(images[currentImageIndex])}
+                  className="mt-5 py-2 px-5 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                >
+                  Download Image
+                </button>
               </div>
             </div>
             <div>
