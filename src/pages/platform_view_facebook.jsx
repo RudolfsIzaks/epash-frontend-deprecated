@@ -32,8 +32,10 @@ function PlatformFacebookView() {
     language,
   } = parsedData;
 
-  if(language == "en_US") {
-    language = "English";
+  let displayLanguage = language;
+
+  if (language === "en_US") {
+    displayLanguage = "English";
   }
 
   const age = ageRanges.join(' ');
@@ -103,7 +105,7 @@ function PlatformFacebookView() {
         <p className="text-lg text-stone-200">Location: <i className="font-bold italic text-white">{locationData}</i></p>
         </div>
         <div className="bg-epash-green rounded-md py-2 px-5">
-        <p className="text-lg text-stone-200">Language: <i className="font-bold italic text-white">{language}</i></p>
+        <p className="text-lg text-stone-200">Language: <i className="font-bold italic text-white">{displayLanguage}</i></p>
         </div>
         <div className="bg-epash-green rounded-md py-2 px-5">
         <p className="text-lg text-stone-200">Budget: <i className="font-bold italic text-white">{budget}</i></p>
