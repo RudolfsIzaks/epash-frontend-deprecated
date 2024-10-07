@@ -124,8 +124,8 @@ function Dashboard() {
           </div>
         </div>
       </div>
-      <div className="mx-20 my-10">
-       <h1 className="text-3xl font-custom font-black">Welcome, {userDone ? userDone.name : "Guest"}!</h1>
+      <div className="mx-20 my-10 min-h-screen">
+       <h1 className="text-3xl font-custom font-black">Welcome, {userDone ? userDone.name : "Guest"}👋</h1>
       </div>
       <Footer/>
     </>

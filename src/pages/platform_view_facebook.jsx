@@ -89,11 +89,21 @@ function PlatformFacebookView() {
       </div>
       <hr />
       <div className="flex justify-center gap-5 mt-10 items-center">
-        <p className="text-lg">Interests: <i className="font-bold italic text-epash-green">{interests}</i></p>
-        <p className="text-lg">Age: <i className="font-bold italic text-epash-green">{age}</i></p>
-        <p className="text-lg">Location: <i className="font-bold italic text-epash-green">{locationData}</i></p>
-        <p className="text-lg">Languages: <i className="font-bold italic text-epash-green">{language}</i></p>
-        <p className="text-lg">Budget: <i className="font-bold italic text-epash-green">{budget}</i></p>
+        <div className="bg-epash-green rounded-md py-2 px-5">
+        <p className="text-lg text-stone-200">Interests: <i className="font-bold italic text-white">{interests}</i></p>
+        </div>
+        <div className="bg-epash-green rounded-md py-2 px-5">
+        <p className="text-lg text-stone-200">Age: <i className="font-bold italic text-white">{age}</i></p>
+        </div>
+        <div className="bg-epash-green rounded-md py-2 px-5">
+        <p className="text-lg text-stone-200">Location: <i className="font-bold italic text-white">{locationData}</i></p>
+        </div>
+        <div className="bg-epash-green rounded-md py-2 px-5">
+        <p className="text-lg text-stone-200">Language: <i className="font-bold italic text-white">{language}</i></p>
+        </div>
+        <div className="bg-epash-green rounded-md py-2 px-5">
+        <p className="text-lg text-stone-200">Budget: <i className="font-bold italic text-white">{budget}</i></p>
+        </div>
       </div>
       <div>
         <h1 className="text-center mt-20 text-5xl font-custom font-bold">Check out your Facebook ads</h1>

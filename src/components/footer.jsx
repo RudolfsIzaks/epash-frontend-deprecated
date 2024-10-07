@@ -6,9 +6,9 @@ function Footer() {
 
     return(
         <>
-        <div className="w-full h-[20dvh] flex items-center justify-evenly">
-            <Link to="/privacy-policy">Privacy Policy</Link>
-            <Link to="/terms-conditions">Terms & Conditions</Link>
+        <div className="w-full h-[20dvh] bg-epash-green flex items-center justify-evenly">
+            <Link className="text-white" to="/privacy-policy">Privacy Policy</Link>
+            <Link className="text-white" to="/terms-conditions">Terms & Conditions</Link>
         </div>
         </>
     )
