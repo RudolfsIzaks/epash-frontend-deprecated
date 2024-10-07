@@ -32,6 +32,10 @@ function PlatformFacebookView() {
     language,
   } = parsedData;
 
+  if(language == "en_US") {
+    language = "English";
+  }
+
   const age = ageRanges.join(' ');
 
   const handleNextImage = () => {
