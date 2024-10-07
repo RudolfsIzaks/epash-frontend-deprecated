@@ -58,14 +58,14 @@ function PlatformFacebookView() {
     }
   };
 
-  const handleImageDownload = (imageUrl) => {
-    const link = document.createElement("a");
-    link.href = imageUrl;
-    link.download = `facebook-ad-image-${currentImageIndex + 1}.jpg`; // Specify the filename
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  // const handleImageDownload = (imageUrl) => {
+  //   const link = document.createElement("a");
+  //   link.href = imageUrl;
+  //   link.download = `facebook-ad-image-${currentImageIndex + 1}.jpg`; // Specify the filename
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link);
+  // };
   
 
   return (
@@ -174,12 +174,13 @@ function PlatformFacebookView() {
                     Next
                   </button>
                 </div>
-                <button
-                  onClick={() => handleImageDownload(images[currentImageIndex])}
+                <a
+                  href={images[currentImageIndex]}
+                  download
                   className="mt-5 py-2 px-5 bg-blue-500 text-white rounded-md hover:bg-blue-600"
                 >
                   Download Image
-                </button>
+                </a>
               </div>
             </div>
             <div>
