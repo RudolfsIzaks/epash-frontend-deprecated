@@ -58,27 +58,15 @@ function PlatformFacebookView() {
     }
   };
 
-  const handleImageDownload = async (imageUrl) => {
-    try {
-      // Fetch the image as a blob
-      const response = await fetch(imageUrl);
-      const blob = await response.blob();
-
-      // Create a URL for the blob and trigger the download
-      const blobUrl = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = blobUrl;
-      link.download = `facebook-ad-image-${currentImageIndex + 1}.jpg`; // Specify the filename
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      // Release the object URL after download
-      window.URL.revokeObjectURL(blobUrl);
-    } catch (err) {
-      console.error("Failed to download image:", err);
-    }
+  const handleImageDownload = (imageUrl) => {
+    const link = document.createElement("a");
+    link.href = imageUrl;
+    link.download = `facebook-ad-image-${currentImageIndex + 1}.jpg`; // Specify the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
+  
 
   return (
     <>
