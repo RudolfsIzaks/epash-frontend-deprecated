@@ -133,7 +133,7 @@ function UserProfile() {
       </div>
       <DashNav handleLogout={handleLogout} />
       <div className="flex justify-center items-center mt-20">
-        <div className="w-2/4 shadow-xl h-72 rounded-xl border-gray-200 outline-1 border grid grid-cols-2 grid-rows-4">
+        <div className="w-2/4 shadow-xl h-72 rounded-xl border-gray-200 outline-1 border grid grid-rows-4">
           <div>
             <Link to="/account/settings/profile-info">
               <div className="my-5 mx-5 rounded-md flex items-center gap-3 px-2 py-2 hover:bg-gray-100 duration-200 ">
