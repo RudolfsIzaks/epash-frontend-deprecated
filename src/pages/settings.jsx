@@ -182,7 +182,7 @@ function UserProfile() {
               </div>
             </Link>
           </div>
-          <div className="flex gap-5 items-center text-red-500 my-5 mx-10">
+          <div className="flex gap-5 items-center text-red-500 my-5 mx-8">
             <FontAwesomeIcon
               icon={faWarning}
               className="text-2xl"
