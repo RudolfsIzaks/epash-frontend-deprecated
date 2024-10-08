@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import DashNav from "../components/dashNav";
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faWarning } from "@fortawesome/free-solid-svg-icons";
 import google from '../assets/google.png';
 import meta from '../assets/meta.png';
 
@@ -133,7 +133,7 @@ function UserProfile() {
       </div>
       <DashNav handleLogout={handleLogout} />
       <div className="flex justify-center items-center mt-20">
-        <div className="w-2/4 shadow-xl h-72 rounded-xl border-gray-200 outline-1 border grid grid-cols-2 grid-rows-2">
+        <div className="w-2/4 shadow-xl h-72 rounded-xl border-gray-200 outline-1 border grid grid-cols-2 grid-rows-4">
           <div>
             <Link to="/account/settings/profile-info">
               <div className="my-5 mx-5 rounded-md flex items-center gap-3 px-2 py-2 hover:bg-gray-100 duration-200 ">
@@ -181,6 +181,12 @@ function UserProfile() {
                 </div>
               </div>
             </Link>
+          </div>
+          <div className="flex gap-2 items-center text-red-500">
+            <FontAwesomeIcon
+              icon={faWarning}
+            />
+            <p>Currently account linking is not available. We apologize for the inconvenience.</p>
           </div>
         </div>
       </div>
