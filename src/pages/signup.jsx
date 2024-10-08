@@ -252,7 +252,7 @@ function SignUserUp() {
               <hr className="flex-grow" />
             </div>
             <div className="flex justify-center items-center mt-10">
-              <Link className="bg-white flex gap-2 items-center shadow-md rounded-md text-xl px-6 py-3" to="/login">
+              <Link className=" flex gap-2 items-center shadow-md rounded-md text-white bg-epash-green px-6 py-3" to="/login">
               <FontAwesomeIcon
                 icon={faRightToBracket}
               />
