@@ -5,6 +5,7 @@ import NavLogo from "../components/navLogo";
 import zxcvbn from "zxcvbn";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 function SignUserUp() {
@@ -246,22 +247,11 @@ function SignUserUp() {
             </div>
             <div className="flex justify-between items-center gap-2 w-full mt-8">
               <hr className="flex-grow" />
-              <p className="px-2 text-xs text-gray-400">Or With</p>
+              <p className="px-2 text-xs text-gray-400">Already Have An Account?</p>
               <hr className="flex-grow" />
             </div>
-            <div className="flex gap-3 justify-center my-10">
-              <button
-                className="h-16 w-16 rounded-xl shadow-md p-2 flex justify-center items-center hover:scale-105 duration-200"
-                // onClick={() => login()}
-              >
-                <img src="../src/assets/google.png" className="w-8" />
-              </button>
-              <button className="h-16 w-16 rounded-xl shadow-md p-2 flex justify-center items-center hover:scale-105 duration-200">
-                <img src="../src/assets/apple.png" className="w-8" />
-              </button>
-              <button className="h-16 w-16 rounded-xl shadow-md p-2 flex justify-center items-center hover:scale-105 duration-200">
-                <img src="../src/assets/meta.png" />
-              </button>
+            <div className="flex justify-center items-center">
+              <Link className="bg-white shadow-md rounded-md px-5 py-3" to="/login">Log In</Link>
             </div>
           </form>
         </div>
