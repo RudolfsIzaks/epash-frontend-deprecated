@@ -6,6 +6,8 @@ import zxcvbn from "zxcvbn";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 
 function SignUserUp() {
   const navigate = useNavigate();
@@ -249,8 +251,13 @@ function SignUserUp() {
               <p className="px-2 text-xs text-gray-400">Already Have An Account?</p>
               <hr className="flex-grow" />
             </div>
-            <div className="flex justify-center items-center">
-              <Link className="bg-white shadow-md rounded-md px-5 py-3" to="/login">Log In</Link>
+            <div className="flex justify-center items-center mt-10">
+              <Link className="bg-white flex gap-2 items-center shadow-md rounded-md text-xl px-6 py-3" to="/login">
+              <FontAwesomeIcon
+                icon={faRightToBracket}
+              />
+              Log In
+              </Link>
             </div>
           </form>
         </div>
