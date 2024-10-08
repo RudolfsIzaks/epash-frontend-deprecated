@@ -133,7 +133,7 @@ function UserProfile() {
       </div>
       <DashNav handleLogout={handleLogout} />
       <div className="flex justify-center items-center mt-20">
-        <div className="w-2/4 shadow-xl h-72 rounded-xl border-gray-200 outline-1 border grid grid-rows-4">
+        <div className="w-2/4 shadow-xl h-96 rounded-xl gap-10 border-gray-200 outline-1 border grid grid-rows-4">
           <div>
             <Link to="/account/settings/profile-info">
               <div className="my-5 mx-5 rounded-md flex items-center gap-3 px-2 py-2 hover:bg-gray-100 duration-200 ">
@@ -182,9 +182,10 @@ function UserProfile() {
               </div>
             </Link>
           </div>
-          <div className="flex gap-2 items-center text-red-500">
+          <div className="flex gap-5 items-center text-red-500 m-5">
             <FontAwesomeIcon
               icon={faWarning}
+              className="text-2xl"
             />
             <p>Currently account linking is not available. We apologize for the inconvenience.</p>
           </div>
