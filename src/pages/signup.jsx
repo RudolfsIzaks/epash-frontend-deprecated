@@ -5,7 +5,6 @@ import NavLogo from "../components/navLogo";
 import zxcvbn from "zxcvbn";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 function SignUserUp() {
