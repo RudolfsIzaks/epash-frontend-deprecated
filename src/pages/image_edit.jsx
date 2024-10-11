@@ -5,7 +5,7 @@ import "../index.css";
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff"; // Replace with backend images later
-const backgroundImageURL = "https://dummyimage.com/600x400/ddd/aaa"; // Replace with backend images later
+const backgroundImageURL = "https://dummyimage.com/600x600/ddd/aaa"; // Replace with backend images later
 
 function ImageEdit() {
 
