@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Stage, Layer, Image, Rect, Circle, Star } from "react-konva";
 import NavLogo from "../components/navLogo";
 import "../index.css";
-import { useShapes } from "../components/imageEditor/shapeCanvas"; // Import custom hook for shapes
+import { useShapes } from "./ShapeCanvas"; // Custom hook for shape logic
+import ShapePickerModal from "./ShapePickerModal"; // Modal for picking shapes
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff";
@@ -75,6 +76,7 @@ function ImageEdit() {
 
   const { shapes, addShape, updateShapePosition, updateShapeFill } = useShapes(); // Hook for shapes
   const [selectedShapeId, setSelectedShapeId] = useState(null);
+  const [isShapePickerOpen, setShapePickerOpen] = useState(false); // Modal open state
   
   const backgroundRef = useRef();
 
@@ -251,12 +253,20 @@ function ImageEdit() {
 
         {/* Add Shape Button */}
         <button
-          className="px-4 py-2 bg-green-500 text-white rounded-md col-span-3 row-span-3"
-          onClick={() => handleShapeAdd("rectangle")}
+          className="px-4 py-2 bg-green-500 text-white rounded-md mt-5"
+          onClick={() => setShapePickerOpen(true)}
         >
-          Add Rectangle
+          Add Shape
         </button>
       </div>
+
+      {/* Shape Picker Modal */}
+      {isShapePickerOpen && (
+        <ShapePickerModal
+          onShapeAdd={handleShapeAdd}
+          onClose={() => setShapePickerOpen(false)}
+        />
+      )}
     </>
   );
 }
