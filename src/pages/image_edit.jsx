@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"; // Added useRef import
 import { Stage, Layer, Image } from "react-konva";
+import NavLogo from "../components/navLogo";
 import "../index.css";
 
 // Dummy images for development
@@ -69,6 +70,7 @@ function ImageEdit() {
   return (
     <>
       <div className="flex w-full justify-between items-center py-5 px-48">
+        <NavLogo/>
         <div className="flex gap-3">
           <button className="bg-red-500 text-white font-custom font-bold py-2 px-5 rounded-md">
             Discard
