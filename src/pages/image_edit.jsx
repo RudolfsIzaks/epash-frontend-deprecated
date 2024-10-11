@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Stage, Layer, Image } from "react-konva";
+import { Stage, Layer, Image, Rect, Circle, Star } from "react-konva";
 import NavLogo from "../components/navLogo";
 import "../index.css";
-import ShapeCanvas from "../components/imageEditor/shapeCanvas"; // Import ShapeCanvas
+import { useShapes } from "./ShapeCanvas"; // Import custom hook for shapes
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff";
@@ -13,8 +13,7 @@ const GreenSlider = ({ label, min, max, step, value, onChange }) => {
   return (
     <label className="flex flex-col gap-3 p-5 border border-stone-200 rounded-lg shadow-md col-span-2">
       <span className="font-medium text-gray-700">
-        {label}
-        {"  "}
+        {label}{"  "}
         <span className="px-2 py-1 text-sm text-white bg-epash-green rounded-md">
           {value.toFixed(2)}
         </span>
@@ -74,6 +73,9 @@ function ImageEdit() {
     opacity: 1,
   });
 
+  const { shapes, addShape, updateShapePosition, updateShapeFill } = useShapes(); // Hook for shapes
+  const [selectedShapeId, setSelectedShapeId] = useState(null);
+  
   const backgroundRef = useRef();
 
   useEffect(() => {
@@ -115,6 +117,14 @@ function ImageEdit() {
     const stage = backgroundRef.current.getStage();
     const dataURL = stage.toDataURL();
     console.log("Image Data URL:", dataURL);
+  };
+
+  const handleShapeAdd = (type) => {
+    addShape(type);
+  };
+
+  const handleShapeClick = (id) => {
+    setSelectedShapeId(id);
   };
 
   return (
@@ -160,6 +170,61 @@ function ImageEdit() {
                   onTransformEnd={handleTransform}
                 />
               )}
+              {/* Render shapes here */}
+              {shapes.map((shape) => {
+                if (shape.type === "rectangle") {
+                  return (
+                    <Rect
+                      key={shape.id}
+                      x={shape.x}
+                      y={shape.y}
+                      width={100}
+                      height={100}
+                      fill={shape.fill}
+                      draggable={shape.draggable}
+                      onClick={() => handleShapeClick(shape.id)}
+                      onDragEnd={(e) =>
+                        updateShapePosition(shape.id, e.target.x(), e.target.y())
+                      }
+                    />
+                  );
+                }
+                if (shape.type === "circle") {
+                  return (
+                    <Circle
+                      key={shape.id}
+                      x={shape.x}
+                      y={shape.y}
+                      radius={50}
+                      fill={shape.fill}
+                      draggable={shape.draggable}
+                      onClick={() => handleShapeClick(shape.id)}
+                      onDragEnd={(e) =>
+                        updateShapePosition(shape.id, e.target.x(), e.target.y())
+                      }
+                    />
+                  );
+                }
+                if (shape.type === "star") {
+                  return (
+                    <Star
+                      key={shape.id}
+                      x={shape.x}
+                      y={shape.y}
+                      numPoints={5}
+                      innerRadius={30}
+                      outerRadius={50}
+                      fill={shape.fill}
+                      draggable={shape.draggable}
+                      onClick={() => handleShapeClick(shape.id)}
+                      onDragEnd={(e) =>
+                        updateShapePosition(shape.id, e.target.x(), e.target.y())
+                      }
+                    />
+                  );
+                }
+                return null;
+              })}
             </Layer>
           </Stage>
         </div>
@@ -182,10 +247,15 @@ function ImageEdit() {
             value={productProps.opacity}
             onChange={handleOpacityChange}
           />
-          <div className="col-span-3 row-span-3">
-            <ShapeCanvas />
-          </div>
         </div>
+
+        {/* Add Shape Button */}
+        <button
+          className="px-4 py-2 bg-green-500 text-white rounded-md mt-5"
+          onClick={() => handleShapeAdd("rectangle")}
+        >
+          Add Rectangle
+        </button>
       </div>
     </>
   );
