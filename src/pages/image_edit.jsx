@@ -161,8 +161,9 @@ function ImageEdit() {
         </div>
 
         {/* Custom Sliders */}
-        <div className="flex gap-5">
+        <div className="grid grid-cols-4 grid-rows-5">
           <GreenSlider
+            className="col-span-2"
             label="Scale"
             min={0.1}
             max={2}
@@ -171,6 +172,7 @@ function ImageEdit() {
             onChange={handleScaleChange}
           />
           <GreenSlider
+            className="col-span-2"
             label="Opacity"
             min={0}
             max={1}
