@@ -8,9 +8,9 @@ const productImageURL = "https://dummyimage.com/300x300/000/fff";
 const backgroundImageURL = "https://dummyimage.com/600x600/ddd/aaa";
 
 // GreenSlider component for styled sliders
-const GreenSlider = ({ label, min, max, step, value, onChange, className }) => {
+const GreenSlider = ({ label, min, max, step, value, onChange}) => {
   return (
-    <label className={`flex flex-col gap-3 p-5 border border-stone-200 rounded-lg shadow-md ${className}`}>
+    <label className="flex flex-col gap-3 p-5 border border-stone-200 rounded-lg shadow-md col-span-2">
       <span className="font-medium text-gray-700">{label}:</span>
       <div className="relative flex flex-col items-start gap-3 mt-2">
         <input
@@ -163,7 +163,6 @@ function ImageEdit() {
         {/* Custom Sliders */}
         <div className="grid grid-cols-4 grid-rows-5 gap-5">
           <GreenSlider
-            className="col-span-2"
             label="Scale"
             min={0.1}
             max={2}
@@ -172,7 +171,6 @@ function ImageEdit() {
             onChange={handleScaleChange}
           />
           <GreenSlider
-            className="col-span-2"
             label="Opacity"
             min={0}
             max={1}
