@@ -83,9 +83,8 @@ function ImageEdit() {
           </button>
         </div>
       </div>
-
-      {/* Image editor canvas */}
-      <div className="flex justify-center items-center h-screen">
+      <div>
+      <div className="flex justify-center items-center">
         <Stage width={600} height={600} ref={backgroundRef}>
           <Layer>
             {/* Background Image */}
@@ -116,10 +115,7 @@ function ImageEdit() {
           </Layer>
         </Stage>
       </div>
-
-      {/* Controls for scaling and opacity */}
       <div className="flex justify-center space-x-4 mt-4">
-        {/* Scale control */}
         <label>
           Scale:
           <input
@@ -133,8 +129,6 @@ function ImageEdit() {
             }
           />
         </label>
-        
-        {/* Opacity control */}
         <label>
           Opacity:
           <input
@@ -146,6 +140,7 @@ function ImageEdit() {
             onChange={handleOpacityChange}
           />
         </label>
+      </div>
       </div>
     </>
   );
