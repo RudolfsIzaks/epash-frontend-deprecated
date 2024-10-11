@@ -12,7 +12,7 @@ const GreenSlider = ({ label, min, max, step, value, onChange }) => {
   return (
     <label className="flex flex-col gap-3 p-5 border border-stone-200 rounded-lg shadow-md">
       <span className="font-medium text-gray-700">{label}:</span>
-      <div className="relative">
+      <div className="relative flex flex-col items-start gap-3 mt-5 min-w-96">
         <input
           type="range"
           min={min}
@@ -25,8 +25,8 @@ const GreenSlider = ({ label, min, max, step, value, onChange }) => {
             background: `linear-gradient(to right, #10B981 0%, #10B981 ${((value - min) / (max - min)) * 100}%, #E5E7EB ${((value - min) / (max - min)) * 100}%, #E5E7EB 100%)`,
           }}
         />
-        <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
-          <span className="px-2 py-1 text-sm text-white bg-green-500 rounded-md">
+        <div className="">
+          <span className="px-2 py-1 text-sm text-white bg-epash-green rounded-md">
             {value.toFixed(2)}
           </span>
         </div>
