@@ -55,6 +55,7 @@ function CreateCampaign() {
     evolutionSpeed: 1,
     evolutionHarshness: 5,
     addOwnAds: false,
+    images: files
   });
   
 

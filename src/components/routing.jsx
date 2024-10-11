@@ -24,6 +24,7 @@ import PlatformSpotify from '../pages/platform_spotify_edit';
 import PlatformImageGeneration from '../pages/platform_image_gen';
 import PlatformFacebookView from '../pages/platform_view_facebook';
 import Privacy from '../pages/privacy';
+import ImageEdit from '../pages/image_edit';
 
 function RouteChangeTracker() {
     const location = useLocation();
@@ -46,6 +47,7 @@ function RouterSetup() {
                     <Route path="/" element={<App />} />
                     <Route path="/signup" element={<SignUserUp />} />
                     <Route path="/login" element={<LogUserIn />} />
+                    <Route path="/image" element={<ImageEdit />} />
                     <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>} />
                     <Route path="/dashboard/manage-campaigns" element={<PrivateRoute><ManageCampaigns/></PrivateRoute>} />
                     <Route path="/new/campaign" element={<PrivateRoute><CreateCampaign/></PrivateRoute>} />
