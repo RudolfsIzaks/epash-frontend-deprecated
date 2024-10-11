@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Stage, Layer, Image } from "react-konva";
 import NavLogo from "../components/navLogo";
 import "../index.css";
+import ShapeCanvas from "../components/imageEditor/shapeCanvas"; // Import ShapeCanvas
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff";
@@ -12,7 +13,8 @@ const GreenSlider = ({ label, min, max, step, value, onChange }) => {
   return (
     <label className="flex flex-col gap-3 p-5 border border-stone-200 rounded-lg shadow-md col-span-2">
       <span className="font-medium text-gray-700">
-        {label}{"  "}
+        {label}
+        {"  "}
         <span className="px-2 py-1 text-sm text-white bg-epash-green rounded-md">
           {value.toFixed(2)}
         </span>
@@ -180,6 +182,9 @@ function ImageEdit() {
             value={productProps.opacity}
             onChange={handleOpacityChange}
           />
+          <div className="col-span-3 row-span-3">
+            <ShapeCanvas />
+          </div>
         </div>
       </div>
     </>
