@@ -6,9 +6,4 @@ export default defineConfig({
   server: {
     host: '0.0.0.0', // Allows access from external devices
   },
-  build: {
-    rollupOptions: {
-      external: ['konva', 'react-konva'],
-    },
-  },
 });
