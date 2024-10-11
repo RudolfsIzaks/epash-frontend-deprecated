@@ -86,7 +86,7 @@ function ImageEdit() {
 
       {/* Image editor canvas */}
       <div className="flex justify-center items-center h-screen">
-        <Stage width={600} height={400} ref={backgroundRef}>
+        <Stage width={600} height={600} ref={backgroundRef}>
           <Layer>
             {/* Background Image */}
             {backgroundImage && (
