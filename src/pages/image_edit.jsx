@@ -8,7 +8,7 @@ const productImageURL = "https://dummyimage.com/300x300/000/fff";
 const backgroundImageURL = "https://dummyimage.com/600x600/ddd/aaa";
 
 // GreenSlider component for styled sliders
-const GreenSlider = ({ label, min, max, step, value, onChange }) => {
+const GreenSlider = ({ label, min, max, step, value, onChange, className }) => {
   return (
     <label className={`flex flex-col gap-3 p-5 border border-stone-200 rounded-lg shadow-md ${className}`}>
       <span className="font-medium text-gray-700">{label}:</span>
