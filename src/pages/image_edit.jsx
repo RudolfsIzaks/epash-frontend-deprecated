@@ -114,7 +114,7 @@ function ImageEdit() {
         </Stage>
       </div>
       <div className="flex justify-center space-x-4 mt-4">
-        <label className="flex flex-col gap-3 p-5 border border-stone-200 shadow-emerald-300">
+        <label className="flex flex-col gap-3 p-5 border border-stone-200 shadow-emerald-600">
           Scale:
           <input
             type="range"
@@ -127,7 +127,7 @@ function ImageEdit() {
             }
           />
         </label>
-        <label className="flex flex-col gap-3 p-5 border border-stone-200 shadow-emerald-300">
+        <label className="flex flex-col gap-3 p-5 border border-stone-200 shadow-emerald-600">
           Opacity:
           <input
             type="range"
