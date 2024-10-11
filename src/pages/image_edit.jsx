@@ -83,7 +83,7 @@ function ImageEdit() {
           </button>
         </div>
       </div>
-      <div>
+      <div className="flex gap-5 items-center">
       <div className="flex justify-center items-center">
         <Stage width={600} height={600} ref={backgroundRef}>
           <Layer>
