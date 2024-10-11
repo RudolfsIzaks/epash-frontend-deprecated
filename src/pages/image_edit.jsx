@@ -1,6 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react"; // Added useRef import
 import { Stage, Layer, Image } from "react-konva";
-import useImage from "use-image"; // This hook helps load images
 import "../index.css";
 
 // Dummy images for development
@@ -8,9 +7,23 @@ const productImageURL = "https://dummyimage.com/300x300/000/fff"; // Replace wit
 const backgroundImageURL = "https://dummyimage.com/600x400/ddd/aaa"; // Replace with backend images later
 
 function ImageEdit() {
-  const [productImage] = useImage(productImageURL);
-  const [backgroundImage] = useImage(backgroundImageURL);
-  
+
+  // Instead of using useImage hook, use plain useState and useEffect
+  const [productImage, setProductImage] = useState(null);
+  const [backgroundImage, setBackgroundImage] = useState(null);
+
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = productImageURL;
+    img.onload = () => setProductImage(img);
+  }, [productImageURL]);
+
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = backgroundImageURL;
+    img.onload = () => setBackgroundImage(img);
+  }, [backgroundImageURL]);
+
   const [productProps, setProductProps] = useState({
     x: 50,
     y: 50,
@@ -18,7 +31,7 @@ function ImageEdit() {
     opacity: 1,
   });
 
-  const backgroundRef = useRef();
+  const backgroundRef = useRef(); // Background canvas reference
 
   // Handle drag
   const handleDragMove = (e) => {
@@ -33,7 +46,7 @@ function ImageEdit() {
   const handleTransform = (e) => {
     setProductProps({
       ...productProps,
-      scale: e.target.scaleX(),
+      scale: e.target.scaleX(), // assuming uniform scaling
     });
   };
 
@@ -95,7 +108,7 @@ function ImageEdit() {
                 opacity={productProps.opacity}
                 draggable
                 onDragMove={handleDragMove}
-                onTransform={handleTransform}
+                onTransformEnd={handleTransform} // Changed to onTransformEnd for smoother scaling
               />
             )}
           </Layer>
