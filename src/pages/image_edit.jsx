@@ -10,7 +10,7 @@ const backgroundImageURL = "https://dummyimage.com/600x600/ddd/aaa";
 // GreenSlider component for styled sliders
 const GreenSlider = ({ label, min, max, step, value, onChange }) => {
   return (
-    <label className="flex flex-col gap-3 p-5 border border-stone-200 w-full rounded-lg shadow-md">
+    <label className={`flex flex-col gap-3 p-5 border border-stone-200 rounded-lg shadow-md ${className}`}>
       <span className="font-medium text-gray-700">{label}:</span>
       <div className="relative flex flex-col items-start gap-3 mt-2">
         <input
@@ -161,7 +161,7 @@ function ImageEdit() {
         </div>
 
         {/* Custom Sliders */}
-        <div className="grid grid-cols-4 grid-rows-5">
+        <div className="grid grid-cols-4 grid-rows-5 gap-5">
           <GreenSlider
             className="col-span-2"
             label="Scale"
