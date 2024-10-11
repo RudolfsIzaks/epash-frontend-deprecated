@@ -12,7 +12,7 @@ const GreenSlider = ({ label, min, max, step, value, onChange }) => {
   return (
     <label className="flex flex-col gap-3 p-5 border border-stone-200 rounded-lg shadow-md">
       <span className="font-medium text-gray-700">{label}:</span>
-      <div className="relative flex flex-col items-start gap-3 mt-5 min-w-96">
+      <div className="relative flex flex-col items-start gap-3 mt-2 min-w-96">
         <input
           type="range"
           min={min}
@@ -129,7 +129,7 @@ function ImageEdit() {
           </button>
         </div>
       </div>
-      <div className="flex gap-5 items-center md:mx-32 mt-20 rounded border border-stone-200 shadow-md p-12">
+      <div className="flex gap-5 md:mx-32 mt-20 rounded border border-stone-200 shadow-md p-12">
         <div className="flex justify-center items-center">
           <Stage width={600} height={600} ref={backgroundRef}>
             <Layer>
