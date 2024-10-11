@@ -161,7 +161,7 @@ function ImageEdit() {
         </div>
 
         {/* Custom Sliders */}
-        <div className="grid grid-cols-2 gap-5">
+        <div className="flex gap-5">
           <GreenSlider
             label="Scale"
             min={0.1}
