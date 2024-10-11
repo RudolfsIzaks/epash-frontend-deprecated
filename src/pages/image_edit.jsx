@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Stage, Layer, Image, Rect, Circle, Star } from "react-konva";
 import NavLogo from "../components/navLogo";
 import "../index.css";
-import { useShapes } from "./ShapeCanvas"; // Import custom hook for shapes
+import { useShapes } from "../components/imageEditor/shapeCanvas"; // Import custom hook for shapes
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff";
