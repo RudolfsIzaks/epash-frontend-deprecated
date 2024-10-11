@@ -95,7 +95,7 @@ function ImageEdit() {
                 x={0}
                 y={0}
                 width={600}
-                height={400}
+                height={600}
                 draggable={false}
               />
             )}
