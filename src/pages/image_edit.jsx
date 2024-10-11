@@ -87,7 +87,6 @@ function ImageEdit() {
       <div className="flex justify-center items-center">
         <Stage width={600} height={600} ref={backgroundRef}>
           <Layer>
-            {/* Background Image */}
             {backgroundImage && (
               <Image
                 image={backgroundImage}
@@ -98,7 +97,6 @@ function ImageEdit() {
                 draggable={false}
               />
             )}
-            {/* Product Image */}
             {productImage && (
               <Image
                 image={productImage}
@@ -116,7 +114,7 @@ function ImageEdit() {
         </Stage>
       </div>
       <div className="flex justify-center space-x-4 mt-4">
-        <label>
+        <label className="flex flex-col gap-3 p-5 border border-stone-200 shadow-emerald-300">
           Scale:
           <input
             type="range"
@@ -129,7 +127,7 @@ function ImageEdit() {
             }
           />
         </label>
-        <label>
+        <label className="flex flex-col gap-3 p-5 border border-stone-200 shadow-emerald-300">
           Opacity:
           <input
             type="range"
