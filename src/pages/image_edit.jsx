@@ -8,10 +8,15 @@ const productImageURL = "https://dummyimage.com/300x300/000/fff";
 const backgroundImageURL = "https://dummyimage.com/600x600/ddd/aaa";
 
 // GreenSlider component for styled sliders
-const GreenSlider = ({ label, min, max, step, value, onChange}) => {
+const GreenSlider = ({ label, min, max, step, value, onChange }) => {
   return (
     <label className="flex flex-col gap-3 p-5 border border-stone-200 rounded-lg shadow-md col-span-2">
-      <span className="font-medium text-gray-700">{label}:</span>
+      <span className="font-medium text-gray-700">
+        {label}{"  "}
+        <span className="px-2 py-1 text-sm text-white bg-epash-green rounded-md">
+          {value.toFixed(2)}
+        </span>
+      </span>
       <div className="relative flex flex-col items-start gap-3 mt-2">
         <input
           type="range"
@@ -22,14 +27,11 @@ const GreenSlider = ({ label, min, max, step, value, onChange}) => {
           onChange={(e) => onChange(parseFloat(e.target.value))}
           className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
           style={{
-            background: `linear-gradient(to right, #10B981 0%, #10B981 ${((value - min) / (max - min)) * 100}%, #E5E7EB ${((value - min) / (max - min)) * 100}%, #E5E7EB 100%)`,
+            background: `linear-gradient(to right, #10B981 0%, #10B981 ${
+              ((value - min) / (max - min)) * 100
+            }%, #E5E7EB ${((value - min) / (max - min)) * 100}%, #E5E7EB 100%)`,
           }}
         />
-        <div className="">
-          <span className="px-2 py-1 text-sm text-white bg-epash-green rounded-md">
-            {value.toFixed(2)}
-          </span>
-        </div>
         <style jsx>{`
           input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
