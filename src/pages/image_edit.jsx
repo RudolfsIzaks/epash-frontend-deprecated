@@ -251,7 +251,7 @@ function ImageEdit() {
 
         {/* Add Shape Button */}
         <button
-          className="px-4 py-2 bg-green-500 text-white rounded-md mt-5"
+          className="px-4 py-2 bg-green-500 text-white rounded-md col-span-3 row-span-3"
           onClick={() => handleShapeAdd("rectangle")}
         >
           Add Rectangle
