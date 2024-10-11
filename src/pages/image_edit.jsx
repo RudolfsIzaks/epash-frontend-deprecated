@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Stage, Layer, Image, Rect, Circle, Star } from "react-konva";
 import NavLogo from "../components/navLogo";
 import "../index.css";
-import { useShapes } from "./ShapeCanvas"; // Custom hook for shape logic
-import ShapePickerModal from "./ShapePickerModal"; // Modal for picking shapes
+import { useShapes } from "../components/imageEditor/shapeCanvas"; // Custom hook for shape logic
+import ShapePickerModal from "../components/imageEditor/shapeLibrary"; // Modal for picking shapes
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff";
