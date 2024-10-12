@@ -368,7 +368,7 @@ function ImageEdit() {
             {shapes.map((shape, index) => (
               <div
                 key={shape.id}
-                className="shape-toolbar p-2 border border-stone-200 flex flex-col gap-2 rounded shadow-md"
+                className="shape-toolbar p-2 border border-stone-200 flex flex-col-reverse gap-2 rounded shadow-md"
               >
                 {shape.showOptions && (
                   <div className="shape-options mt-2 bg-white rounded flex flex-col gap-2 z-50">
@@ -395,8 +395,6 @@ function ImageEdit() {
                     />
                   </div>
                 )}
-                <p className="font-custom font-bold">{shape.type}</p>
-
                 {/* Toolbar icons */}
                 <div className="flex gap-1 items-center justify-between">
                   {/* Delete Shape Icon */}
@@ -430,6 +428,7 @@ function ImageEdit() {
                     <Maximize2 className="h-5 w-5" />
                   </button>
                 </div>
+                <p className="font-custom font-bold">{shape.type}</p>
               </div>
             ))}
           </div>
