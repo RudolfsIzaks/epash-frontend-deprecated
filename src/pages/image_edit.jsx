@@ -4,11 +4,24 @@ import NavLogo from "../components/navLogo";
 import "../index.css";
 import { useShapes } from "../components/imageEditor/shapeCanvas"; // Custom hook for shape logic
 import ShapePickerModal from "../components/imageEditor/shapeLibrary"; // Modal for picking shapes
-import { Trash2, Paintbrush, Settings2 } from "lucide-react"; // Lucide icons
+import { Trash2, Paintbrush, Settings2, Square, Circle as LucideCircle, Star as LucideStar } from "lucide-react"; // Lucide icons
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff";
 const backgroundImageURL = "https://dummyimage.com/600x600/ddd/aaa";
+
+const getShapeIcon = (type) => {
+    switch (type) {
+      case "rectangle":
+        return <Square className="h-5 w-5 mr-2" />; // Icon for rectangle
+      case "circle":
+        return <LucideCircle className="h-5 w-5 mr-2" />; // Icon for circle
+      case "star":
+        return <LucideStar className="h-5 w-5 mr-2" />; // Icon for star
+      default:
+        return null; // Return null if no match
+    }
+  };
 
 // GreenSlider component for styled sliders
 const GreenSlider = ({ label, min, max, step, value, onChange }) => {
@@ -186,6 +199,7 @@ function ImageEdit() {
   const handleOpacityChange = (value) => {
     setProductProps({ ...productProps, opacity: value });
   };
+
 
   const handleSave = () => {
     const stage = backgroundRef.current.getStage();
@@ -397,7 +411,10 @@ function ImageEdit() {
                     <Settings2 className="h-5 w-5" />
                   </button>
                 </div>
-                <p className="font-custom font-bold">{shape.type}</p>
+                <p className="font-custom font-bold">
+                    {getShapeIcon(shape.type)} {/* Render the corresponding icon */}
+                    {shape.type}
+                </p>
                 {shape.showOptions && (
                   <div className="shape-options mt-2 bg-white rounded flex flex-col gap-2 z-50">
                     {/* Scale Slider */}
