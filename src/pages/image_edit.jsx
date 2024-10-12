@@ -75,8 +75,19 @@ function ImageEdit() {
     opacity: 1,
   });
 
-  const { shapes, addShape, updateShapePosition, updateShapeFill } =
-    useShapes(); // Hook for shapes
+
+    // Import functions from useShapes hook
+    const {
+        shapes,
+        addShape,
+        updateShapePosition,
+        updateShapeFill,
+        deleteShape,
+        toggleShapeOptions,
+        updateShapeScale,
+        updateShapeOpacity,
+      } = useShapes(); // Hook for shapes
+
   const [selectedShapeId, setSelectedShapeId] = useState(null);
   const [isShapePickerOpen, setShapePickerOpen] = useState(false); // Modal open state
 
@@ -108,6 +119,7 @@ function ImageEdit() {
       scale: e.target.scaleX(),
     });
   };
+
 
   const handleScaleChange = (value) => {
     setProductProps({ ...productProps, scale: value });
@@ -283,7 +295,7 @@ function ImageEdit() {
             {shapes.map((shape, index) => (
               <div
                 key={shape.id}
-                className="shape-toolbar p-2 border-b border-gray-200"
+                className="shape-toolbar p-2 border border-stone-200 flex gap-2 items-center rounded shadow-md"
               >
                 {/* Delete Shape Icon */}
                 <button
