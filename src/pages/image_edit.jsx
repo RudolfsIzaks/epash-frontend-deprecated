@@ -67,6 +67,57 @@ const GreenSlider = ({ label, min, max, step, value, onChange }) => {
   );
 };
 
+const ShapeSlider = ({ label, min, max, step, value, onChange }) => {
+    return (
+      <label className="flex gap-3 py-3 justify-between items-center">
+        <span className="font-medium flex justify-between items-center text-gray-700 ">
+          {label}
+        </span>
+        <div className="relative flex flex-col items-start gap-3 mt-2">
+          <input
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            value={value}
+            onChange={(e) => onChange(parseFloat(e.target.value))}
+            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+            style={{
+              background: `linear-gradient(to right, #10B981 0%, #10B981 ${
+                ((value - min) / (max - min)) * 100
+              }%, #E5E7EB ${((value - min) / (max - min)) * 100}%, #E5E7EB 100%)`,
+            }}
+          />
+          <style jsx>{`
+            input[type="range"]::-webkit-slider-thumb {
+              -webkit-appearance: none;
+              appearance: none;
+              width: 15px;
+              height: 15px;
+              background-color: #10b981;
+              border-radius: 50%;
+              cursor: pointer;
+              transition: background-color 0.2s ease-in-out;
+            }
+            input[type="range"]::-moz-range-thumb {
+              width: 15px;
+              height: 15px;
+              background-color: #10b981;
+              border: none;
+              border-radius: 50%;
+              cursor: pointer;
+              transition: background-color 0.2s ease-in-out;
+            }
+            input[type="range"]::-webkit-slider-thumb:hover,
+            input[type="range"]::-moz-range-thumb:hover {
+              background-color: #059669;
+            }
+          `}</style>
+        </div>
+      </label>
+    );
+  };
+
 function ImageEdit() {
   const [productImage, setProductImage] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState(null);
@@ -276,7 +327,7 @@ function ImageEdit() {
 
         {/* Custom Sliders */}
         <div className="grid grid-cols-4 grid-rows-5 gap-5 w-full">
-          <GreenSlider
+          <ShapeSlider
             label="Scale"
             min={0.1}
             max={2}
@@ -284,7 +335,7 @@ function ImageEdit() {
             value={productProps.scale}
             onChange={handleScaleChange}
           />
-          <GreenSlider
+          <ShapeSlider
             label="Opacity"
             min={0}
             max={1}
