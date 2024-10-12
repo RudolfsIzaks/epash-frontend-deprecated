@@ -372,7 +372,7 @@ function ImageEdit() {
               Add Shape
             </button>
           </div>
-          <div className="row-span-3 col-span-1 flex flex-col gap-3">
+          <div className="row-span-3 col-span-1 flex flex-col gap-3 h-max overflow-y-auto">
             {shapes.map((shape, index) => (
               <div
                 key={shape.id}
