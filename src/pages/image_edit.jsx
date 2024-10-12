@@ -316,7 +316,7 @@ function ImageEdit() {
               >
                 <p className="font-custom font-bold">{shape.type}</p>
                 {/* Delete Shape Icon */}
-                <div className="flex gap-2 items-center justify-start">
+                <div className="flex gap-1 items-center">
                   <button
                     className="icon delete-icon mx-2"
                     onClick={() => deleteShape(shape.id)} // Use deleteShape from the hook
@@ -355,7 +355,7 @@ function ImageEdit() {
                   </div>
                 </div>
                 {shape.showOptions && (
-                  <div className="shape-options mt-2 bg-white rounded flex flex-col gap-5 z-50">
+                  <div className="shape-options mt-2 bg-white rounded flex gap-5 z-50">
                     {/* Scale Slider */}
                     <GreenSlider
                       label="Scale"
