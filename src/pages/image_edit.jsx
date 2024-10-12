@@ -69,11 +69,11 @@ const GreenSlider = ({ label, min, max, step, value, onChange }) => {
 
 const ShapeSlider = ({ label, min, max, step, value, onChange }) => {
     return (
-      <label className="flex gap-3 py-3 justify-between items-center">
+      <label className="flex gap-3 justify-between items-center">
         <span className="font-medium flex justify-between items-center text-gray-700 ">
           {label}
         </span>
-        <div className="relative flex flex-col items-start gap-3 mt-2">
+        <div className="relative flex flex-col items-start gap-3">
           <input
             type="range"
             min={min}
@@ -366,7 +366,7 @@ function ImageEdit() {
                 className="shape-toolbar p-2 border border-stone-200 flex flex-col gap-2 rounded shadow-md"
               >
                 {shape.showOptions && (
-                  <div className="shape-options mt-2 bg-white rounded flex flex-col gap-5 z-50">
+                  <div className="shape-options mt-2 bg-white rounded flex flex-col gap-2 z-50">
                     {/* Scale Slider */}
                     <ShapeSlider
                       label="Scale"
