@@ -279,6 +279,7 @@ function ImageEdit() {
             </Layer>
           </Stage>
         </div>
+        </div>
 
         {/* Custom Sliders */}
         <div className="grid grid-cols-4 grid-rows-5 gap-5 w-full">
@@ -404,7 +405,6 @@ function ImageEdit() {
             </div>
           </div>
         </div>
-      </div>
 
       {/* Shape Picker Modal */}
       {isShapePickerOpen && (
