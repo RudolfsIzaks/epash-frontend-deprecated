@@ -265,7 +265,7 @@ function ImageEdit() {
           />
           <div className="col-span-3 row-span-3 rounded-lg library_shapes flex flex-col p-5 items-start justify-end">
             <h2 className="text-white font-black font-custom text-2xl">Element Library</h2>
-            <p className="w-2/3 text-stone-200 text-sm py-3">Pick and choose elements to add to your ad, add artistic elements, graphic appeal and stylish borders to further intensify your brand.</p>
+            <p className="w-2/3 text-stone-100 text-sm py-3">Pick and choose elements to add to your ad, add artistic elements, graphic appeal and stylish borders to further intensify your brand.</p>
             <button
               className="px-4 py-2 bg-white border border-white text-black rounded-md mt-2 hover:bg-transparent hover:text-white transition"
               onClick={() => setShapePickerOpen(true)}
