@@ -75,18 +75,17 @@ function ImageEdit() {
     opacity: 1,
   });
 
-
-    // Import functions from useShapes hook
-    const {
-        shapes,
-        addShape,
-        updateShapePosition,
-        updateShapeFill,
-        deleteShape,
-        toggleShapeOptions,
-        updateShapeScale,
-        updateShapeOpacity,
-      } = useShapes(); // Hook for shapes
+  // Import functions from useShapes hook
+  const {
+    shapes,
+    addShape,
+    updateShapePosition,
+    updateShapeFill,
+    deleteShape,
+    toggleShapeOptions,
+    updateShapeScale,
+    updateShapeOpacity,
+  } = useShapes(); // Hook for shapes
 
   const [selectedShapeId, setSelectedShapeId] = useState(null);
   const [isShapePickerOpen, setShapePickerOpen] = useState(false); // Modal open state
@@ -112,6 +111,14 @@ function ImageEdit() {
       y: e.target.y(),
     });
   };
+  const openColorPicker = (shapeId) => {
+    const newColor = prompt(
+      "Enter a color value (e.g., red, #f00, rgb(255,0,0))"
+    );
+    if (newColor) {
+      updateShapeFill(shapeId, newColor); // Use updateShapeFill from the hook
+    }
+  };
 
   const handleTransform = (e) => {
     setProductProps({
@@ -119,7 +126,6 @@ function ImageEdit() {
       scale: e.target.scaleX(),
     });
   };
-
 
   const handleScaleChange = (value) => {
     setProductProps({ ...productProps, scale: value });
@@ -333,19 +339,18 @@ function ImageEdit() {
                         min={0.1}
                         max={2}
                         step={0.01}
-                        value={shape.scale}
+                        value={shape.scale || 1} // Fallback to 1 if scale is undefined
                         onChange={(newScale) =>
                           updateShapeScale(shape.id, newScale)
                         }
                       />
 
-                      {/* Opacity Slider */}
                       <GreenSlider
                         label="Opacity"
                         min={0}
                         max={1}
                         step={0.01}
-                        value={shape.opacity}
+                        value={shape.opacity || 1} // Fallback to 1 if opacity is undefined
                         onChange={(newOpacity) =>
                           updateShapeOpacity(shape.id, newOpacity)
                         }
