@@ -327,7 +327,7 @@ function ImageEdit() {
 
         {/* Custom Sliders */}
         <div className="grid grid-cols-4 grid-rows-5 gap-5 w-full">
-          <ShapeSlider
+          <GreenSlider
             label="Scale"
             min={0.1}
             max={2}
@@ -335,7 +335,7 @@ function ImageEdit() {
             value={productProps.scale}
             onChange={handleScaleChange}
           />
-          <ShapeSlider
+          <GreenSlider
             label="Opacity"
             min={0}
             max={1}
@@ -366,9 +366,9 @@ function ImageEdit() {
                 className="shape-toolbar p-2 border border-stone-200 flex gap-2 items-center justify-between rounded shadow-md"
               >
                 {shape.showOptions && (
-                  <div className="shape-options mt-2 bg-white rounded flex gap-5 z-50">
+                  <div className="shape-options mt-2 bg-white rounded flex flex-col gap-5 z-50">
                     {/* Scale Slider */}
-                    <GreenSlider
+                    <ShapeSlider
                       label="Scale"
                       min={0.1}
                       max={2}
@@ -378,8 +378,7 @@ function ImageEdit() {
                         updateShapeScale(shape.id, newScale)
                       }
                     />
-
-                    <GreenSlider
+                    <ShapeSlider
                       label="Opacity"
                       min={0}
                       max={1}
