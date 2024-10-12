@@ -13,7 +13,7 @@ const backgroundImageURL = "https://dummyimage.com/600x600/ddd/aaa";
 const GreenSlider = ({ label, min, max, step, value, onChange }) => {
   return (
     <label className="flex flex-col gap-3 p-5 border border-stone-200 rounded-lg shadow-md col-span-2">
-      <span className="font-medium text-gray-700">
+      <span className="font-medium flex justify-between items-center text-gray-700">
         {label}
         {"  "}
         <span className="px-2 py-1 text-sm text-white bg-black rounded-md">
