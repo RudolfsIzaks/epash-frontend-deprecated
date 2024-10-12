@@ -204,6 +204,9 @@ function ImageEdit() {
                       height={100}
                       fill={shape.fill}
                       draggable={shape.draggable}
+                      scaleX={shape.scale} // Use shape scale for X axis
+                      scaleY={shape.scale} // Use shape scale for Y axis
+                      opacity={shape.opacity} // Use shape opacity
                       onClick={() => handleShapeClick(shape.id)}
                       onDragEnd={(e) =>
                         updateShapePosition(
@@ -224,6 +227,9 @@ function ImageEdit() {
                       radius={50}
                       fill={shape.fill}
                       draggable={shape.draggable}
+                      scaleX={shape.scale} // Use shape scale for X axis
+                      scaleY={shape.scale} // Use shape scale for Y axis
+                      opacity={shape.opacity} // Use shape opacity
                       onClick={() => handleShapeClick(shape.id)}
                       onDragEnd={(e) =>
                         updateShapePosition(
@@ -246,6 +252,9 @@ function ImageEdit() {
                       outerRadius={50}
                       fill={shape.fill}
                       draggable={shape.draggable}
+                      scaleX={shape.scale} // Use shape scale for X axis
+                      scaleY={shape.scale} // Use shape scale for Y axis
+                      opacity={shape.opacity} // Use shape opacity
                       onClick={() => handleShapeClick(shape.id)}
                       onDragEnd={(e) =>
                         updateShapePosition(
