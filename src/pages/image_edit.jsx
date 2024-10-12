@@ -5,7 +5,12 @@ import "../index.css";
 import { useShapes } from "../components/imageEditor/shapeCanvas"; // Custom hook for shape logic
 import ShapePickerModal from "../components/imageEditor/shapeLibrary"; // Modal for picking shapes
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGear, faPaintBrush, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGear,
+  faPaintBrush,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
+import { Trash2, Paintbrush, Maximize2 } from "lucide-react"; // Lucide icons
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff";
@@ -68,55 +73,55 @@ const GreenSlider = ({ label, min, max, step, value, onChange }) => {
 };
 
 const ShapeSlider = ({ label, min, max, step, value, onChange }) => {
-    return (
-      <label className="flex gap-3 justify-between items-center">
-        <span className="font-medium flex justify-between items-center text-gray-700 ">
-          {label}
-        </span>
-        <div className="relative flex flex-col items-start gap-3">
-          <input
-            type="range"
-            min={min}
-            max={max}
-            step={step}
-            value={value}
-            onChange={(e) => onChange(parseFloat(e.target.value))}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-            style={{
-              background: `linear-gradient(to right, #10B981 0%, #10B981 ${
-                ((value - min) / (max - min)) * 100
-              }%, #E5E7EB ${((value - min) / (max - min)) * 100}%, #E5E7EB 100%)`,
-            }}
-          />
-          <style jsx>{`
-            input[type="range"]::-webkit-slider-thumb {
-              -webkit-appearance: none;
-              appearance: none;
-              width: 15px;
-              height: 15px;
-              background-color: #10b981;
-              border-radius: 50%;
-              cursor: pointer;
-              transition: background-color 0.2s ease-in-out;
-            }
-            input[type="range"]::-moz-range-thumb {
-              width: 15px;
-              height: 15px;
-              background-color: #10b981;
-              border: none;
-              border-radius: 50%;
-              cursor: pointer;
-              transition: background-color 0.2s ease-in-out;
-            }
-            input[type="range"]::-webkit-slider-thumb:hover,
-            input[type="range"]::-moz-range-thumb:hover {
-              background-color: #059669;
-            }
-          `}</style>
-        </div>
-      </label>
-    );
-  };
+  return (
+    <label className="flex gap-3 justify-between items-center">
+      <span className="font-medium flex justify-between items-center text-gray-700 ">
+        {label}
+      </span>
+      <div className="relative flex flex-col items-start gap-3">
+        <input
+          type="range"
+          min={min}
+          max={max}
+          step={step}
+          value={value}
+          onChange={(e) => onChange(parseFloat(e.target.value))}
+          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+          style={{
+            background: `linear-gradient(to right, #10B981 0%, #10B981 ${
+              ((value - min) / (max - min)) * 100
+            }%, #E5E7EB ${((value - min) / (max - min)) * 100}%, #E5E7EB 100%)`,
+          }}
+        />
+        <style jsx>{`
+          input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background-color: #10b981;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+          }
+          input[type="range"]::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background-color: #10b981;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+          }
+          input[type="range"]::-webkit-slider-thumb:hover,
+          input[type="range"]::-moz-range-thumb:hover {
+            background-color: #059669;
+          }
+        `}</style>
+      </div>
+    </label>
+  );
+};
 
 function ImageEdit() {
   const [productImage, setProductImage] = useState(null);
@@ -363,7 +368,7 @@ function ImageEdit() {
             {shapes.map((shape, index) => (
               <div
                 key={shape.id}
-                className="shape-toolbar p-2 border border-stone-200 flex flex-col-reverse gap-2 rounded shadow-md"
+                className="shape-toolbar p-2 border border-stone-200 flex flex-col gap-2 rounded shadow-md"
               >
                 {shape.showOptions && (
                   <div className="shape-options mt-2 bg-white rounded flex flex-col gap-2 z-50">
@@ -391,44 +396,39 @@ function ImageEdit() {
                   </div>
                 )}
                 <p className="font-custom font-bold">{shape.type}</p>
-                {/* Delete Shape Icon */}
-                <div className="flex gap-1 items-center">
+
+                {/* Toolbar icons */}
+                <div className="flex gap-1 items-center justify-between">
+                  {/* Delete Shape Icon */}
                   <button
-                    className="icon delete-icon mx-2"
+                    className="p-2 rounded-full text-gray-500 hover:bg-gray-200"
                     onClick={() => deleteShape(shape.id)} // Use deleteShape from the hook
                     aria-label="Delete Shape"
                   >
-                    <FontAwesomeIcon
-                      icon={faTrash}
-                      className="text-stone-500 text-sm"
-                    />
+                    <Trash2 className="h-5 w-5" />
                   </button>
 
                   {/* Change Color Icon */}
                   <button
-                    className="icon paint-brush-icon mx-2"
+                    className="p-2 rounded-full text-gray-500 hover:bg-gray-200"
                     onClick={() => openColorPicker(shape.id)}
                     aria-label="Change Color"
                   >
-                    <FontAwesomeIcon
-                      icon={faPaintBrush}
-                      className="text-stone-500 text-sm"
-                    />
+                    <Paintbrush className="h-5 w-5" />
                   </button>
 
                   {/* Gear Icon for Scale and Opacity */}
-                  <div className="gear-container flex flex-col gap-2 mx-2">
-                    <button
-                      className="icon gear-icon"
-                      onClick={() => toggleShapeOptions(shape.id)} // Use toggleShapeOptions from the hook
-                      aria-label="Shape Options"
-                    >
-                      <FontAwesomeIcon
-                        icon={faGear}
-                        className="text-stone-500 text-sm"
-                      />
-                    </button>
-                  </div>
+                  <button
+                    className={`p-2 rounded-full ${
+                      shape.showOptions
+                        ? "bg-blue-500 text-white"
+                        : "text-gray-500 hover:bg-gray-200"
+                    }`}
+                    onClick={() => toggleShapeOptions(shape.id)} // Use toggleShapeOptions from the hook
+                    aria-label="Shape Options"
+                  >
+                    <Maximize2 className="h-5 w-5" />
+                  </button>
                 </div>
               </div>
             ))}
