@@ -264,14 +264,85 @@ function ImageEdit() {
             onChange={handleOpacityChange}
           />
           <div className="col-span-3 row-span-3 rounded-lg library_shapes flex flex-col p-5 items-start justify-end">
-            <h2 className="text-white font-black font-custom text-2xl">Element Library</h2>
-            <p className="w-2/3 text-stone-100 text-sm py-3">Pick and choose elements to add to your ad, add artistic elements, graphic appeal and stylish borders to further intensify your brand.</p>
+            <h2 className="text-white font-black font-custom text-2xl">
+              Element Library
+            </h2>
+            <p className="w-2/3 text-stone-100 text-sm py-3">
+              Pick and choose elements to add to your ad, add artistic elements,
+              graphic appeal and stylish borders to further intensify your
+              brand.
+            </p>
             <button
               className="px-4 py-2 bg-white border border-white text-black rounded-md mt-2 hover:bg-transparent hover:text-white transition"
               onClick={() => setShapePickerOpen(true)}
             >
               Add Shape
             </button>
+          </div>
+          <div className="row-span-3 col-span-1">
+            {shapes.map((shape, index) => (
+              <div
+                key={shape.id}
+                className="shape-toolbar p-2 border-b border-gray-200"
+              >
+                {/* Delete Shape Icon */}
+                <button
+                  className="icon delete-icon mx-2"
+                  onClick={() => deleteShape(shape.id)} // Use deleteShape from the hook
+                  aria-label="Delete Shape"
+                >
+                  🗑️
+                </button>
+
+                {/* Change Color Icon */}
+                <button
+                  className="icon paint-brush-icon mx-2"
+                  onClick={() => openColorPicker(shape.id)}
+                  aria-label="Change Color"
+                >
+                  🎨
+                </button>
+
+                {/* Gear Icon for Scale and Opacity */}
+                <div className="gear-container mx-2">
+                  <button
+                    className="icon gear-icon"
+                    onClick={() => toggleShapeOptions(shape.id)} // Use toggleShapeOptions from the hook
+                    aria-label="Shape Options"
+                  >
+                    ⚙️
+                  </button>
+
+                  {shape.showOptions && (
+                    <div className="shape-options mt-2">
+                      {/* Scale Slider */}
+                      <GreenSlider
+                        label="Scale"
+                        min={0.1}
+                        max={2}
+                        step={0.01}
+                        value={shape.scale}
+                        onChange={(newScale) =>
+                          updateShapeScale(shape.id, newScale)
+                        }
+                      />
+
+                      {/* Opacity Slider */}
+                      <GreenSlider
+                        label="Opacity"
+                        min={0}
+                        max={1}
+                        step={0.01}
+                        value={shape.opacity}
+                        onChange={(newOpacity) =>
+                          updateShapeOpacity(shape.id, newOpacity)
+                        }
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
