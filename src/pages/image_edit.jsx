@@ -14,7 +14,8 @@ const GreenSlider = ({ label, min, max, step, value, onChange }) => {
   return (
     <label className="flex flex-col gap-3 p-5 border border-stone-200 rounded-lg shadow-md col-span-2">
       <span className="font-medium text-gray-700">
-        {label}{"  "}
+        {label}
+        {"  "}
         <span className="px-2 py-1 text-sm text-white bg-epash-green rounded-md">
           {value.toFixed(2)}
         </span>
@@ -74,10 +75,11 @@ function ImageEdit() {
     opacity: 1,
   });
 
-  const { shapes, addShape, updateShapePosition, updateShapeFill } = useShapes(); // Hook for shapes
+  const { shapes, addShape, updateShapePosition, updateShapeFill } =
+    useShapes(); // Hook for shapes
   const [selectedShapeId, setSelectedShapeId] = useState(null);
   const [isShapePickerOpen, setShapePickerOpen] = useState(false); // Modal open state
-  
+
   const backgroundRef = useRef();
 
   useEffect(() => {
@@ -186,7 +188,11 @@ function ImageEdit() {
                       draggable={shape.draggable}
                       onClick={() => handleShapeClick(shape.id)}
                       onDragEnd={(e) =>
-                        updateShapePosition(shape.id, e.target.x(), e.target.y())
+                        updateShapePosition(
+                          shape.id,
+                          e.target.x(),
+                          e.target.y()
+                        )
                       }
                     />
                   );
@@ -202,7 +208,11 @@ function ImageEdit() {
                       draggable={shape.draggable}
                       onClick={() => handleShapeClick(shape.id)}
                       onDragEnd={(e) =>
-                        updateShapePosition(shape.id, e.target.x(), e.target.y())
+                        updateShapePosition(
+                          shape.id,
+                          e.target.x(),
+                          e.target.y()
+                        )
                       }
                     />
                   );
@@ -220,7 +230,11 @@ function ImageEdit() {
                       draggable={shape.draggable}
                       onClick={() => handleShapeClick(shape.id)}
                       onDragEnd={(e) =>
-                        updateShapePosition(shape.id, e.target.x(), e.target.y())
+                        updateShapePosition(
+                          shape.id,
+                          e.target.x(),
+                          e.target.y()
+                        )
                       }
                     />
                   );
@@ -249,15 +263,15 @@ function ImageEdit() {
             value={productProps.opacity}
             onChange={handleOpacityChange}
           />
+          <div className="col-span-3 row-span-3 rounded-lg ">
+            <button
+              className="px-4 py-2 bg-green-500 text-white rounded-md mt-5"
+              onClick={() => setShapePickerOpen(true)}
+            >
+              Add Shape
+            </button>
+          </div>
         </div>
-
-        {/* Add Shape Button */}
-        <button
-          className="px-4 py-2 bg-green-500 text-white rounded-md mt-5"
-          onClick={() => setShapePickerOpen(true)}
-        >
-          Add Shape
-        </button>
       </div>
 
       {/* Shape Picker Modal */}
