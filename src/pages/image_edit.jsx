@@ -16,7 +16,7 @@ const GreenSlider = ({ label, min, max, step, value, onChange }) => {
       <span className="font-medium text-gray-700">
         {label}
         {"  "}
-        <span className="px-2 py-1 text-sm text-white bg-epash-green rounded-md">
+        <span className="px-2 py-1 text-sm text-white bg-black rounded-md">
           {value.toFixed(2)}
         </span>
       </span>
