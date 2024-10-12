@@ -297,66 +297,69 @@ function ImageEdit() {
               Add Shape
             </button>
           </div>
-          <div className="row-span-3 col-span-1">
+          <div className="row-span-3 col-span-1 flex flex-col gap-3">
             {shapes.map((shape, index) => (
               <div
                 key={shape.id}
-                className="shape-toolbar p-2 border border-stone-200 flex gap-2 items-center rounded shadow-md"
+                className="shape-toolbar p-2 border border-stone-200 flex flex-col gap-2 items-center rounded shadow-md"
               >
+                <p className="font-custom font-bold">{shape.type}</p>
                 {/* Delete Shape Icon */}
-                <button
-                  className="icon delete-icon mx-2"
-                  onClick={() => deleteShape(shape.id)} // Use deleteShape from the hook
-                  aria-label="Delete Shape"
-                >
-                  🗑️
-                </button>
-
-                {/* Change Color Icon */}
-                <button
-                  className="icon paint-brush-icon mx-2"
-                  onClick={() => openColorPicker(shape.id)}
-                  aria-label="Change Color"
-                >
-                  🎨
-                </button>
-
-                {/* Gear Icon for Scale and Opacity */}
-                <div className="gear-container mx-2">
+                <div className="flex gap-2 items-center justify-start">
                   <button
-                    className="icon gear-icon"
-                    onClick={() => toggleShapeOptions(shape.id)} // Use toggleShapeOptions from the hook
-                    aria-label="Shape Options"
+                    className="icon delete-icon mx-2"
+                    onClick={() => deleteShape(shape.id)} // Use deleteShape from the hook
+                    aria-label="Delete Shape"
                   >
-                    ⚙️
+                    🗑️
                   </button>
 
-                  {shape.showOptions && (
-                    <div className="shape-options mt-2">
-                      {/* Scale Slider */}
-                      <GreenSlider
-                        label="Scale"
-                        min={0.1}
-                        max={2}
-                        step={0.01}
-                        value={shape.scale || 1} // Fallback to 1 if scale is undefined
-                        onChange={(newScale) =>
-                          updateShapeScale(shape.id, newScale)
-                        }
-                      />
+                  {/* Change Color Icon */}
+                  <button
+                    className="icon paint-brush-icon mx-2"
+                    onClick={() => openColorPicker(shape.id)}
+                    aria-label="Change Color"
+                  >
+                    🎨
+                  </button>
 
-                      <GreenSlider
-                        label="Opacity"
-                        min={0}
-                        max={1}
-                        step={0.01}
-                        value={shape.opacity || 1} // Fallback to 1 if opacity is undefined
-                        onChange={(newOpacity) =>
-                          updateShapeOpacity(shape.id, newOpacity)
-                        }
-                      />
-                    </div>
-                  )}
+                  {/* Gear Icon for Scale and Opacity */}
+                  <div className="gear-container flex flex-col gap-2 mx-2">
+                    <button
+                      className="icon gear-icon"
+                      onClick={() => toggleShapeOptions(shape.id)} // Use toggleShapeOptions from the hook
+                      aria-label="Shape Options"
+                    >
+                      ⚙️
+                    </button>
+
+                    {shape.showOptions && (
+                      <div className="shape-options mt-2 bg-white rounded flex flex-col gap-5 z-50">
+                        {/* Scale Slider */}
+                        <GreenSlider
+                          label="Scale"
+                          min={0.1}
+                          max={2}
+                          step={0.01}
+                          value={shape.scale || 1} // Fallback to 1 if scale is undefined
+                          onChange={(newScale) =>
+                            updateShapeScale(shape.id, newScale)
+                          }
+                        />
+
+                        <GreenSlider
+                          label="Opacity"
+                          min={0}
+                          max={1}
+                          step={0.01}
+                          value={shape.opacity || 1} // Fallback to 1 if opacity is undefined
+                          onChange={(newOpacity) =>
+                            updateShapeOpacity(shape.id, newOpacity)
+                          }
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
