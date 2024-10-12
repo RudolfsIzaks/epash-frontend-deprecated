@@ -4,6 +4,8 @@ import NavLogo from "../components/navLogo";
 import "../index.css";
 import { useShapes } from "../components/imageEditor/shapeCanvas"; // Custom hook for shape logic
 import ShapePickerModal from "../components/imageEditor/shapeLibrary"; // Modal for picking shapes
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGear, faPaintBrush, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff";
@@ -310,7 +312,7 @@ function ImageEdit() {
             {shapes.map((shape, index) => (
               <div
                 key={shape.id}
-                className="shape-toolbar p-2 border border-stone-200 flex flex-col gap-2 justify-center items-start rounded shadow-md"
+                className="shape-toolbar p-2 border border-stone-200 flex gap-2 items-center justify-between rounded shadow-md"
               >
                 <p className="font-custom font-bold">{shape.type}</p>
                 {/* Delete Shape Icon */}
@@ -320,7 +322,10 @@ function ImageEdit() {
                     onClick={() => deleteShape(shape.id)} // Use deleteShape from the hook
                     aria-label="Delete Shape"
                   >
-                    🗑️
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      className="text-stone-500 text-sm"
+                    />
                   </button>
 
                   {/* Change Color Icon */}
@@ -329,7 +334,10 @@ function ImageEdit() {
                     onClick={() => openColorPicker(shape.id)}
                     aria-label="Change Color"
                   >
-                    🎨
+                    <FontAwesomeIcon
+                      icon={faPaintBrush}
+                      className="text-stone-500 text-sm"
+                    />
                   </button>
 
                   {/* Gear Icon for Scale and Opacity */}
@@ -339,36 +347,39 @@ function ImageEdit() {
                       onClick={() => toggleShapeOptions(shape.id)} // Use toggleShapeOptions from the hook
                       aria-label="Shape Options"
                     >
-                      ⚙️
+                      <FontAwesomeIcon
+                        icon={faGear}
+                        className="text-stone-500 text-sm"
+                      />
                     </button>
                   </div>
                 </div>
                 {shape.showOptions && (
-                      <div className="shape-options mt-2 bg-white rounded flex flex-col gap-5 z-50">
-                        {/* Scale Slider */}
-                        <GreenSlider
-                          label="Scale"
-                          min={0.1}
-                          max={2}
-                          step={0.01}
-                          value={shape.scale || 1} // Fallback to 1 if scale is undefined
-                          onChange={(newScale) =>
-                            updateShapeScale(shape.id, newScale)
-                          }
-                        />
+                  <div className="shape-options mt-2 bg-white rounded flex flex-col gap-5 z-50">
+                    {/* Scale Slider */}
+                    <GreenSlider
+                      label="Scale"
+                      min={0.1}
+                      max={2}
+                      step={0.01}
+                      value={shape.scale || 1} // Fallback to 1 if scale is undefined
+                      onChange={(newScale) =>
+                        updateShapeScale(shape.id, newScale)
+                      }
+                    />
 
-                        <GreenSlider
-                          label="Opacity"
-                          min={0}
-                          max={1}
-                          step={0.01}
-                          value={shape.opacity || 1} // Fallback to 1 if opacity is undefined
-                          onChange={(newOpacity) =>
-                            updateShapeOpacity(shape.id, newOpacity)
-                          }
-                        />
-                      </div>
-                    )}
+                    <GreenSlider
+                      label="Opacity"
+                      min={0}
+                      max={1}
+                      step={0.01}
+                      value={shape.opacity || 1} // Fallback to 1 if opacity is undefined
+                      onChange={(newOpacity) =>
+                        updateShapeOpacity(shape.id, newOpacity)
+                      }
+                    />
+                  </div>
+                )}
               </div>
             ))}
           </div>
