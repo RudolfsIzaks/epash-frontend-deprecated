@@ -266,7 +266,7 @@ function ImageEdit() {
           <div className="col-span-3 row-span-3 rounded-lg library_shapes flex flex-col justify-end">
             <h2 className="text-white font-black font-custom text-2xl p-6">Element Library</h2>
             <button
-              className="px-4 py-2 bg-green-500 text-white rounded-md mt-5"
+              className="px-4 py-2 bg-green-500 text-white rounded-md mt-2"
               onClick={() => setShapePickerOpen(true)}
             >
               Add Shape

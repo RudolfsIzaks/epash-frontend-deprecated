@@ -150,8 +150,9 @@
   }
 
   .library_shapes {
-    background-image: url('./assets/bg-library.jpeg');
-    background: linear-gradient(0deg, rgba(1,1,1,0.3) 0%, rgba(0,0,0,0) 50%);
+    background: 
+        linear-gradient(0deg, rgba(1,1,1,0.3) 0%, rgba(0,0,0,0) 50%),
+        url('./assets/bg-library.jpeg');
     background-size: contain;
     background-blend-mode: multiply;
-  }
+}
