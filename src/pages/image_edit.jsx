@@ -301,7 +301,7 @@ function ImageEdit() {
             {shapes.map((shape, index) => (
               <div
                 key={shape.id}
-                className="shape-toolbar p-2 border border-stone-200 flex flex-col gap-2 items-center rounded shadow-md"
+                className="shape-toolbar p-2 border border-stone-200 flex flex-col gap-2 justify-center items-start rounded shadow-md"
               >
                 <p className="font-custom font-bold">{shape.type}</p>
                 {/* Delete Shape Icon */}
