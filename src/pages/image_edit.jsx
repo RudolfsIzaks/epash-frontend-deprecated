@@ -155,6 +155,8 @@ function ImageEdit() {
     setSelectedShapeId(id);
   };
 
+  const anyShapeHasOptions = shapes.some((shape) => shape.showOptions);
+
   return (
     <>
       <div className="flex w-full justify-between items-center py-5 px-48">
