@@ -374,7 +374,7 @@ function ImageEdit() {
                 <div className="flex gap-1 items-center justify-between">
                   {/* Delete Shape Icon */}
                   <button
-                    className="p-2 rounded text-gray-500 hover:bg-gray-200 border border-stone-200"
+                    className="p-2 rounded text-black hover:bg-gray-200 border border-stone-200"
                     onClick={() => deleteShape(shape.id)} // Use deleteShape from the hook
                     aria-label="Delete Shape"
                   >
@@ -383,7 +383,7 @@ function ImageEdit() {
 
                   {/* Change Color Icon */}
                   <button
-                    className="p-2 rounded text-gray-500 hover:bg-gray-200 border border-stone-200"
+                    className="p-2 rounded text-black hover:bg-gray-200 border border-stone-200"
                     onClick={() => openColorPicker(shape.id)}
                     aria-label="Change Color"
                   >
@@ -395,7 +395,7 @@ function ImageEdit() {
                     className={`p-2 rounded border border-stone-200 ${
                       shape.showOptions
                         ? "bg-blue-500 text-white"
-                        : "text-gray-500 hover:bg-gray-200"
+                        : "text-black hover:bg-gray-200"
                     }`}
                     onClick={() => toggleShapeOptions(shape.id)} // Use toggleShapeOptions from the hook
                     aria-label="Shape Options"
