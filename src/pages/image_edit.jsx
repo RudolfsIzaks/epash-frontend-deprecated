@@ -301,7 +301,7 @@ function ImageEdit() {
             <div
               className={`${
                 anyShapeHasOptions ? "col-span-2" : "col-span-3"
-              } row-span-3 rounded-lg library_shapes flex flex-col p-5 items-start justify-end`}
+              } row-span-3 rounded-lg library_shapes flex flex-col p-5 items-start justify-end transition-all`}
             >
               <h2 className="text-white font-black font-custom text-2xl">
                 Element Library
@@ -323,7 +323,7 @@ function ImageEdit() {
             <div
               className={`row-span-3 ${
                 anyShapeHasOptions ? "col-span-2" : "col-span-1"
-              } flex flex-col gap-3`}
+              } flex flex-col gap-3 transition-all`}
             >
               {shapes.map((shape, index) => (
                 <div
