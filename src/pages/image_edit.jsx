@@ -4,13 +4,7 @@ import NavLogo from "../components/navLogo";
 import "../index.css";
 import { useShapes } from "../components/imageEditor/shapeCanvas"; // Custom hook for shape logic
 import ShapePickerModal from "../components/imageEditor/shapeLibrary"; // Modal for picking shapes
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGear,
-  faPaintBrush,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
-import { Trash2, Paintbrush, Maximize2 } from "lucide-react"; // Lucide icons
+import { Trash2, Paintbrush, Settings2 } from "lucide-react"; // Lucide icons
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff";
