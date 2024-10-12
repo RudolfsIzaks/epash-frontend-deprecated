@@ -358,7 +358,7 @@ function ImageEdit() {
           />
           <div className="col-span-3 row-span-3 rounded-lg library_shapes flex flex-col p-5 items-start justify-end">
             <h2 className="text-white font-black font-custom text-2xl">
-              Element Library <p className="italic text-sm">Beta</p>
+              Element Library <p className="font-normal italic text-sm">Beta</p>
             </h2>
             <p className="w-2/3 text-stone-100 text-sm py-3">
               Pick and choose elements to add to your ad, add artistic elements,
