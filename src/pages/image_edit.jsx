@@ -368,33 +368,8 @@ function ImageEdit() {
             {shapes.map((shape, index) => (
               <div
                 key={shape.id}
-                className="shape-toolbar p-2 border border-stone-200 flex flex-col-reverse gap-2 rounded shadow-md"
+                className="shape-toolbar p-2 border border-stone-200 flex flex-col gap-2 rounded shadow-md"
               >
-                {shape.showOptions && (
-                  <div className="shape-options mt-2 bg-white rounded flex flex-col gap-2 z-50">
-                    {/* Scale Slider */}
-                    <ShapeSlider
-                      label="Scale"
-                      min={0.1}
-                      max={2}
-                      step={0.01}
-                      value={shape.scale || 1} // Fallback to 1 if scale is undefined
-                      onChange={(newScale) =>
-                        updateShapeScale(shape.id, newScale)
-                      }
-                    />
-                    <ShapeSlider
-                      label="Opacity"
-                      min={0}
-                      max={1}
-                      step={0.01}
-                      value={shape.opacity || 1} // Fallback to 1 if opacity is undefined
-                      onChange={(newOpacity) =>
-                        updateShapeOpacity(shape.id, newOpacity)
-                      }
-                    />
-                  </div>
-                )}
                 {/* Toolbar icons */}
                 <div className="flex gap-1 items-center justify-between">
                   {/* Delete Shape Icon */}
@@ -429,6 +404,31 @@ function ImageEdit() {
                   </button>
                 </div>
                 <p className="font-custom font-bold">{shape.type}</p>
+                {shape.showOptions && (
+                  <div className="shape-options mt-2 bg-white rounded flex flex-col gap-2 z-50">
+                    {/* Scale Slider */}
+                    <ShapeSlider
+                      label="Scale"
+                      min={0.1}
+                      max={2}
+                      step={0.01}
+                      value={shape.scale || 1} // Fallback to 1 if scale is undefined
+                      onChange={(newScale) =>
+                        updateShapeScale(shape.id, newScale)
+                      }
+                    />
+                    <ShapeSlider
+                      label="Opacity"
+                      min={0}
+                      max={1}
+                      step={0.01}
+                      value={shape.opacity || 1} // Fallback to 1 if opacity is undefined
+                      onChange={(newOpacity) =>
+                        updateShapeOpacity(shape.id, newOpacity)
+                      }
+                    />
+                  </div>
+                )}
               </div>
             ))}
           </div>
