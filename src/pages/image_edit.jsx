@@ -333,7 +333,8 @@ function ImageEdit() {
                       ⚙️
                     </button>
                   </div>
-                  {shape.showOptions && (
+                </div>
+                {shape.showOptions && (
                       <div className="shape-options mt-2 bg-white rounded flex flex-col gap-5 z-50">
                         {/* Scale Slider */}
                         <GreenSlider
@@ -359,7 +360,6 @@ function ImageEdit() {
                         />
                       </div>
                     )}
-                </div>
               </div>
             ))}
           </div>
