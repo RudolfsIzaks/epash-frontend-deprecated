@@ -5,7 +5,11 @@ import "../index.css";
 import { useShapes } from "../components/imageEditor/shapeCanvas"; // Custom hook for shape logic
 import ShapePickerModal from "../components/imageEditor/shapeLibrary"; // Modal for picking shapes
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGear, faPaintBrush, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGear,
+  faPaintBrush,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff";
@@ -292,96 +296,110 @@ function ImageEdit() {
             value={productProps.opacity}
             onChange={handleOpacityChange}
           />
-          <div className="col-span-3 row-span-3 rounded-lg library_shapes flex flex-col p-5 items-start justify-end">
-            <h2 className="text-white font-black font-custom text-2xl">
-              Element Library
-            </h2>
-            <p className="w-2/3 text-stone-100 text-sm py-3">
-              Pick and choose elements to add to your ad, add artistic elements,
-              graphic appeal and stylish borders to further intensify your
-              brand.
-            </p>
-            <button
-              className="px-4 py-2 bg-white border border-white text-black rounded-md mt-2 hover:bg-transparent hover:text-white transition"
-              onClick={() => setShapePickerOpen(true)}
+          <div className="grid grid-cols-4 grid-rows-5 gap-5 w-full">
+            {/* Dynamically set col-span based on whether showOptions is true */}
+            <div
+              className={`${
+                anyShapeHasOptions ? "col-span-2" : "col-span-3"
+              } row-span-3 rounded-lg library_shapes flex flex-col p-5 items-start justify-end`}
             >
-              Add Shape
-            </button>
-          </div>
-          <div className="row-span-3 col-span-1 flex flex-col gap-3">
-            {shapes.map((shape, index) => (
-              <div
-                key={shape.id}
-                className="shape-toolbar p-2 border border-stone-200 flex gap-2 items-center justify-between rounded shadow-md"
+              <h2 className="text-white font-black font-custom text-2xl">
+                Element Library
+              </h2>
+              <p className="w-2/3 text-stone-100 text-sm py-3">
+                Pick and choose elements to add to your ad, add artistic
+                elements, graphic appeal and stylish borders to further
+                intensify your brand.
+              </p>
+              <button
+                className="px-4 py-2 bg-white border border-white text-black rounded-md mt-2 hover:bg-transparent hover:text-white transition"
+                onClick={() => setShapePickerOpen(true)}
               >
-                <p className="font-custom font-bold">{shape.type}</p>
-                {/* Delete Shape Icon */}
-                <div className="flex gap-1 items-center">
-                  <button
-                    className="icon delete-icon mx-2"
-                    onClick={() => deleteShape(shape.id)} // Use deleteShape from the hook
-                    aria-label="Delete Shape"
-                  >
-                    <FontAwesomeIcon
-                      icon={faTrash}
-                      className="text-stone-500 text-sm"
-                    />
-                  </button>
+                Add Shape
+              </button>
+            </div>
 
-                  {/* Change Color Icon */}
-                  <button
-                    className="icon paint-brush-icon mx-2"
-                    onClick={() => openColorPicker(shape.id)}
-                    aria-label="Change Color"
-                  >
-                    <FontAwesomeIcon
-                      icon={faPaintBrush}
-                      className="text-stone-500 text-sm"
-                    />
-                  </button>
+            {/* Dynamically set col-span based on whether showOptions is true */}
+            <div
+              className={`row-span-3 ${
+                anyShapeHasOptions ? "col-span-2" : "col-span-1"
+              } flex flex-col gap-3`}
+            >
+              {shapes.map((shape, index) => (
+                <div
+                  key={shape.id}
+                  className="shape-toolbar p-2 border border-stone-200 flex gap-2 items-center justify-between rounded shadow-md"
+                >
+                  {shape.showOptions && (
+                    <div className="shape-options mt-2 bg-white rounded flex gap-5 z-50">
+                      {/* Scale Slider */}
+                      <GreenSlider
+                        label="Scale"
+                        min={0.1}
+                        max={2}
+                        step={0.01}
+                        value={shape.scale || 1} // Fallback to 1 if scale is undefined
+                        onChange={(newScale) =>
+                          updateShapeScale(shape.id, newScale)
+                        }
+                      />
 
-                  {/* Gear Icon for Scale and Opacity */}
-                  <div className="gear-container flex flex-col gap-2 mx-2">
+                      {/* Opacity Slider */}
+                      <GreenSlider
+                        label="Opacity"
+                        min={0}
+                        max={1}
+                        step={0.01}
+                        value={shape.opacity || 1} // Fallback to 1 if opacity is undefined
+                        onChange={(newOpacity) =>
+                          updateShapeOpacity(shape.id, newOpacity)
+                        }
+                      />
+                    </div>
+                  )}
+                  <p className="font-custom font-bold">{shape.type}</p>
+                  {/* Delete Shape Icon */}
+                  <div className="flex gap-1 items-center">
                     <button
-                      className="icon gear-icon"
-                      onClick={() => toggleShapeOptions(shape.id)} // Use toggleShapeOptions from the hook
-                      aria-label="Shape Options"
+                      className="icon delete-icon mx-2"
+                      onClick={() => deleteShape(shape.id)} // Use deleteShape from the hook
+                      aria-label="Delete Shape"
                     >
                       <FontAwesomeIcon
-                        icon={faGear}
+                        icon={faTrash}
                         className="text-stone-500 text-sm"
                       />
                     </button>
+
+                    {/* Change Color Icon */}
+                    <button
+                      className="icon paint-brush-icon mx-2"
+                      onClick={() => openColorPicker(shape.id)}
+                      aria-label="Change Color"
+                    >
+                      <FontAwesomeIcon
+                        icon={faPaintBrush}
+                        className="text-stone-500 text-sm"
+                      />
+                    </button>
+
+                    {/* Gear Icon for Scale and Opacity */}
+                    <div className="gear-container flex flex-col gap-2 mx-2">
+                      <button
+                        className="icon gear-icon"
+                        onClick={() => toggleShapeOptions(shape.id)} // Use toggleShapeOptions from the hook
+                        aria-label="Shape Options"
+                      >
+                        <FontAwesomeIcon
+                          icon={faGear}
+                          className="text-stone-500 text-sm"
+                        />
+                      </button>
+                    </div>
                   </div>
                 </div>
-                {shape.showOptions && (
-                  <div className="shape-options mt-2 bg-white rounded flex gap-5 z-50">
-                    {/* Scale Slider */}
-                    <GreenSlider
-                      label="Scale"
-                      min={0.1}
-                      max={2}
-                      step={0.01}
-                      value={shape.scale || 1} // Fallback to 1 if scale is undefined
-                      onChange={(newScale) =>
-                        updateShapeScale(shape.id, newScale)
-                      }
-                    />
-
-                    <GreenSlider
-                      label="Opacity"
-                      min={0}
-                      max={1}
-                      step={0.01}
-                      value={shape.opacity || 1} // Fallback to 1 if opacity is undefined
-                      onChange={(newOpacity) =>
-                        updateShapeOpacity(shape.id, newOpacity)
-                      }
-                    />
-                  </div>
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
