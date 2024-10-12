@@ -263,7 +263,7 @@ function ImageEdit() {
             value={productProps.opacity}
             onChange={handleOpacityChange}
           />
-          <div className="col-span-3 row-span-3 rounded-lg ">
+          <div className="col-span-3 row-span-3 rounded-lg library_shapes">
             <button
               className="px-4 py-2 bg-green-500 text-white rounded-md mt-5"
               onClick={() => setShapePickerOpen(true)}
