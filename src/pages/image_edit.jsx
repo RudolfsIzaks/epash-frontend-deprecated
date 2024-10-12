@@ -400,7 +400,7 @@ function ImageEdit() {
                     onClick={() => toggleShapeOptions(shape.id)} // Use toggleShapeOptions from the hook
                     aria-label="Shape Options"
                   >
-                    <Settings-2 className="h-5 w-5" />
+                    <Settings2 className="h-5 w-5" />
                   </button>
                 </div>
                 <p className="font-custom font-bold">{shape.type}</p>
