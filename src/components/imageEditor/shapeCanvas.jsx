@@ -13,6 +13,8 @@ export const useShapes = () => {
       fill: "blue",
       draggable: true,
       rotation: type === "slanted-rectangle" ? 30 : 0,
+      scale: 1,         // Add default scale value
+      opacity: 1,       // Add default opacity value
       showOptions: false, // New field to toggle gear options visibility
     };
     setShapes([...shapes, newShape]);
@@ -29,6 +31,20 @@ export const useShapes = () => {
   const updateShapeFill = (id, color) => {
     setShapes(shapes.map((shape) =>
       shape.id === id ? { ...shape, fill: color } : shape
+    ));
+  };
+
+  // Update the scale of a shape
+  const updateShapeScale = (id, scale) => {
+    setShapes(shapes.map((shape) =>
+      shape.id === id ? { ...shape, scale } : shape
+    ));
+  };
+
+  // Update the opacity of a shape
+  const updateShapeOpacity = (id, opacity) => {
+    setShapes(shapes.map((shape) =>
+      shape.id === id ? { ...shape, opacity } : shape
     ));
   };
 
@@ -49,7 +65,9 @@ export const useShapes = () => {
     addShape,
     updateShapePosition,
     updateShapeFill,
-    deleteShape,          // New delete functionality
-    toggleShapeOptions,   // New toggle options functionality
+    updateShapeScale,      // New scale functionality
+    updateShapeOpacity,    // New opacity functionality
+    deleteShape,
+    toggleShapeOptions,
   };
 };
