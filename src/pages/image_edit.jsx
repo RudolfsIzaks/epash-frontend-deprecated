@@ -31,15 +31,15 @@ const backgroundImageURL = "https://dummyimage.com/600x600/ddd/aaa";
 // Function to get icons based on shape type
 const getShapeIcon = (type) => {
   switch (type) {
-    case "rectangle":
+    case "Rectangle":
       return <Square className="h-5 w-5 mr-2" />;
-    case "circle":
+    case "Circle":
       return <LucideCircle className="h-5 w-5 mr-2" />;
-    case "star":
+    case "Star":
       return <LucideStar className="h-5 w-5 mr-2" />;
-    case "triangle":
+    case "Triangle":
       return <LucideTriangle className="h-5 w-5 mr-2" />;
-    case "parallelogram":
+    case "Parallelogram":
       return (
         <Square
           className="h-5 w-5 mr-2"
@@ -109,7 +109,7 @@ const GreenSlider = ({ label, min, max, step, value, onChange }) => {
 
 const ShapeSlider = ({ label, min, max, step, value, onChange }) => {
   return (
-    <label className="flex gap-3 justify-between items-center">
+    <label className="flex gap-3 items-center">
       <span className="font-medium flex justify-between items-center text-gray-700 ">
         {label}
       </span>
