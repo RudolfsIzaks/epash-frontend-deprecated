@@ -168,6 +168,8 @@ function ImageEdit() {
     opacity: 1,
   });
 
+  const [activeTab, setActiveTab] = useState("sliders");
+
   // Import functions from useShapes hook
   const {
     shapes,
@@ -272,139 +274,128 @@ function ImageEdit() {
         </div>
       </div>
       <div className="flex gap-5 md:mx-32 mt-20 rounded border border-stone-200 shadow-md p-12 max-h-[70dvh]">
-        <div className="flex justify-center items-center">
-          <Stage width={600} height={600} ref={backgroundRef}>
-            <Layer>
-              {backgroundImage && (
-                <Image
-                  image={backgroundImage}
-                  x={0}
-                  y={0}
-                  width={600}
-                  height={600}
-                  draggable={false}
-                />
-              )}
-              {productImage && (
-                <Image
-                  image={productImage}
-                  x={productProps.x}
-                  y={productProps.y}
-                  scaleX={productProps.scale}
-                  scaleY={productProps.scale}
-                  opacity={productProps.opacity}
-                  draggable
-                  onDragMove={handleDragMove}
-                  onTransformEnd={handleTransform}
-                />
-              )}
-              {/* Render shapes here */}
-              {shapes.map((shape) => {
-                if (shape.type === "Rectangle") {
-                  return (
-                    <Rect
-                      key={shape.id}
-                      x={shape.x}
-                      y={shape.y}
-                      width={100}
-                      height={100}
-                      fill={shape.fill}
-                      draggable={shape.draggable}
-                      scaleX={shape.scale}
-                      scaleY={shape.scale}
-                      opacity={shape.opacity}
-                      onClick={() => handleShapeClick(shape.id)}
-                      onDragEnd={(e) =>
-                        updateShapePosition(
-                          shape.id,
-                          e.target.x(),
-                          e.target.y()
-                        )
-                      }
-                    />
-                  );
+  <div className="flex justify-center items-center">
+    <Stage width={600} height={600} ref={backgroundRef}>
+      <Layer>
+        {backgroundImage && (
+          <Image
+            image={backgroundImage}
+            x={0}
+            y={0}
+            width={600}
+            height={600}
+            draggable={false}
+          />
+        )}
+        {productImage && (
+          <Image
+            image={productImage}
+            x={productProps.x}
+            y={productProps.y}
+            scaleX={productProps.scale}
+            scaleY={productProps.scale}
+            opacity={productProps.opacity}
+            draggable
+            onDragMove={handleDragMove}
+            onTransformEnd={handleTransform}
+          />
+        )}
+        {/* Render shapes here */}
+        {shapes.map((shape) => {
+          if (shape.type === "Rectangle") {
+            return (
+              <Rect
+                key={shape.id}
+                x={shape.x}
+                y={shape.y}
+                width={100}
+                height={100}
+                fill={shape.fill}
+                draggable={shape.draggable}
+                scaleX={shape.scale}
+                scaleY={shape.scale}
+                opacity={shape.opacity}
+                onClick={() => handleShapeClick(shape.id)}
+                onDragEnd={(e) =>
+                  updateShapePosition(shape.id, e.target.x(), e.target.y())
                 }
-                if (shape.type === "Circle") {
-                  return (
-                    <Circle
-                      key={shape.id}
-                      x={shape.x}
-                      y={shape.y}
-                      radius={50}
-                      fill={shape.fill}
-                      draggable={shape.draggable}
-                      scaleX={shape.scale}
-                      scaleY={shape.scale}
-                      opacity={shape.opacity}
-                      onClick={() => handleShapeClick(shape.id)}
-                      onDragEnd={(e) =>
-                        updateShapePosition(
-                          shape.id,
-                          e.target.x(),
-                          e.target.y()
-                        )
-                      }
-                    />
-                  );
+              />
+            );
+          }
+          if (shape.type === "Circle") {
+            return (
+              <Circle
+                key={shape.id}
+                x={shape.x}
+                y={shape.y}
+                radius={50}
+                fill={shape.fill}
+                draggable={shape.draggable}
+                scaleX={shape.scale}
+                scaleY={shape.scale}
+                opacity={shape.opacity}
+                onClick={() => handleShapeClick(shape.id)}
+                onDragEnd={(e) =>
+                  updateShapePosition(shape.id, e.target.x(), e.target.y())
                 }
-                if (shape.type === "Star") {
-                  return (
-                    <Star
-                      key={shape.id}
-                      x={shape.x}
-                      y={shape.y}
-                      numPoints={5}
-                      innerRadius={30}
-                      outerRadius={50}
-                      fill={shape.fill}
-                      draggable={shape.draggable}
-                      scaleX={shape.scale}
-                      scaleY={shape.scale}
-                      opacity={shape.opacity}
-                      onClick={() => handleShapeClick(shape.id)}
-                      onDragEnd={(e) =>
-                        updateShapePosition(
-                          shape.id,
-                          e.target.x(),
-                          e.target.y()
-                        )
-                      }
-                    />
-                  );
+              />
+            );
+          }
+          if (shape.type === "Star") {
+            return (
+              <Star
+                key={shape.id}
+                x={shape.x}
+                y={shape.y}
+                numPoints={5}
+                innerRadius={30}
+                outerRadius={50}
+                fill={shape.fill}
+                draggable={shape.draggable}
+                scaleX={shape.scale}
+                scaleY={shape.scale}
+                opacity={shape.opacity}
+                onClick={() => handleShapeClick(shape.id)}
+                onDragEnd={(e) =>
+                  updateShapePosition(shape.id, e.target.x(), e.target.y())
                 }
-                if (shape.type === "Border") {
-                  return (
-                    <Path
-                      key={shape.id}
-                      x={shape.x}
-                      y={shape.y}
-                      data="M0 0V300H300V0H0" // Path data representing an outer and inner square
-                      fill="transparent" // Do not fill the interior, only color the stroke
-                      stroke={shape.fill} // Use the desired color for the border
-                      strokeWidth={shape.scale * 7} // Adjust the stroke width based on the scale
-                      scaleX={shape.scale} // Scale horizontally
-                      scaleY={shape.scale} // Scale vertically
-                      opacity={shape.opacity} // Set the opacity
-                      draggable={shape.draggable}
-                      onClick={() => handleShapeClick(shape.id)} // Handle click events
-                      onDragEnd={(e) =>
-                        updateShapePosition(
-                          shape.id,
-                          e.target.x(),
-                          e.target.y()
-                        )
-                      }
-                    />
-                  );
-                }
-                return null;
-              })}
-            </Layer>
-          </Stage>
-        </div>
+              />
+            );
+          }
+          return null;
+        })}
+      </Layer>
+    </Stage>
+  </div>
 
-        {/* Custom Sliders */}
-        <div className="grid grid-cols-4 grid-rows-5 gap-5 w-full">
+  {/* Tabs for switching views */}
+  <div className="flex flex-col gap-5 w-full">
+    <div className="flex justify-center space-x-4 mt-8">
+      <button
+        className={`px-4 py-2 rounded-md font-medium ${
+          activeTab === "sliders"
+            ? "bg-epash-green text-white"
+            : "bg-gray-200 text-gray-700"
+        }`}
+        onClick={() => setActiveTab("sliders")}
+      >
+        Sliders
+      </button>
+      <button
+        className={`px-4 py-2 rounded-md font-medium ${
+          activeTab === "shapes"
+            ? "bg-epash-green text-white"
+            : "bg-gray-200 text-gray-700"
+        }`}
+        onClick={() => setActiveTab("shapes")}
+      >
+        Shapes
+      </button>
+    </div>
+
+    <div className="grid grid-cols-4 grid-rows-5 gap-5 w-full">
+      {activeTab === "sliders" && (
+        <>
           <GreenSlider
             label="Scale"
             min={0.1}
@@ -421,14 +412,19 @@ function ImageEdit() {
             value={productProps.opacity}
             onChange={handleOpacityChange}
           />
+        </>
+      )}
+
+      {activeTab === "shapes" && (
+        <>
           <div className="col-span-2 row-span-3 rounded-lg library_shapes flex flex-col p-5 items-start justify-end">
             <h2 className="text-white font-black font-custom text-2xl">
-              Element Library <p className="font-normal italic text-sm">Beta</p>
+              Element Library
             </h2>
+            <p className="font-normal italic text-sm text-white">Beta</p>
             <p className="w-2/3 text-stone-100 text-sm py-3">
               Pick and choose elements to add to your ad, add artistic elements,
-              graphic appeal and stylish borders to further intensify your
-              brand.
+              graphic appeal and stylish borders to further intensify your brand.
             </p>
             <button
               className="px-4 py-2 bg-white border border-white text-black rounded-md mt-2 hover:bg-transparent hover:text-white transition flex gap-2 items-center"
@@ -444,19 +440,15 @@ function ImageEdit() {
                 key={shape.id}
                 className="shape-toolbar p-2 border border-stone-200 flex flex-col gap-2 rounded shadow-md"
               >
-                {/* Toolbar icons */}
                 <div className="flex flex-row-reverse items-center justify-between">
                   <div className="flex gap-3 items-center">
-                    {/* Delete Shape Icon */}
                     <button
                       className="p-2 rounded text-black hover:bg-gray-200 border border-stone-200"
-                      onClick={() => deleteShape(shape.id)} // Use deleteShape from the hook
+                      onClick={() => deleteShape(shape.id)}
                       aria-label="Delete Shape"
                     >
                       <Trash2 className="h-5 w-5" />
                     </button>
-
-                    {/* Change Color Icon */}
                     <button
                       className="p-2 rounded text-black hover:bg-gray-200 border border-stone-200"
                       onClick={() => openColorPicker(shape.id)}
@@ -464,15 +456,13 @@ function ImageEdit() {
                     >
                       <Paintbrush className="h-5 w-5" />
                     </button>
-
-                    {/* Gear Icon for Scale and Opacity */}
                     <button
                       className={`p-2 rounded border border-stone-200 ${
                         shape.showOptions
                           ? "bg-blue-500 text-white"
                           : "text-black hover:bg-gray-200"
                       }`}
-                      onClick={() => toggleShapeOptions(shape.id)} // Use toggleShapeOptions from the hook
+                      onClick={() => toggleShapeOptions(shape.id)}
                       aria-label="Shape Options"
                     >
                       <Settings2 className="h-5 w-5" />
@@ -484,13 +474,12 @@ function ImageEdit() {
                 </div>
                 {shape.showOptions && (
                   <div className="shape-options mt-2 bg-white rounded flex flex-col gap-2 z-50">
-                    {/* Scale Slider */}
                     <ShapeSlider
                       label="Scale"
                       min={0.1}
                       max={2}
                       step={0.01}
-                      value={shape.scale || 1} // Fallback to 1 if scale is undefined
+                      value={shape.scale || 1}
                       onChange={(newScale) =>
                         updateShapeScale(shape.id, newScale)
                       }
@@ -500,7 +489,7 @@ function ImageEdit() {
                       min={0}
                       max={1}
                       step={0.01}
-                      value={shape.opacity || 1} // Fallback to 1 if opacity is undefined
+                      value={shape.opacity || 1}
                       onChange={(newOpacity) =>
                         updateShapeOpacity(shape.id, newOpacity)
                       }
@@ -510,8 +499,13 @@ function ImageEdit() {
               </div>
             ))}
           </div>
-        </div>
-      </div>
+        </>
+      )}
+    </div>
+  </div>
+</div>
+
+      
 
       {/* Shape Picker Modal */}
       {isShapePickerOpen && (
