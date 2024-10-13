@@ -21,7 +21,7 @@ import {
   Circle as LucideCircle,
   Star as LucideStar,
   Triangle as LucideTriangle,
-  Shapes
+  Shapes,
 } from "lucide-react";
 
 // Dummy images for development
@@ -106,7 +106,6 @@ const GreenSlider = ({ label, min, max, step, value, onChange }) => {
     </label>
   );
 };
-
 
 const ShapeSlider = ({ label, min, max, step, value, onChange }) => {
   return (
@@ -446,41 +445,43 @@ function ImageEdit() {
                 className="shape-toolbar p-2 border border-stone-200 flex flex-col gap-2 rounded shadow-md"
               >
                 {/* Toolbar icons */}
-                <div className="flex gap-1 items-center justify-between">
-                  {/* Delete Shape Icon */}
-                  <button
-                    className="p-2 rounded text-black hover:bg-gray-200 border border-stone-200"
-                    onClick={() => deleteShape(shape.id)} // Use deleteShape from the hook
-                    aria-label="Delete Shape"
-                  >
-                    <Trash2 className="h-5 w-5" />
-                  </button>
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-3 items-center">
+                    {/* Delete Shape Icon */}
+                    <button
+                      className="p-2 rounded text-black hover:bg-gray-200 border border-stone-200"
+                      onClick={() => deleteShape(shape.id)} // Use deleteShape from the hook
+                      aria-label="Delete Shape"
+                    >
+                      <Trash2 className="h-5 w-5" />
+                    </button>
 
-                  {/* Change Color Icon */}
-                  <button
-                    className="p-2 rounded text-black hover:bg-gray-200 border border-stone-200"
-                    onClick={() => openColorPicker(shape.id)}
-                    aria-label="Change Color"
-                  >
-                    <Paintbrush className="h-5 w-5" />
-                  </button>
+                    {/* Change Color Icon */}
+                    <button
+                      className="p-2 rounded text-black hover:bg-gray-200 border border-stone-200"
+                      onClick={() => openColorPicker(shape.id)}
+                      aria-label="Change Color"
+                    >
+                      <Paintbrush className="h-5 w-5" />
+                    </button>
 
-                  {/* Gear Icon for Scale and Opacity */}
-                  <button
-                    className={`p-2 rounded border border-stone-200 ${
-                      shape.showOptions
-                        ? "bg-blue-500 text-white"
-                        : "text-black hover:bg-gray-200"
-                    }`}
-                    onClick={() => toggleShapeOptions(shape.id)} // Use toggleShapeOptions from the hook
-                    aria-label="Shape Options"
-                  >
-                    <Settings2 className="h-5 w-5" />
-                  </button>
+                    {/* Gear Icon for Scale and Opacity */}
+                    <button
+                      className={`p-2 rounded border border-stone-200 ${
+                        shape.showOptions
+                          ? "bg-blue-500 text-white"
+                          : "text-black hover:bg-gray-200"
+                      }`}
+                      onClick={() => toggleShapeOptions(shape.id)} // Use toggleShapeOptions from the hook
+                      aria-label="Shape Options"
+                    >
+                      <Settings2 className="h-5 w-5" />
+                    </button>
+                  </div>
+                  <p className="font-custom font-bold flex gap-1 my-2">
+                    {getShapeIcon(shape.type)} {shape.type}
+                  </p>
                 </div>
-                <p className="font-custom font-bold flex gap-1 my-2">
-                  {getShapeIcon(shape.type)} {shape.type}
-                </p>
                 {shape.showOptions && (
                   <div className="shape-options mt-2 bg-white rounded flex flex-col gap-2 z-50">
                     {/* Scale Slider */}
