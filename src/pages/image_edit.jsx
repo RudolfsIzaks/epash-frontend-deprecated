@@ -432,10 +432,10 @@ function ImageEdit() {
               brand.
             </p>
             <button
-              className="px-4 py-2 bg-white border border-white text-black rounded-md mt-2 hover:bg-transparent hover:text-white transition"
+              className="px-4 py-2 bg-white border border-white text-black rounded-md mt-2 hover:bg-transparent hover:text-white transition flex gap-2 items-center"
               onClick={() => setShapePickerOpen(true)}
             >
-              <Shapes className="h-8 w-8" />
+              <Shapes className="h-6 w-6" />
               Add Shape
             </button>
           </div>

@@ -21,102 +21,103 @@ const ShapePickerModal = ({ onShapeAdd, onClose }) => {
         <h2 className="text-lg font-bold mb-4">Pick a Shape</h2>
         <div className="grid grid-cols-4 gap-4 mb-4">
           <button
-            className="p-2 border border-stone-200 shadow rounded-md"
+            className="p-2 border border-stone-200 shadow rounded-md flex gap-2 items-center"
             onClick={() => {
               onShapeAdd("Rectangle");
               onClose();
             }}
           >
-            <Square className="h-8 w-8" />
+            <Square className="h-6 w-6" />
             Rectangle
           </button>
           <button
-            className="p-2 border border-stone-200 shadow rounded-md"
+            className="p-2 border border-stone-200 shadow rounded-md flex gap-2 items-center"
             onClick={() => {
               onShapeAdd("Circle");
               onClose();
             }}
           >
-            <LucideCircle className="h-8 w-8" />
+            <LucideCircle className="h-6  w-6" />
             Circle
           </button>
           <button
-            className="p-2 border border-stone-200 shadow rounded-md"
+            className="p-2 border border-stone-200 shadow rounded-md flex gap-2 items-center"
             onClick={() => {
               onShapeAdd("Star");
               onClose();
             }}
           >
-            <Star className="h-8 w-8" />
+            <Star className="h-6 w-6" />
             Star
           </button>
           <button
-            className="p-2 border border-stone-200 shadow rounded-md"
+            className="p-2 border border-stone-200 shadow rounded-md flex gap-2 items-center"
             onClick={() => {
               onShapeAdd("slanted-rectangle");
               onClose();
             }}
           >
-            <Diamond className="h-8 w-8" />
+            <Diamond className="h-6 w-6" />
             Slanted Rectangle
           </button>
           <button
-            className="p-2 border border-stone-200 shadow rounded-md"
+            className="p-2 border border-stone-200 shadow rounded-md flex gap-2 items-center"
             onClick={() => {
               onShapeAdd("Discount");
               onClose();
             }}
           >
-            <BadgePercent className="h-8 w-8" />
+            <BadgePercent className="h-6 w-6" />
             Discount Shape
           </button>
           <button
-            className="p-2 border border-stone-200 shadow rounded-md"
+            className="p-2 border border-stone-200 shadow rounded-md flex gap-2 items-center"
             onClick={() => {
               onShapeAdd("Parallelogram");
               onClose();
             }}
           >
-            <RectangleHorizontal className="h-8 w-8" />
+            <RectangleHorizontal className="h-6 w-6" />
             Parallelogram
           </button>
           <button
-            className="p-2 border border-stone-200 shadow rounded-md"
+            className="p-2 border border-stone-200 shadow rounded-md flex gap-2 items-center"
             onClick={() => {
               onShapeAdd("Triangle");
               onClose();
             }}
           >
-            <Triangle className="h-8 w-8" />
+            <Triangle className="h-6 w-6" />
             Triangle
           </button>
           <button
-            className="p-2 border border-stone-200 shadow rounded-md"
+            className="p-2 border border-stone-200 shadow rounded-md flex gap-2 items-center"
             onClick={() => {
               onShapeAdd("Border");
               onClose();
             }}
           >
-            <SquareDashedBottom className="h-8 w-8" />
+            <SquareDashedBottom className="h-6 w-6" />
             Border
           </button>
           <button
+           className="p-2 border border-stone-200 shadow rounded-md flex gap-2 items-center"
             onClick={() => {
               onShapeAdd("customShape1");
               onClose();
             }}
           >
-            <Shapes className="h-8 w-8" />
+            <Shapes className="h-6 w-6" />
             Custom Shape 1
           </button>
           <button
-            className="p-2 border border-stone-200 shadow rounded-md"
+            className="p-2 border border-stone-200 shadow rounded-md flex gap-2 items-center"
             onClick={() => {
               onShapeAdd("customShape2");
               onClose();
             }}
           >
-            <Shapes className="h-8 w-8" />
+            <Shapes className="h-6 w-6" />
             Custom Shape 2
           </button>
         </div>
