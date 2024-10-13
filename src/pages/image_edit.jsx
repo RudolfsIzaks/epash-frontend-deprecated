@@ -1,10 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Stage, Layer, Image, Rect, Circle, Star, Line } from "react-konva"; // Use Line for custom shapes
+import {
+  Stage,
+  Layer,
+  Image,
+  Rect,
+  Circle,
+  Star,
+  Line,
+  Group,
+} from "react-konva"; // Use Line for custom shapes
 import NavLogo from "../components/navLogo";
 import "../index.css";
 import { useShapes } from "../components/imageEditor/shapeCanvas"; // Custom hook for shape logic
 import ShapePickerModal from "../components/imageEditor/shapeLibrary"; // Modal for picking shapes
-import { Trash2, Paintbrush, Settings2, Square, Circle as LucideCircle, Star as LucideStar, Triangle as LucideTriangle } from "lucide-react"; // Lucide icons
+import {
+  Trash2,
+  Paintbrush,
+  Settings2,
+  Square,
+  Circle as LucideCircle,
+  Star as LucideStar,
+  Triangle as LucideTriangle,
+} from "lucide-react"; // Lucide icons
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff";
@@ -22,7 +39,12 @@ const getShapeIcon = (type) => {
     case "triangle":
       return <LucideTriangle className="h-5 w-5 mr-2" />;
     case "parallelogram":
-      return <Square className="h-5 w-5 mr-2" style={{ transform: "skewX(20deg)" }} />;
+      return (
+        <Square
+          className="h-5 w-5 mr-2"
+          style={{ transform: "skewX(20deg)" }}
+        />
+      );
     default:
       return null;
   }
@@ -186,17 +208,17 @@ function ImageEdit() {
     const colorPicker = document.createElement("input");
     colorPicker.type = "color";
     colorPicker.style.display = "none";
-    
+
     // Append to body and simulate a click to open the picker
     document.body.appendChild(colorPicker);
     colorPicker.click();
-  
+
     // When the color is selected
     colorPicker.onchange = (event) => {
       const newColor = event.target.value;
       updateShapeFill(shapeId, newColor); // Update the shape color with the selected value
     };
-  
+
     // Remove the color picker from the DOM after selection
     colorPicker.onblur = () => {
       document.body.removeChild(colorPicker);
@@ -371,6 +393,41 @@ function ImageEdit() {
                     />
                   );
                 }
+                if (shape.type === "Border") {
+                  return (
+                    <Group
+                      scaleX={shape.scale}
+                      scaleY={shape.scale}
+                      draggable
+                      onClick={() => handleShapeClick(shape.id)}
+                      onDragEnd={(e) =>
+                        updateShapePosition(
+                          shape.id,
+                          e.target.x(),
+                          e.target.y()
+                        )
+                      }
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        width={600}
+                        height={600}
+                        zoomAndPan="magnify"
+                        viewBox="0 0 750 749.999995"
+                        preserveAspectRatio="xMidYMid meet"
+                        version="1.0"
+                      >
+                        <path
+                          fill={shape.fill}
+                          d="M 0 0 L 750 0 L 750 750 L 0 750 Z M 37.34375 37.582031 L 712.417969 37.582031 L 712.417969 712.65625 L 37.34375 712.65625 Z M 37.34375 37.582031 "
+                          fill-opacity="1"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
+                    </Group>
+                  );
+                }
                 if (shape.type === "Parallelogram") {
                   return (
                     <Line
@@ -473,7 +530,7 @@ function ImageEdit() {
                   </button>
                 </div>
                 <p className="font-custom font-bold flex gap-1 my-2">
-                    {getShapeIcon(shape.type)} {shape.type}
+                  {getShapeIcon(shape.type)} {shape.type}
                 </p>
                 {shape.showOptions && (
                   <div className="shape-options mt-2 bg-white rounded flex flex-col gap-2 z-50">
