@@ -478,7 +478,7 @@ function ImageEdit() {
                       <Settings2 className="h-5 w-5" />
                     </button>
                   </div>
-                  <p className="font-custom font-bold flex gap-1 my-2">
+                  <p className="font-custom font-bold flex gap-1 py-5 my-2">
                     {getShapeIcon(shape.type)} {shape.type}
                   </p>
                 </div>
