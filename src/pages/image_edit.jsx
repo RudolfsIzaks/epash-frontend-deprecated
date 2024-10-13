@@ -422,7 +422,7 @@ function ImageEdit() {
             value={productProps.opacity}
             onChange={handleOpacityChange}
           />
-          <div className="col-span-3 row-span-3 rounded-lg library_shapes flex flex-col p-5 items-start justify-end">
+          <div className="col-span-2 row-span-3 rounded-lg library_shapes flex flex-col p-5 items-start justify-end">
             <h2 className="text-white font-black font-custom text-2xl">
               Element Library <p className="font-normal italic text-sm">Beta</p>
             </h2>
@@ -439,7 +439,7 @@ function ImageEdit() {
               Add Shape
             </button>
           </div>
-          <div className="row-span-3 col-span-1 flex flex-col gap-3 overflow-y-scroll">
+          <div className="row-span-3 col-span-2 flex flex-col gap-3 overflow-y-scroll">
             {shapes.map((shape, index) => (
               <div
                 key={shape.id}
