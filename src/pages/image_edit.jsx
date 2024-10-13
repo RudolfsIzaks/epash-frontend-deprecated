@@ -382,11 +382,11 @@ function ImageEdit() {
 
         {/* Tabs for switching views */}
         <div className="flex flex-col gap-5 items-center w-full">
-          <div className="flex justify-center w-96 space-x-4 mt-8 p-1 rounded-md bg-stone-200">
+          <div className="flex justify-center w-96 space-x-4 my-8 p-1 rounded-md bg-stone-100">
             <button
               className={`px-4 py-2 rounded-md font-medium transition ${
                 activeTab === "sliders"
-                  ? "bg-epash-green text-white"
+                  ? "bg-white"
                   : "bg-transparent text-gray-700"
               }`}
               onClick={() => setActiveTab("sliders")}
@@ -396,7 +396,7 @@ function ImageEdit() {
             <button
               className={`px-4 py-2 rounded-md font-medium transition ${
                 activeTab === "shapes"
-                  ? "bg-epash-green text-white"
+                  ? "bg-white"
                   : "bg-transparent text-gray-700"
               }`}
               onClick={() => setActiveTab("shapes")}
@@ -406,7 +406,7 @@ function ImageEdit() {
             <button
               className={`px-4 py-2 rounded-md font-medium transition ${
                 activeTab === "Layers"
-                  ? "bg-epash-green text-white"
+                  ? "bg-white"
                   : "bg-transparent text-gray-700"
               }`}
               onClick={() => setActiveTab("Layers")}
