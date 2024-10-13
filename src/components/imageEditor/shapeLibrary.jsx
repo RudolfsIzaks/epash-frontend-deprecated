@@ -50,7 +50,7 @@ const ShapePickerModal = ({ onShapeAdd, onClose }) => {
               onClose();
             }}
           >
-            Star
+           Discount Shape
           </button>
         </div>
         <button
