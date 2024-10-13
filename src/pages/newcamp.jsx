@@ -629,7 +629,7 @@ function CreateCampaign() {
               type="file"
               id="file_input"
               multiple
-              accept=".png, .svg, .jpg, .jpeg"
+              accept=".png, .svg, .jpg, .jpeg .webp"
               onChange={handleFileChange}
               className="hidden"
             />
