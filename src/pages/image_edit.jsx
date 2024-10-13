@@ -378,7 +378,7 @@ function ImageEdit() {
                       key={shape.id}
                       x={shape.x}
                       y={shape.y}
-                      data="M 0 0 L 750 0 L 750 750 L 0 750 Z M 37.34375 37.582031 L 712.417969 37.582031 L 712.417969 712.65625 L 37.34375 712.65625 Z" // Path data representing an outer and inner square
+                      data="M0 0V100H100V0H0" // Path data representing an outer and inner square
                       fill="transparent" // Do not fill the interior, only color the stroke
                       stroke={shape.fill} // Use the desired color for the border
                       strokeWidth={shape.scale * 5} // Adjust the stroke width based on the scale
