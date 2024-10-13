@@ -176,13 +176,26 @@ function ImageEdit() {
       y: e.target.y(),
     });
   };
+  
   const openColorPicker = (shapeId) => {
-    const newColor = prompt(
-      "Enter a color value (e.g., red, #f00, rgb(255,0,0))"
-    );
-    if (newColor) {
-      updateShapeFill(shapeId, newColor); // Use updateShapeFill from the hook
-    }
+    const colorPicker = document.createElement("input");
+    colorPicker.type = "color";
+    colorPicker.style.display = "none";
+    
+    // Append to body and simulate a click to open the picker
+    document.body.appendChild(colorPicker);
+    colorPicker.click();
+  
+    // When the color is selected
+    colorPicker.onchange = (event) => {
+      const newColor = event.target.value;
+      updateShapeFill(shapeId, newColor); // Update the shape color with the selected value
+    };
+  
+    // Remove the color picker from the DOM after selection
+    colorPicker.onblur = () => {
+      document.body.removeChild(colorPicker);
+    };
   };
 
   const handleTransform = (e) => {
