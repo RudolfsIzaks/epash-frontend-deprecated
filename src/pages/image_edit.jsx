@@ -445,7 +445,7 @@ function ImageEdit() {
                 className="shape-toolbar p-2 border border-stone-200 flex flex-col gap-2 rounded shadow-md"
               >
                 {/* Toolbar icons */}
-                <div className="flex items-center justify-between">
+                <div className="flex flex-row-reverse items-center justify-between">
                   <div className="flex gap-3 items-center">
                     {/* Delete Shape Icon */}
                     <button
@@ -478,7 +478,7 @@ function ImageEdit() {
                       <Settings2 className="h-5 w-5" />
                     </button>
                   </div>
-                  <p className="font-custom font-bold flex gap-1 py-5 my-2">
+                  <p className="font-custom font-bold flex gap-1 px-5 my-2">
                     {getShapeIcon(shape.type)} {shape.type}
                   </p>
                 </div>
