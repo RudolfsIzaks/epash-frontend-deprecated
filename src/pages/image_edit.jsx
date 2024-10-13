@@ -384,7 +384,7 @@ function ImageEdit() {
         <div className="flex flex-col gap-5 items-center w-full">
           <div className="flex justify-center w-auto space-x-4 my-8 p-1 rounded-md bg-stone-100">
             <button
-              className={`px-4 py-2 rounded-md font-medium transition ${
+              className={`px-4 py-2 rounded-md shadow font-medium transition ${
                 activeTab === "sliders"
                   ? "bg-white"
                   : "bg-transparent text-gray-700"
@@ -394,7 +394,7 @@ function ImageEdit() {
               Sliders
             </button>
             <button
-              className={`px-4 py-2 rounded-md font-medium transition ${
+              className={`px-4 py-2 rounded-md shadow font-medium transition ${
                 activeTab === "shapes"
                   ? "bg-white"
                   : "bg-transparent text-gray-700"
@@ -404,7 +404,7 @@ function ImageEdit() {
               Shapes
             </button>
             <button
-              className={`px-4 py-2 rounded-md font-medium transition ${
+              className={`px-4 py-2 rounded-md shadow font-medium transition ${
                 activeTab === "Layers"
                   ? "bg-white"
                   : "bg-transparent text-gray-700"
