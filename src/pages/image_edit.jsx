@@ -176,7 +176,7 @@ function ImageEdit() {
       y: e.target.y(),
     });
   };
-  
+
   const openColorPicker = (shapeId) => {
     const colorPicker = document.createElement("input");
     colorPicker.type = "color";
@@ -273,7 +273,7 @@ function ImageEdit() {
               )}
               {/* Render shapes here */}
               {shapes.map((shape) => {
-                if (shape.type === "rectangle") {
+                if (shape.type === "Rectangle") {
                   return (
                     <Rect
                       key={shape.id}
@@ -297,7 +297,7 @@ function ImageEdit() {
                     />
                   );
                 }
-                if (shape.type === "circle") {
+                if (shape.type === "Circle") {
                   return (
                     <Circle
                       key={shape.id}
@@ -320,7 +320,7 @@ function ImageEdit() {
                     />
                   );
                 }
-                if (shape.type === "star") {
+                if (shape.type === "Star") {
                   return (
                     <Star
                       key={shape.id}
@@ -345,6 +345,31 @@ function ImageEdit() {
                     />
                   );
                 }
+                if (shape.type === "Discount") {
+                    return (
+                      <Star
+                        key={shape.id}
+                        x={shape.x}
+                        y={shape.y}
+                        numPoints={30}
+                        innerRadius={35}
+                        outerRadius={40}
+                        fill={shape.fill}
+                        draggable={shape.draggable}
+                        scaleX={shape.scale} // Use shape scale for X axis
+                        scaleY={shape.scale} // Use shape scale for Y axis
+                        opacity={shape.opacity} // Use shape opacity
+                        onClick={() => handleShapeClick(shape.id)}
+                        onDragEnd={(e) =>
+                          updateShapePosition(
+                            shape.id,
+                            e.target.x(),
+                            e.target.y()
+                          )
+                        }
+                      />
+                    );
+                  }
                 return null;
               })}
             </Layer>

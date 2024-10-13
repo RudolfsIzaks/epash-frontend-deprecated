@@ -10,7 +10,7 @@ const ShapePickerModal = ({ onShapeAdd, onClose }) => {
           <button
             className="p-2 bg-gray-200 rounded-md"
             onClick={() => {
-              onShapeAdd("rectangle");
+              onShapeAdd("Rectangle");
               onClose();
             }}
           >
@@ -19,7 +19,7 @@ const ShapePickerModal = ({ onShapeAdd, onClose }) => {
           <button
             className="p-2 bg-gray-200 rounded-md"
             onClick={() => {
-              onShapeAdd("circle");
+              onShapeAdd("Circle");
               onClose();
             }}
           >
@@ -28,7 +28,7 @@ const ShapePickerModal = ({ onShapeAdd, onClose }) => {
           <button
             className="p-2 bg-gray-200 rounded-md"
             onClick={() => {
-              onShapeAdd("star");
+              onShapeAdd("Star");
               onClose();
             }}
           >
@@ -42,6 +42,15 @@ const ShapePickerModal = ({ onShapeAdd, onClose }) => {
             }}
           >
             Slanted Rectangle
+          </button>
+          <button
+            className="p-2 bg-gray-200 rounded-md"
+            onClick={() => {
+              onShapeAdd("Discount");
+              onClose();
+            }}
+          >
+            Star
           </button>
         </div>
         <button
