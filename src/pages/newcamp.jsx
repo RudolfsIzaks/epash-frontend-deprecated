@@ -55,9 +55,8 @@ function CreateCampaign() {
     evolutionSpeed: 1,
     evolutionHarshness: 5,
     addOwnAds: false,
-    images: files
+    images: files,
   });
-  
 
   const languageOptions = [
     { value: "en_US", label: "English - United States" },
@@ -630,7 +629,7 @@ function CreateCampaign() {
               type="file"
               id="file_input"
               multiple
-              accept="image/*"
+              accept=".png, .svg, .jpg, .jpeg"
               onChange={handleFileChange}
               className="hidden"
             />
