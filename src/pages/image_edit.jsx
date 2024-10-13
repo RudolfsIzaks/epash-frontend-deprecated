@@ -1,27 +1,32 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Stage, Layer, Image, Rect, Circle, Star } from "react-konva";
+import { Stage, Layer, Image, Rect, Circle, Star, Line } from "react-konva"; // Use Line for custom shapes
 import NavLogo from "../components/navLogo";
 import "../index.css";
 import { useShapes } from "../components/imageEditor/shapeCanvas"; // Custom hook for shape logic
 import ShapePickerModal from "../components/imageEditor/shapeLibrary"; // Modal for picking shapes
-import { Trash2, Paintbrush, Settings2, Square, Circle as LucideCircle, Star as LucideStar } from "lucide-react"; // Lucide icons
+import { Trash2, Paintbrush, Settings2, Square, Circle as LucideCircle, Star as LucideStar, Triangle as LucideTriangle } from "lucide-react"; // Lucide icons
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff";
 const backgroundImageURL = "https://dummyimage.com/600x600/ddd/aaa";
 
+// Function to get icons based on shape type
 const getShapeIcon = (type) => {
-    switch (type) {
-      case "rectangle":
-        return <Square className="h-5 w-5 mr-2" />; // Icon for rectangle
-      case "circle":
-        return <LucideCircle className="h-5 w-5 mr-2" />; // Icon for circle
-      case "star":
-        return <LucideStar className="h-5 w-5 mr-2" />; // Icon for star
-      default:
-        return null; // Return null if no match
-    }
-  };
+  switch (type) {
+    case "rectangle":
+      return <Square className="h-5 w-5 mr-2" />;
+    case "circle":
+      return <LucideCircle className="h-5 w-5 mr-2" />;
+    case "star":
+      return <LucideStar className="h-5 w-5 mr-2" />;
+    case "triangle":
+      return <LucideTriangle className="h-5 w-5 mr-2" />;
+    case "parallelogram":
+      return <Square className="h-5 w-5 mr-2" style={{ transform: "skewX(20deg)" }} />;
+    default:
+      return null;
+  }
+};
 
 // GreenSlider component for styled sliders
 const GreenSlider = ({ label, min, max, step, value, onChange }) => {
@@ -213,7 +218,6 @@ function ImageEdit() {
     setProductProps({ ...productProps, opacity: value });
   };
 
-
   const handleSave = () => {
     const stage = backgroundRef.current.getStage();
     const dataURL = stage.toDataURL();
@@ -345,31 +349,50 @@ function ImageEdit() {
                     />
                   );
                 }
-                if (shape.type === "Discount") {
-                    return (
-                      <Star
-                        key={shape.id}
-                        x={shape.x}
-                        y={shape.y}
-                        numPoints={30}
-                        innerRadius={35}
-                        outerRadius={40}
-                        fill={shape.fill}
-                        draggable={shape.draggable}
-                        scaleX={shape.scale} // Use shape scale for X axis
-                        scaleY={shape.scale} // Use shape scale for Y axis
-                        opacity={shape.opacity} // Use shape opacity
-                        onClick={() => handleShapeClick(shape.id)}
-                        onDragEnd={(e) =>
-                          updateShapePosition(
-                            shape.id,
-                            e.target.x(),
-                            e.target.y()
-                          )
-                        }
-                      />
-                    );
-                  }
+                if (shape.type === "Triangle") {
+                  return (
+                    <Line
+                      key={shape.id}
+                      points={[50, 0, 100, 100, 0, 100]} // Triangle points
+                      fill={shape.fill}
+                      closed
+                      draggable
+                      scaleX={shape.scale}
+                      scaleY={shape.scale}
+                      opacity={shape.opacity}
+                      onClick={() => handleShapeClick(shape.id)}
+                      onDragEnd={(e) =>
+                        updateShapePosition(
+                          shape.id,
+                          e.target.x(),
+                          e.target.y()
+                        )
+                      }
+                    />
+                  );
+                }
+                if (shape.type === "Parallelogram") {
+                  return (
+                    <Line
+                      key={shape.id}
+                      points={[50, 0, 150, 0, 100, 100, 0, 100]} // Parallelogram points
+                      fill={shape.fill}
+                      closed
+                      draggable
+                      scaleX={shape.scale}
+                      scaleY={shape.scale}
+                      opacity={shape.opacity}
+                      onClick={() => handleShapeClick(shape.id)}
+                      onDragEnd={(e) =>
+                        updateShapePosition(
+                          shape.id,
+                          e.target.x(),
+                          e.target.y()
+                        )
+                      }
+                    />
+                  );
+                }
                 return null;
               })}
             </Layer>

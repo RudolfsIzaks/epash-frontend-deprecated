@@ -50,7 +50,34 @@ const ShapePickerModal = ({ onShapeAdd, onClose }) => {
               onClose();
             }}
           >
-           Discount Shape
+            Discount Shape
+          </button>
+          <button onClick={() => {
+            onShapeAdd("Parallelogram");
+            onClose();
+            }}>
+            Parallelogram
+          </button>
+          <button onClick={() => {
+            onShapeAdd("Triangle");
+            onClose();
+          }}>Triangle</button>
+          <button onClick={() => {
+            onShapeAdd("Border");
+            onClose();
+            }}>Border</button>
+          <button onClick={() => {
+            onShapeAdd("customShape1");
+            onClose();
+            
+            }}>
+            Custom Shape 1
+          </button>
+          <button onClick={() => {
+            onShapeAdd("customShape2");
+            onClose();
+            }}>
+            Custom Shape 2
           </button>
         </div>
         <button
