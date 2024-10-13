@@ -391,7 +391,7 @@ function ImageEdit() {
               }`}
               onClick={() => setActiveTab("sliders")}
             >
-              Sliders
+              Adjust Image
             </button>
             <button
               className={`px-4 py-2 rounded-md font-medium transition ${
