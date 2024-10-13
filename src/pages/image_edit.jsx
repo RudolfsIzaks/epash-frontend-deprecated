@@ -21,6 +21,7 @@ import {
   Circle as LucideCircle,
   Star as LucideStar,
   Triangle as LucideTriangle,
+  Shapes
 } from "lucide-react";
 
 // Dummy images for development
@@ -434,6 +435,7 @@ function ImageEdit() {
               className="px-4 py-2 bg-white border border-white text-black rounded-md mt-2 hover:bg-transparent hover:text-white transition"
               onClick={() => setShapePickerOpen(true)}
             >
+              <Shapes className="h-8 w-8" />
               Add Shape
             </button>
           </div>
