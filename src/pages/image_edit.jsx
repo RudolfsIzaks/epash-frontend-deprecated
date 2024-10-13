@@ -369,8 +369,8 @@ function ImageEdit() {
   </div>
 
   {/* Tabs for switching views */}
-  <div className="flex flex-col gap-5 items-center">
-    <div className="flex justify-center space-x-4 mt-8 p-1 rounded-md bg-stone-200">
+  <div className="flex flex-col gap-5 items-center w-full">
+    <div className="flex justify-center w-96 space-x-4 mt-8 p-1 rounded-md bg-stone-200">
       <button
         className={`px-4 py-2 rounded-md font-medium transition ${
           activeTab === "sliders"
