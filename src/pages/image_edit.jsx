@@ -7,12 +7,12 @@ import {
   Circle,
   Star,
   Line,
-  Group,
-} from "react-konva"; // Use Line for custom shapes
+  Path, // Use Konva Path for custom SVG shapes
+} from "react-konva";
 import NavLogo from "../components/navLogo";
 import "../index.css";
 import { useShapes } from "../components/imageEditor/shapeCanvas"; // Custom hook for shape logic
-import ShapePickerModal from "../components/imageEditor/shapeLibrary"; // Modal for picking shapes
+import ShapePickerModal from "../components/imageEditor/shapeLibrary";
 import {
   Trash2,
   Paintbrush,
@@ -21,7 +21,7 @@ import {
   Circle as LucideCircle,
   Star as LucideStar,
   Triangle as LucideTriangle,
-} from "lucide-react"; // Lucide icons
+} from "lucide-react";
 
 // Dummy images for development
 const productImageURL = "https://dummyimage.com/300x300/000/fff";
@@ -90,57 +90,6 @@ const GreenSlider = ({ label, min, max, step, value, onChange }) => {
           input[type="range"]::-moz-range-thumb {
             width: 20px;
             height: 20px;
-            background-color: #10b981;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
-          }
-          input[type="range"]::-webkit-slider-thumb:hover,
-          input[type="range"]::-moz-range-thumb:hover {
-            background-color: #059669;
-          }
-        `}</style>
-      </div>
-    </label>
-  );
-};
-
-const ShapeSlider = ({ label, min, max, step, value, onChange }) => {
-  return (
-    <label className="flex gap-3 justify-between items-center">
-      <span className="font-medium flex justify-between items-center text-gray-700 ">
-        {label}
-      </span>
-      <div className="relative flex flex-col items-start gap-3">
-        <input
-          type="range"
-          min={min}
-          max={max}
-          step={step}
-          value={value}
-          onChange={(e) => onChange(parseFloat(e.target.value))}
-          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-          style={{
-            background: `linear-gradient(to right, #10B981 0%, #10B981 ${
-              ((value - min) / (max - min)) * 100
-            }%, #E5E7EB ${((value - min) / (max - min)) * 100}%, #E5E7EB 100%)`,
-          }}
-        />
-        <style jsx>{`
-          input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 15px;
-            height: 15px;
-            background-color: #10b981;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
-          }
-          input[type="range"]::-moz-range-thumb {
-            width: 15px;
-            height: 15px;
             background-color: #10b981;
             border: none;
             border-radius: 50%;
@@ -309,9 +258,9 @@ function ImageEdit() {
                       height={100}
                       fill={shape.fill}
                       draggable={shape.draggable}
-                      scaleX={shape.scale} // Use shape scale for X axis
-                      scaleY={shape.scale} // Use shape scale for Y axis
-                      opacity={shape.opacity} // Use shape opacity
+                      scaleX={shape.scale}
+                      scaleY={shape.scale}
+                      opacity={shape.opacity}
                       onClick={() => handleShapeClick(shape.id)}
                       onDragEnd={(e) =>
                         updateShapePosition(
@@ -332,9 +281,9 @@ function ImageEdit() {
                       radius={50}
                       fill={shape.fill}
                       draggable={shape.draggable}
-                      scaleX={shape.scale} // Use shape scale for X axis
-                      scaleY={shape.scale} // Use shape scale for Y axis
-                      opacity={shape.opacity} // Use shape opacity
+                      scaleX={shape.scale}
+                      scaleY={shape.scale}
+                      opacity={shape.opacity}
                       onClick={() => handleShapeClick(shape.id)}
                       onDragEnd={(e) =>
                         updateShapePosition(
@@ -357,28 +306,6 @@ function ImageEdit() {
                       outerRadius={50}
                       fill={shape.fill}
                       draggable={shape.draggable}
-                      scaleX={shape.scale} // Use shape scale for X axis
-                      scaleY={shape.scale} // Use shape scale for Y axis
-                      opacity={shape.opacity} // Use shape opacity
-                      onClick={() => handleShapeClick(shape.id)}
-                      onDragEnd={(e) =>
-                        updateShapePosition(
-                          shape.id,
-                          e.target.x(),
-                          e.target.y()
-                        )
-                      }
-                    />
-                  );
-                }
-                if (shape.type === "Triangle") {
-                  return (
-                    <Line
-                      key={shape.id}
-                      points={[50, 0, 100, 100, 0, 100]} // Triangle points
-                      fill={shape.fill}
-                      closed
-                      draggable
                       scaleX={shape.scale}
                       scaleY={shape.scale}
                       opacity={shape.opacity}
@@ -395,50 +322,16 @@ function ImageEdit() {
                 }
                 if (shape.type === "Border") {
                   return (
-                    <Group
-                      scaleX={shape.scale}
-                      scaleY={shape.scale}
-                      draggable
-                      onClick={() => handleShapeClick(shape.id)}
-                      onDragEnd={(e) =>
-                        updateShapePosition(
-                          shape.id,
-                          e.target.x(),
-                          e.target.y()
-                        )
-                      }
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                        width={600}
-                        height={600}
-                        zoomAndPan="magnify"
-                        viewBox="0 0 750 749.999995"
-                        preserveAspectRatio="xMidYMid meet"
-                        version="1.0"
-                      >
-                        <path
-                          fill={shape.fill}
-                          d="M 0 0 L 750 0 L 750 750 L 0 750 Z M 37.34375 37.582031 L 712.417969 37.582031 L 712.417969 712.65625 L 37.34375 712.65625 Z M 37.34375 37.582031 "
-                          fill-opacity="1"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                    </Group>
-                  );
-                }
-                if (shape.type === "Parallelogram") {
-                  return (
-                    <Line
+                    <Path
                       key={shape.id}
-                      points={[50, 0, 150, 0, 100, 100, 0, 100]} // Parallelogram points
+                      x={0}
+                      y={0}
+                      data="M 0 0 L 750 0 L 750 750 L 0 750 Z M 37.34375 37.582031 L 712.417969 37.582031 L 712.417969 712.65625 L 37.34375 712.65625 Z" // SVG path data
                       fill={shape.fill}
-                      closed
-                      draggable
                       scaleX={shape.scale}
                       scaleY={shape.scale}
                       opacity={shape.opacity}
+                      draggable
                       onClick={() => handleShapeClick(shape.id)}
                       onDragEnd={(e) =>
                         updateShapePosition(
