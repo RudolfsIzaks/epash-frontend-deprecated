@@ -327,7 +327,9 @@ function ImageEdit() {
                       x={0}
                       y={0}
                       data="M 0 0 L 750 0 L 750 750 L 0 750 Z M 37.34375 37.582031 L 712.417969 37.582031 L 712.417969 712.65625 L 37.34375 712.65625 Z" // SVG path data
-                      fill={shape.fill}
+                      fill="none"
+                      stroke={shape.fill}
+                      strokeWidth={shape.scale}
                       scaleX={shape.scale}
                       scaleY={shape.scale}
                       opacity={shape.opacity}
