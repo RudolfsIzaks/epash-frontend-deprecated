@@ -381,7 +381,7 @@ function ImageEdit() {
                       data="M0 0V300H300V0H0" // Path data representing an outer and inner square
                       fill="transparent" // Do not fill the interior, only color the stroke
                       stroke={shape.fill} // Use the desired color for the border
-                      strokeWidth={shape.scale * 5} // Adjust the stroke width based on the scale
+                      strokeWidth={shape.scale * 7} // Adjust the stroke width based on the scale
                       scaleX={shape.scale} // Scale horizontally
                       scaleY={shape.scale} // Scale vertically
                       opacity={shape.opacity} // Set the opacity
