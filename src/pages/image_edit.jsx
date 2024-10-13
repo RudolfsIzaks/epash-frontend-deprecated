@@ -370,22 +370,22 @@ function ImageEdit() {
 
   {/* Tabs for switching views */}
   <div className="flex flex-col gap-5 w-full">
-    <div className="flex justify-center space-x-4 mt-8">
+    <div className="flex justify-center space-x-4 mt-8 p-2 rounded-md bg-stone-200">
       <button
-        className={`px-4 py-2 rounded-md font-medium ${
+        className={`px-4 py-2 rounded-md font-medium transition ${
           activeTab === "sliders"
             ? "bg-epash-green text-white"
-            : "bg-gray-200 text-gray-700"
+            : "bg-transparent text-gray-700"
         }`}
         onClick={() => setActiveTab("sliders")}
       >
         Sliders
       </button>
       <button
-        className={`px-4 py-2 rounded-md font-medium ${
+        className={`px-4 py-2 rounded-md font-medium transition ${
           activeTab === "shapes"
             ? "bg-epash-green text-white"
-            : "bg-gray-200 text-gray-700"
+            : "bg-transparent text-gray-700"
         }`}
         onClick={() => setActiveTab("shapes")}
       >
