@@ -326,15 +326,15 @@ function ImageEdit() {
                       key={shape.id}
                       x={0}
                       y={0}
-                      data="M 0 0 L 750 0 L 750 750 L 0 750 Z M 37.34375 37.582031 L 712.417969 37.582031 L 712.417969 712.65625 L 37.34375 712.65625 Z" // SVG path data
-                      fill="none"
-                      stroke={shape.fill}
-                      strokeWidth={shape.scale}
-                      scaleX={shape.scale}
-                      scaleY={shape.scale}
-                      opacity={shape.opacity}
-                      draggable
-                      onClick={() => handleShapeClick(shape.id)}
+                      data="M 0 0 L 750 0 L 750 750 L 0 750 Z M 37.34375 37.582031 L 712.417969 37.582031 L 712.417969 712.65625 L 37.34375 712.65625 Z" // Path data representing an outer and inner square
+                      fill="none" // Do not fill the interior, only color the stroke
+                      stroke={shape.fill} // Use the desired color for the border
+                      strokeWidth={shape.scale * 5} // Adjust the stroke width based on the scale
+                      scaleX={shape.scale} // Scale horizontally
+                      scaleY={shape.scale} // Scale vertically
+                      opacity={shape.opacity} // Set the opacity
+                      draggable // Allow the shape to be draggable
+                      onClick={() => handleShapeClick(shape.id)} // Handle click events
                       onDragEnd={(e) =>
                         updateShapePosition(
                           shape.id,
