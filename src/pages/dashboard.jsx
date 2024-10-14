@@ -90,8 +90,7 @@ function Dashboard() {
     return (
       <div className="w-full h-screen bg-white flex justify-center items-center">
         <div className="flex gap-3 items-center animate-pulse">
-          <img src="https://res.cloudinary.com/drcze5fsl/image/upload/v1718707751/o6uk4vdhzumrmjztnp4a.png" alt="Logo Epash" className="w-16" />
-          <h1 className="font-bold text-4xl">Epash AI</h1>
+          <img src="https://res.cloudinary.com/drcze5fsl/image/upload/v1728896749/EPASH_White_Bg_us1zsx.png" alt="Logo Epash" className="w-16" />
         </div>
       </div>
     );// O r any other loading indicator
