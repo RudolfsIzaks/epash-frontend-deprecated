@@ -48,26 +48,26 @@ function RouterSetup() {
                     <Route path="/signup" element={<SignUserUp />} />
                     <Route path="/login" element={<LogUserIn />} />
                     <Route path="/image" element={<ImageEdit />} />
-                    <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>} />
-                    <Route path="/dashboard/manage-campaigns" element={<PrivateRoute><ManageCampaigns/></PrivateRoute>} />
-                    <Route path="/new/campaign" element={<PrivateRoute><CreateCampaign/></PrivateRoute>} />
-                    <Route path="/account/settings" element={<PrivateRoute><UserProfile/></PrivateRoute>} />
-                    <Route path="/account/settings/profile-info" element={<PrivateRoute><ProfileInfo/></PrivateRoute>} />
-                    <Route path="/dashboard/manage-campaigns/campaign-details" element={<PrivateRoute><CampaignDetail/></PrivateRoute>} />
-                    <Route path="/dashboard/previous-campaigns" element={<PrivateRoute><NotFound/></PrivateRoute>} />
-                    <Route path="/dashboard/product-profiles" element={<PrivateRoute><NotFound/></PrivateRoute>} />
+                    <Route path="/dashboard" element={<Dashboard/>} />
+                    <Route path="/dashboard/manage-campaigns" element={<ManageCampaigns/>} />
+                    <Route path="/new/campaign" element={<CreateCampaign/>} />
+                    <Route path="/account/settings" element={<UserProfile/>} />
+                    <Route path="/account/settings/profile-info" element={<ProfileInfo/>} />
+                    <Route path="/dashboard/manage-campaigns/campaign-details" element={<CampaignDetail/>} />
+                    <Route path="/dashboard/previous-campaigns" element={<NotFound/>} />
+                    <Route path="/dashboard/product-profiles" element={<NotFound/>} />
                     <Route path="/auth/google/callback" element={<Callback />} /> {/* Use wildcard route */}
                     <Route path="/success-google" element={<SuccessGoogle />} /> {/* Use wildcard route */}
-                    <Route path="/platform-edit-google" element={<PrivateRoute><PlatformGoogle /></PrivateRoute>} /> {/* Use wildcard route */}
-                    <Route path="/account/settings/profilelinkage" element={<PrivateRoute><ProfileLinkage/></PrivateRoute>} />
-                    <Route path="/account/settings/profilelinkage-facebook" element={<PrivateRoute><ProfileLinkageFacebook/></PrivateRoute>} />
-                    <Route path="/platform-select" element={<PrivateRoute><PlatformSelect/></PrivateRoute>} />
-                    <Route path="/platform-select-view" element={<PrivateRoute><PlatformView/></PrivateRoute>} />
-                    <Route path="/platform-view-google" element={<PrivateRoute><PlatformGoogleView/></PrivateRoute>} />
-                    <Route path="/platform-view-facebook" element={<PrivateRoute><PlatformFacebookView/></PrivateRoute>} />
-                    <Route path="/platform-edit-facebook" element={<PrivateRoute><PlatformFacebook/></PrivateRoute>} />
-                    <Route path="/platform-edit-spotify" element={<PrivateRoute><PlatformSpotify/></PrivateRoute>} />
-                    <Route path="/platform-image-generation" element={<PrivateRoute><PlatformImageGeneration/></PrivateRoute>} />
+                    <Route path="/platform-edit-google" element={<PlatformGoogle />} /> {/* Use wildcard route */}
+                    <Route path="/account/settings/profilelinkage" element={<ProfileLinkage/>} />
+                    <Route path="/account/settings/profilelinkage-facebook" element={<ProfileLinkageFacebook/>} />
+                    <Route path="/platform-select" element={<PlatformSelect/>} />
+                    <Route path="/platform-select-view" element={<PlatformView/>} />
+                    <Route path="/platform-view-google" element={<PlatformGoogleView/>} />
+                    <Route path="/platform-view-facebook" element={<PlatformFacebookView/>} />
+                    <Route path="/platform-edit-facebook" element={<PlatformFacebook/>} />
+                    <Route path="/platform-edit-spotify" element={<PlatformSpotify/>} />
+                    <Route path="/platform-image-generation" element={<PlatformImageGeneration/>} />
                     <Route path="/privacy-policy" element={<Privacy />} />
                 </Routes>
             </AuthProvider>
